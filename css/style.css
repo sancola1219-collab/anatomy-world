@@ -175,6 +175,25 @@ body{
 .guide-foot{margin-top:18px;font-size:12.5px;color:var(--ink-soft)}
 .guide-foot code{background:var(--panel-2);padding:2px 6px;border-radius:5px}
 
+/* ===== 3D 立體檢視 ===== */
+#three-host{position:absolute;inset:0;z-index:2}
+#three-host[hidden]{display:none}
+#three-host canvas{display:block;width:100%;height:100%;cursor:grab}
+#three-host canvas:active{cursor:grabbing}
+.pill-3d.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.t3d-bar{
+  position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;
+  background:color-mix(in srgb,var(--panel) 86%,transparent);border:1px solid var(--line);border-radius:999px;
+  padding:6px 10px;backdrop-filter:blur(6px);box-shadow:var(--shadow);z-index:4;
+}
+.t3d-layer{
+  padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--panel-2);
+  color:var(--ink-soft);cursor:pointer;font-size:12.5px;transition:.12s;
+}
+.t3d-layer:hover{color:var(--ink)}
+.t3d-layer.on{background:var(--accent-2);color:#fff;border-color:var(--accent-2)}
+.t3d-hint{font-size:11px;color:var(--ink-soft);padding:0 6px}
+
 /* ===== 動態（生理過程動畫） ===== */
 /* 只有 svgHost 帶 .anim-on 時才播放；關閉即靜止 */
 #svgHost [data-part]{transition:filter .3s ease}

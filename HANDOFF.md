@@ -16,8 +16,12 @@
 動物、植物構造/
 ├─ index.html                 ← 進入點；載入 css/js/所有 data 檔；最後呼叫 ANATOMY.boot()
 ├─ css/style.css              ← 全部樣式、深淺色主題、動畫關鍵影格
-├─ js/app.js                  ← 核心引擎（分類樹/檢視器/搜尋）
+├─ js/app.js                  ← 核心引擎（分類樹/檢視器/搜尋/2D↔3D 切換）
 ├─ js/anim.js                 ← 動態引擎（依 data-part 名稱自動套生理動畫）
+├─ js/model3d.js              ← 3D 模型定義（每物種一個 build(THREE) 函式）
+├─ js/three-view.js           ← 3D 檢視引擎（旋轉/縮放/分層/3D 標註）
+├─ vendor/three.min.js        ← Three.js r128（本機化，維持離線）
+├─ vendor/OrbitControls.js    ← 旋轉控制
 ├─ data/
 │  ├─ SCHEMA.md               ← 物種資料規格（新增內容前先讀）
 │  ├─ mammals.js              ← 哺乳類
@@ -90,6 +94,13 @@
 5. 標註關不掉 → 標註沒包在 `<g class="labels">`。
 
 ---
+
+## 4b. 新增 3D 立體模型
+- 在 `js/model3d.js` 的 `MODELS` 加一個 key（＝物種 id），提供 `build(THREE)` 回傳 `{ target, layers:[{id,name,group,translucentBody?}], labels:[{text,pos,layer}] }`。
+- 有 3D 模型的物種，工具列會自動出現「🧊 3D 立體」按鈕；沒有的物種按鈕自動隱藏。
+- 分層：`body`（外觀，可切半透明）、`skeleton`、`organs`… 由 `three-view.js` 通用處理（切到內臟/骨骼時外觀自動半透明）。
+- 深連結：`index.html?3d=<物種id>&layer=organs` 可直接開特定物種的特定 3D 層（教學分享用）。
+- 目前已建：`human`（人類，含外觀/骨骼/器官）。其餘物種為漸進擴充，照此模式加即可。
 
 ## 5. 驗證方式（改完怎麼確認沒壞）— 三層驗證
 1. **語法層**：`node --check data/xxx.js`（或一次全部：`for f in data/*.js; do node --check "$f"; done`）。

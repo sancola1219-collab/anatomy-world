@@ -50,6 +50,7 @@
           </div>
           <div class="vt-mid" id="viewTabs"></div>
           <div class="vt-right">
+            <button class="pill pill-3d" id="btn3D" title="切換 3D 立體模型">🧊 3D 立體</button>
             <label class="toggle">
               <input type="checkbox" id="toggleAnim" checked>
               <span>▶ 動態</span>
@@ -67,6 +68,7 @@
           <div id="pan">
             <div id="svgHost"></div>
           </div>
+          <div id="three-host" hidden></div>
           <div id="hint">滾輪縮放 · 拖曳平移 · 點器官看細節</div>
         </div>
       </div>
@@ -117,6 +119,10 @@
 <!-- 資料檔（各分類內容） -->
 <script src="js/app.js"></script>
 <script src="js/anim.js"></script>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="js/model3d.js"></script>
+<script src="js/three-view.js"></script>
 <script src="data/mammals.js"></script>
 <script src="data/birds.js"></script>
 <script src="data/reptiles-amphibians.js"></script>

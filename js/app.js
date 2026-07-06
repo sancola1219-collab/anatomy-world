@@ -76,6 +76,8 @@
         viewTabs: document.getElementById("viewTabs"),
         toggleLabels: document.getElementById("toggleLabels"),
         toggleAnim: document.getElementById("toggleAnim"),
+        btn3D: document.getElementById("btn3D"),
+        threeHost: document.getElementById("three-host"),
         infoEmpty: document.getElementById("infoEmpty"),
         infoContent: document.getElementById("infoContent"),
         infoEmoji: document.getElementById("infoEmoji"),
@@ -94,6 +96,21 @@
       this.bindChrome();
       // 預設載入第一個物種
       if (registry.length) this.load(registry[0].id);
+      // 深連結：?3d 或 ?3d=<物種id> 直接開啟 3D 立體檢視
+      const m3d = /[?&]3d(?:=([^&]+))?/.exec(location.search);
+      if (m3d) {
+        const id = m3d[1] && byId[decodeURIComponent(m3d[1])] ? decodeURIComponent(m3d[1]) : null;
+        if (id) this.load(id);
+        if (window.ThreeView && current && ThreeView.supported(current.id)) {
+          this.enter3D();
+          const lm = /[?&]layer=([^&]+)/.exec(location.search);
+          if (lm) { const want = lm[1].split(","); ["body"].concat(want).forEach(()=>{});
+            // 預設只有 body 開；把要顯示的層打開，body 若不在清單則關閉
+            if (!want.includes("body")) ThreeView.toggleLayer("body");
+            want.forEach(l => { if (l !== "body") ThreeView.toggleLayer(l); });
+          }
+        }
+      }
     },
 
     // ---------- 分類樹 ----------
@@ -157,6 +174,37 @@
       this.renderViewTabs();
       this.renderView();
       this.renderInfo();
+      // 更新 3D 按鈕可用性；切換物種時若在 3D 則重載或退出
+      this.refresh3DButton();
+      if (this.is3D) {
+        if (window.ThreeView && ThreeView.supported(org.id)) this.enter3D();
+        else this.exit3D();
+      }
+    },
+
+    refresh3DButton() {
+      const ok = window.ThreeView && current && ThreeView.supported(current.id);
+      this.el.btn3D.style.display = ok || this.is3D ? "" : "none";
+      this.el.btn3D.classList.toggle("active", !!this.is3D);
+    },
+
+    enter3D() {
+      if (!window.ThreeView || !ThreeView.supported(current.id)) return;
+      this.is3D = true;
+      this.el.pan.hidden = true;
+      this.el.threeHost.hidden = false;
+      this.el.hint.style.display = "none";
+      ThreeView.open(this.el.threeHost, current.id);
+      this.el.btn3D.classList.add("active");
+    },
+    exit3D() {
+      this.is3D = false;
+      if (window.ThreeView) ThreeView.close();
+      this.el.threeHost.hidden = true;
+      this.el.pan.hidden = false;
+      this.el.hint.style.display = "";
+      this.el.btn3D.classList.remove("active");
+      this.refresh3DButton();
     },
 
     renderViewTabs() {
@@ -282,6 +330,9 @@
       });
       this.el.toggleLabels.addEventListener("change", () => this.applyLabelToggle());
       this.el.toggleAnim.addEventListener("change", () => this.applyAnim());
+      this.el.btn3D.addEventListener("click", () => {
+        if (this.is3D) this.exit3D(); else this.enter3D();
+      });
     },
 
     zoomAt(mx, my, factor) {

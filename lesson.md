@@ -36,6 +36,12 @@
 
 ---
 
+## 決策：3D 立體檢視（2026-07-06）
+- **做法**：本機化 Three.js r128（`vendor/`）＋ `js/model3d.js`（模型定義）＋ `js/three-view.js`（旋轉/縮放/分層/3D 標註引擎）。工具列「🧊 3D 立體」切換；有模型的物種才顯示按鈕。
+- **為什麼重要**：使用者要「更寫實」，手繪 SVG 有天花板；3D 提供可旋轉、可分層拆解的擬真探索。**關鍵取捨**：把 Three.js 下載到 `vendor/` 而非用 CDN，才能維持「離線零依賴」核心約束。
+- **範圍誠實**：3D 模型是逐一手建（primitives 組裝），無法一次做完 45 物種。先建人類旗艦（外觀/骨骼/器官），架構做成可插拔（`MODELS3D` 加 build 函式即可擴充），其餘漸進補上。
+- **驗證方式**：WebGL 無頭截圖要加 `--use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader` 才畫得出來；並用 `?3d`/`?3d=id&layer=organs` 深連結截各層。
+
 ## 修正記錄（Corrections）
 
 ### C1. `data-part` 無對應 `parts[]` 項目（鯊魚「身體」、蕨類「羽片」）
