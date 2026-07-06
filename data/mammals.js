@@ -533,35 +533,83 @@
         viewBox: "0 0 460 340",
         svg: `
         <defs>
-          <linearGradient id="dog-fur" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#c9954f"/>
-            <stop offset="100%" stop-color="#9c6a2e"/>
+          <linearGradient id="dog-ext-fur" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d3a45f"/>
+            <stop offset="55%" stop-color="#b07f3c"/>
+            <stop offset="100%" stop-color="#835623"/>
           </linearGradient>
-          <radialGradient id="dog-fur-hi" cx="40%" cy="30%" r="75%">
-            <stop offset="0%" stop-color="#e0b878"/>
-            <stop offset="100%" stop-color="#a5732f"/>
+          <radialGradient id="dog-ext-hi" cx="42%" cy="26%" r="82%">
+            <stop offset="0%" stop-color="#eccb92"/>
+            <stop offset="55%" stop-color="#c79a56"/>
+            <stop offset="100%" stop-color="#8f6229"/>
+          </radialGradient>
+          <linearGradient id="dog-ext-leg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#bb8a48"/>
+            <stop offset="100%" stop-color="#7a5122"/>
+          </linearGradient>
+          <radialGradient id="dog-ext-eye" cx="40%" cy="32%" r="70%">
+            <stop offset="0%" stop-color="#a9793f"/>
+            <stop offset="55%" stop-color="#6e451f"/>
+            <stop offset="100%" stop-color="#341f0e"/>
+          </radialGradient>
+          <radialGradient id="dog-ext-nose" cx="38%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#5a4740"/>
+            <stop offset="100%" stop-color="#241814"/>
           </radialGradient>
         </defs>
-        <!-- 尾 -->
-        <path data-part="尾" d="M60 150 Q28 130 22 100 Q34 108 52 128 Q60 140 74 150 Z" fill="url(#dog-fur)" stroke="#6f4a1c" stroke-width="1.2"/>
-        <!-- 軀幹 -->
-        <path data-part="軀幹" d="M70 150 Q90 118 150 116 L300 118 Q350 118 372 140 L372 150 Q360 200 320 210 L120 210 Q78 202 70 165 Z" fill="url(#dog-fur-hi)" stroke="#6f4a1c" stroke-width="1.4"/>
-        <!-- 後腿 -->
-        <path data-part="後肢" d="M104 200 Q96 250 100 290 Q100 300 112 300 L120 300 Q120 250 128 205 Z" fill="url(#dog-fur)" stroke="#6f4a1c" stroke-width="1.2"/>
-        <path d="M96 296 Q92 306 104 308 L124 306 L124 296 Z" fill="url(#dog-fur-hi)" stroke="#6f4a1c" stroke-width="1"/>
-        <!-- 前腿 -->
-        <path data-part="前肢" d="M300 206 Q296 252 300 292 Q300 302 312 302 L320 302 Q322 252 324 208 Z" fill="url(#dog-fur)" stroke="#6f4a1c" stroke-width="1.2"/>
-        <path d="M296 298 Q292 308 304 310 L324 308 L324 298 Z" fill="url(#dog-fur-hi)" stroke="#6f4a1c" stroke-width="1"/>
-        <!-- 頸 + 頭 -->
-        <path d="M330 122 Q356 100 386 100 L396 108 Q416 116 420 140 Q416 158 396 162 L360 158 Q340 150 336 132 Z" fill="url(#dog-fur-hi)" stroke="#6f4a1c" stroke-width="1.4"/>
-        <!-- 吻部 -->
-        <path data-part="吻部" d="M414 132 Q440 128 448 140 Q446 152 430 152 L414 148 Z" fill="url(#dog-fur)" stroke="#6f4a1c" stroke-width="1.2"/>
-        <ellipse data-part="鼻" cx="446" cy="141" rx="6" ry="5" fill="#3a2a22"/>
-        <!-- 耳 -->
-        <path data-part="耳" d="M388 100 Q380 74 400 66 Q408 84 404 106 Z" fill="url(#dog-fur)" stroke="#6f4a1c" stroke-width="1.2"/>
-        <!-- 眼 -->
-        <ellipse data-part="眼" cx="404" cy="126" rx="5" ry="4" fill="#3a2418"/>
-        <circle cx="402" cy="124" r="1.4" fill="#fff"/>
+        <!-- 遠側後腿（背景，較暗） -->
+        <path d="M120 202 Q114 250 118 292 Q118 302 128 302 L136 302 Q136 250 140 206 Z" fill="url(#dog-ext-leg)" stroke="#5f3e18" stroke-width="1.1" opacity="0.72"/>
+        <path d="M114 298 Q110 308 122 310 L140 308 L140 298 Z" fill="#8f6229" stroke="#5f3e18" stroke-width="1" opacity="0.72"/>
+        <!-- 遠側前腿（背景，較暗） -->
+        <path d="M312 208 Q308 252 312 294 Q312 304 322 304 L330 304 Q332 252 334 210 Z" fill="url(#dog-ext-leg)" stroke="#5f3e18" stroke-width="1.1" opacity="0.72"/>
+        <path d="M308 300 Q304 310 316 312 L334 310 L334 300 Z" fill="#8f6229" stroke="#5f3e18" stroke-width="1" opacity="0.72"/>
+        <!-- 尾（上揚弧線，毛感） -->
+        <path data-part="尾" d="M74 152 Q40 140 24 112 Q16 96 24 84 Q30 96 40 110 Q54 130 78 146 Z" fill="url(#dog-ext-fur)" stroke="#6f4a1c" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M34 100 Q46 116 66 134" fill="none" stroke="#5f3e18" stroke-width="0.8" opacity="0.5"/>
+        <!-- 軀幹（平滑背腹曲線＋胸線） -->
+        <path data-part="軀幹" d="M72 152
+          Q86 116 150 112 L300 114
+          Q346 114 372 138 Q382 148 372 158
+          Q358 200 316 210 L128 210
+          Q88 204 76 172 Q72 162 72 152 Z"
+          fill="url(#dog-ext-hi)" stroke="#6f4a1c" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- 胸腹陰影（腹側較暗，做圓潤感） -->
+        <path d="M120 196 Q220 214 316 200 Q300 210 128 210 Q120 204 120 196 Z" fill="#7a5122" opacity="0.28"/>
+        <!-- 背部高光帶 -->
+        <path d="M96 132 Q210 120 356 132" fill="none" stroke="#f2dcae" stroke-width="6" opacity="0.35" stroke-linecap="round"/>
+        <!-- 毛髮走向細線（沿體側短線） -->
+        <g stroke="#7a5122" stroke-width="0.7" opacity="0.4" fill="none" stroke-linecap="round">
+          <path d="M120 150 q6 8 4 16"/><path d="M150 146 q6 8 4 16"/><path d="M180 146 q6 8 4 16"/>
+          <path d="M210 148 q6 8 4 16"/><path d="M240 148 q6 8 4 16"/><path d="M270 150 q6 8 4 16"/>
+          <path d="M300 152 q6 8 4 16"/><path d="M330 156 q6 8 4 14"/>
+        </g>
+        <!-- 近側後腿（前景，帶大腿肌肉隆起） -->
+        <path data-part="後肢" d="M100 198 Q88 226 92 254 Q94 286 100 300 Q100 310 112 310 L122 310 Q124 268 122 236 Q126 214 132 200 Z" fill="url(#dog-ext-fur)" stroke="#6f4a1c" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M100 306 Q96 316 108 318 L128 316 L126 306 Z" fill="url(#dog-ext-hi)" stroke="#6f4a1c" stroke-width="1.1"/>
+        <path d="M104 210 Q98 240 102 272" fill="none" stroke="#835623" stroke-width="0.8" opacity="0.5"/>
+        <!-- 近側前腿（前景，直細） -->
+        <path data-part="前肢" d="M302 206 Q298 252 302 296 Q302 306 314 306 L322 306 Q324 252 326 208 Z" fill="url(#dog-ext-fur)" stroke="#6f4a1c" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M298 302 Q294 312 306 314 L326 312 L326 302 Z" fill="url(#dog-ext-hi)" stroke="#6f4a1c" stroke-width="1.1"/>
+        <!-- 頸＋頭（順滑連接軀幹） -->
+        <path data-part="頭部" d="M330 122 Q352 100 384 98 Q400 98 410 106 Q422 116 422 136 Q422 156 404 164 L366 160 Q342 152 334 134 Q330 128 330 122 Z" fill="url(#dog-ext-hi)" stroke="#6f4a1c" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- 頰部陰影 -->
+        <path d="M360 150 Q378 158 400 156 Q384 164 366 160 Q360 156 360 150 Z" fill="#7a5122" opacity="0.3"/>
+        <!-- 吻部（延伸鼻樑） -->
+        <path data-part="吻部" d="M414 132 Q438 128 450 138 Q454 148 446 154 Q430 156 416 150 L414 140 Z" fill="url(#dog-ext-fur)" stroke="#6f4a1c" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M416 143 Q432 142 448 144" fill="none" stroke="#5f3e18" stroke-width="0.8" opacity="0.5"/>
+        <!-- 鼻（立體鼻鏡＋高光） -->
+        <ellipse data-part="鼻" cx="446" cy="142" rx="7" ry="6" fill="url(#dog-ext-nose)" stroke="#1a0f0c" stroke-width="0.8"/>
+        <ellipse cx="443.6" cy="139.6" rx="2" ry="1.4" fill="#8a7268" opacity="0.75"/>
+        <!-- 耳（豎立三角，內耳陰影） -->
+        <path data-part="耳" d="M384 98 Q374 70 396 60 Q406 78 402 104 Q394 108 384 98 Z" fill="url(#dog-ext-fur)" stroke="#6f4a1c" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M388 94 Q384 76 394 66 Q398 82 396 98 Z" fill="#5a3a1a" opacity="0.55"/>
+        <!-- 眼（虹膜漸層＋瞳孔＋高光） -->
+        <ellipse data-part="眼" cx="402" cy="126" rx="6" ry="5" fill="url(#dog-ext-eye)" stroke="#3a2414" stroke-width="0.9"/>
+        <circle cx="402" cy="126" r="2.4" fill="#160c05"/>
+        <circle cx="400.4" cy="124.2" r="1.1" fill="#fff" opacity="0.9"/>
+        <path d="M396 122 Q402 118 408 123" fill="none" stroke="#4a3018" stroke-width="1" opacity="0.6"/>
+        <!-- 口線 -->
+        <path d="M416 150 Q428 156 442 153" fill="none" stroke="#4a3018" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
         <g class="labels" font-size="13" fill="var(--ink)">
           <line x1="30" y1="110" x2="30" y2="60" stroke="#555" stroke-width="1"/>
           <text x="16" y="52">尾</text>
@@ -759,39 +807,77 @@
         viewBox: "0 0 460 330",
         svg: `
         <defs>
-          <linearGradient id="cat-fur" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#8f8a86"/>
-            <stop offset="100%" stop-color="#5f5b57"/>
+          <linearGradient id="cat-ext-fur" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#9c948d"/>
+            <stop offset="55%" stop-color="#7a736c"/>
+            <stop offset="100%" stop-color="#514b45"/>
           </linearGradient>
-          <radialGradient id="cat-fur-hi" cx="40%" cy="30%" r="75%">
-            <stop offset="0%" stop-color="#b3aea9"/>
-            <stop offset="100%" stop-color="#6b6763"/>
+          <radialGradient id="cat-ext-hi" cx="42%" cy="26%" r="82%">
+            <stop offset="0%" stop-color="#c3bcb4"/>
+            <stop offset="55%" stop-color="#928a82"/>
+            <stop offset="100%" stop-color="#5c5650"/>
+          </radialGradient>
+          <linearGradient id="cat-ext-leg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#847c75"/>
+            <stop offset="100%" stop-color="#4a453f"/>
+          </linearGradient>
+          <radialGradient id="cat-ext-eye" cx="42%" cy="30%" r="72%">
+            <stop offset="0%" stop-color="#d6e37a"/>
+            <stop offset="55%" stop-color="#a9c34a"/>
+            <stop offset="100%" stop-color="#6f8a26"/>
           </radialGradient>
         </defs>
-        <!-- 尾（上翹） -->
-        <path data-part="尾" d="M64 180 Q30 176 26 130 Q22 96 40 82 Q48 92 44 122 Q42 152 62 168 Z" fill="url(#cat-fur)" stroke="#3f3b37" stroke-width="1.2"/>
-        <!-- 軀幹 -->
-        <path data-part="軀幹" d="M66 180 Q84 148 140 146 L300 148 Q346 150 366 172 Q360 214 320 222 L110 224 Q74 214 66 190 Z" fill="url(#cat-fur-hi)" stroke="#3f3b37" stroke-width="1.4"/>
-        <!-- 後腿 -->
-        <path data-part="後肢" d="M100 214 Q92 258 96 296 Q96 306 108 306 L116 306 Q116 258 124 218 Z" fill="url(#cat-fur)" stroke="#3f3b37" stroke-width="1.2"/>
-        <path d="M92 302 Q88 312 100 314 L120 312 L120 302 Z" fill="url(#cat-fur-hi)" stroke="#3f3b37" stroke-width="1"/>
-        <!-- 前腿 -->
-        <path data-part="前肢" d="M300 218 Q296 260 300 298 Q300 308 312 308 L320 308 Q322 260 324 220 Z" fill="url(#cat-fur)" stroke="#3f3b37" stroke-width="1.2"/>
-        <path d="M296 304 Q292 314 304 316 L324 314 L324 304 Z" fill="url(#cat-fur-hi)" stroke="#3f3b37" stroke-width="1"/>
-        <!-- 頭 -->
-        <path d="M338 152 Q356 132 386 132 Q416 132 428 156 Q422 184 392 188 Q360 186 344 172 Z" fill="url(#cat-fur-hi)" stroke="#3f3b37" stroke-width="1.4"/>
-        <!-- 耳 -->
-        <path data-part="耳" d="M358 138 Q352 108 374 108 Q378 126 374 142 Z" fill="url(#cat-fur)" stroke="#3f3b37" stroke-width="1.2"/>
-        <path data-part="耳" d="M404 138 Q410 108 388 108 Q384 126 388 142 Z" fill="url(#cat-fur)" stroke="#3f3b37" stroke-width="1.2"/>
-        <!-- 眼 -->
-        <ellipse data-part="眼" cx="376" cy="156" rx="5.5" ry="6.5" fill="#a9c34a"/>
-        <ellipse cx="376" cy="156" rx="1.6" ry="6" fill="#20180f"/>
-        <ellipse data-part="眼" cx="402" cy="156" rx="5.5" ry="6.5" fill="#a9c34a"/>
-        <ellipse cx="402" cy="156" rx="1.6" ry="6" fill="#20180f"/>
-        <!-- 鼻/口 -->
-        <path data-part="鼻" d="M386 168 L392 168 L389 173 Z" fill="#c98"/>
-        <!-- 鬍鬚 -->
-        <path data-part="鬍鬚" d="M388 172 Q420 168 440 160 M388 174 Q420 176 442 178 M388 176 Q416 184 436 194" fill="none" stroke="#e8e4df" stroke-width="0.9"/>
+        <!-- 遠側後腿（背景） -->
+        <path d="M118 220 Q112 262 116 298 Q116 308 126 308 L134 308 Q134 262 138 224 Z" fill="url(#cat-ext-leg)" stroke="#3a352f" stroke-width="1.1" opacity="0.7"/>
+        <path d="M112 304 Q108 314 120 316 L138 314 L138 304 Z" fill="#6b6560" stroke="#3a352f" stroke-width="1" opacity="0.7"/>
+        <!-- 遠側前腿（背景） -->
+        <path d="M312 222 Q308 264 312 300 Q312 310 322 310 L330 310 Q332 264 334 224 Z" fill="url(#cat-ext-leg)" stroke="#3a352f" stroke-width="1.1" opacity="0.7"/>
+        <path d="M308 306 Q304 316 316 318 L334 316 L334 306 Z" fill="#6b6560" stroke="#3a352f" stroke-width="1" opacity="0.7"/>
+        <!-- 尾（優雅上翹弧線） -->
+        <path data-part="尾" d="M66 182 Q34 178 26 138 Q20 102 40 82 Q48 90 44 118 Q40 150 62 168 Q66 174 66 182 Z" fill="url(#cat-ext-fur)" stroke="#3f3b37" stroke-width="1.5" stroke-linejoin="round"/>
+        <ellipse cx="34" cy="94" rx="8" ry="11" fill="#3a352f" opacity="0.4"/>
+        <!-- 軀幹（柔軟脊背弧線） -->
+        <path data-part="軀幹" d="M66 182
+          Q80 148 138 144 L300 146
+          Q346 148 366 168 Q374 176 366 186
+          Q356 214 316 222 L118 224
+          Q78 216 70 190 Q66 186 66 182 Z"
+          fill="url(#cat-ext-hi)" stroke="#3f3b37" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- 腹側陰影 -->
+        <path d="M116 210 Q220 226 316 212 Q302 222 118 224 Q116 218 116 210 Z" fill="#4a453f" opacity="0.3"/>
+        <!-- 背部高光 -->
+        <path d="M92 162 Q210 150 350 164" fill="none" stroke="#d0c9c1" stroke-width="5" opacity="0.4" stroke-linecap="round"/>
+        <!-- 虎斑紋（沿體側短弧） -->
+        <g stroke="#4a453f" stroke-width="2.4" opacity="0.4" fill="none" stroke-linecap="round">
+          <path d="M150 152 q-2 14 -4 26"/><path d="M180 150 q-2 16 -4 28"/>
+          <path d="M210 150 q-2 16 -4 28"/><path d="M240 150 q-2 16 -4 28"/>
+          <path d="M270 152 q-2 14 -4 26"/><path d="M300 156 q-2 12 -4 22"/>
+        </g>
+        <!-- 近側後腿（前景，強力後腿肌肉） -->
+        <path data-part="後肢" d="M100 216 Q88 244 92 272 Q94 296 100 304 Q100 314 112 314 L122 314 Q124 270 122 240 Q126 224 132 212 Z" fill="url(#cat-ext-fur)" stroke="#3f3b37" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M100 310 Q96 320 108 322 L128 320 L126 310 Z" fill="url(#cat-ext-hi)" stroke="#3f3b37" stroke-width="1.1"/>
+        <!-- 近側前腿（前景，細直） -->
+        <path data-part="前肢" d="M302 218 Q298 262 302 302 Q302 312 314 312 L322 312 Q324 262 326 220 Z" fill="url(#cat-ext-fur)" stroke="#3f3b37" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M298 308 Q294 318 306 320 L326 318 L326 308 Z" fill="url(#cat-ext-hi)" stroke="#3f3b37" stroke-width="1.1"/>
+        <!-- 頭（圓短貓臉） -->
+        <path data-part="頭部" d="M338 154 Q352 132 384 130 Q416 130 430 154 Q432 176 414 186 Q392 192 372 186 Q348 178 340 160 Q338 156 338 154 Z" fill="url(#cat-ext-hi)" stroke="#3f3b37" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- 耳（三角，內耳粉色） -->
+        <path data-part="耳" d="M356 138 Q348 106 372 106 Q376 126 372 142 Q362 144 356 138 Z" fill="url(#cat-ext-fur)" stroke="#3f3b37" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M360 134 Q356 114 368 110 Q370 126 368 138 Z" fill="#b98a86" opacity="0.6"/>
+        <path data-part="耳" d="M406 138 Q414 106 390 106 Q386 126 390 142 Q400 144 406 138 Z" fill="url(#cat-ext-fur)" stroke="#3f3b37" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M402 134 Q406 114 394 110 Q392 126 394 138 Z" fill="#b98a86" opacity="0.6"/>
+        <!-- 眼（縱瞳＋虹膜漸層＋高光） -->
+        <ellipse data-part="眼" cx="374" cy="156" rx="6.5" ry="7.5" fill="url(#cat-ext-eye)" stroke="#3a352a" stroke-width="0.9"/>
+        <ellipse cx="374" cy="156" rx="1.7" ry="6.6" fill="#181109"/>
+        <circle cx="372" cy="152.4" r="1.2" fill="#fff" opacity="0.9"/>
+        <ellipse data-part="眼" cx="404" cy="156" rx="6.5" ry="7.5" fill="url(#cat-ext-eye)" stroke="#3a352a" stroke-width="0.9"/>
+        <ellipse cx="404" cy="156" rx="1.7" ry="6.6" fill="#181109"/>
+        <circle cx="402" cy="152.4" r="1.2" fill="#fff" opacity="0.9"/>
+        <!-- 鼻（倒三角粉鼻） -->
+        <path data-part="鼻" d="M384 168 L394 168 L389 174 Z" fill="#cd8f88" stroke="#a56d66" stroke-width="0.6"/>
+        <path d="M389 174 L389 180 M389 180 Q384 184 380 182 M389 180 Q394 184 398 182" fill="none" stroke="#4a453f" stroke-width="0.9" opacity="0.7"/>
+        <!-- 鬍鬚（自然彎曲） -->
+        <path data-part="鬍鬚" d="M382 172 Q418 166 444 156 M382 175 Q420 174 448 176 M382 178 Q416 186 440 196" fill="none" stroke="#efeae4" stroke-width="0.9" opacity="0.9"/>
         <g class="labels" font-size="13" fill="var(--ink)">
           <line x1="34" y1="100" x2="26" y2="52" stroke="#555" stroke-width="1"/>
           <text x="16" y="44">尾</text>
@@ -917,42 +1003,84 @@
         viewBox: "0 0 460 340",
         svg: `
         <defs>
-          <linearGradient id="cow-hide" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#e8e2da"/>
-            <stop offset="100%" stop-color="#c3b8ab"/>
+          <linearGradient id="cow-ext-hide" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f0ebe4"/>
+            <stop offset="55%" stop-color="#d8cec2"/>
+            <stop offset="100%" stop-color="#b0a597"/>
           </linearGradient>
-          <radialGradient id="cow-hide-hi" cx="40%" cy="30%" r="75%">
-            <stop offset="0%" stop-color="#f4efe8"/>
-            <stop offset="100%" stop-color="#cbc0b2"/>
+          <radialGradient id="cow-ext-hi" cx="42%" cy="24%" r="84%">
+            <stop offset="0%" stop-color="#f8f4ee"/>
+            <stop offset="55%" stop-color="#ddd4c8"/>
+            <stop offset="100%" stop-color="#bab0a2"/>
+          </radialGradient>
+          <linearGradient id="cow-ext-leg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#cfc5b8"/>
+            <stop offset="100%" stop-color="#9a9082"/>
+          </linearGradient>
+          <linearGradient id="cow-ext-horn" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e6ddc9"/>
+            <stop offset="100%" stop-color="#a89876"/>
+          </linearGradient>
+          <radialGradient id="cow-ext-eye" cx="40%" cy="32%" r="72%">
+            <stop offset="0%" stop-color="#6b5140"/>
+            <stop offset="55%" stop-color="#3a281c"/>
+            <stop offset="100%" stop-color="#160e08"/>
+          </radialGradient>
+          <radialGradient id="cow-ext-muzzle" cx="42%" cy="32%" r="72%">
+            <stop offset="0%" stop-color="#d8b3a8"/>
+            <stop offset="100%" stop-color="#a87b6e"/>
           </radialGradient>
         </defs>
-        <!-- 尾 -->
-        <path data-part="尾" d="M56 150 Q40 180 44 230 Q48 244 40 258 Q36 250 32 236 Q30 190 44 150 Z" fill="url(#cow-hide)" stroke="#8a7f70" stroke-width="1.2"/>
-        <ellipse cx="40" cy="258" rx="6" ry="10" fill="#5a4f42"/>
-        <!-- 軀幹 -->
-        <path data-part="軀幹" d="M60 150 Q84 108 160 106 L320 108 Q372 110 392 138 Q388 200 340 214 L110 216 Q68 204 60 168 Z" fill="url(#cow-hide-hi)" stroke="#8a7f70" stroke-width="1.4"/>
-        <!-- 花斑 -->
-        <path d="M140 130 Q180 122 200 150 Q180 176 150 168 Q126 152 140 130 Z" fill="#6b5f52" opacity="0.55"/>
-        <path d="M270 140 Q310 134 320 168 Q300 190 272 180 Q256 158 270 140 Z" fill="#6b5f52" opacity="0.55"/>
-        <!-- 後腿 -->
-        <path data-part="後肢" d="M96 206 Q88 264 92 306 Q92 316 106 316 L116 316 Q116 262 122 210 Z" fill="url(#cow-hide)" stroke="#8a7f70" stroke-width="1.2"/>
-        <path data-part="蹄" d="M88 312 Q84 324 100 326 L120 322 L118 312 Z" fill="#4a4038" stroke="#2f2a24" stroke-width="1"/>
-        <!-- 前腿 -->
-        <path data-part="前肢" d="M320 210 Q314 266 318 308 Q318 318 332 318 L342 318 Q344 264 346 212 Z" fill="url(#cow-hide)" stroke="#8a7f70" stroke-width="1.2"/>
-        <path data-part="蹄" d="M314 314 Q310 326 326 328 L346 324 L344 314 Z" fill="#4a4038" stroke="#2f2a24" stroke-width="1"/>
-        <!-- 頭 -->
-        <path d="M360 140 Q382 116 414 120 Q440 126 444 152 Q440 178 414 184 L384 178 Q364 168 360 152 Z" fill="url(#cow-hide-hi)" stroke="#8a7f70" stroke-width="1.4"/>
-        <!-- 角 -->
-        <path data-part="角" d="M380 122 Q372 96 356 90 Q364 104 372 124 Z" fill="#d8cdb8" stroke="#9a8d72" stroke-width="1.1"/>
-        <path data-part="角" d="M410 120 Q420 94 438 90 Q428 106 418 124 Z" fill="#d8cdb8" stroke="#9a8d72" stroke-width="1.1"/>
-        <!-- 耳 -->
-        <path data-part="耳" d="M420 140 Q444 132 452 146 Q446 158 428 156 Z" fill="url(#cow-hide)" stroke="#8a7f70" stroke-width="1.1"/>
-        <!-- 眼 -->
-        <ellipse data-part="眼" cx="398" cy="148" rx="5" ry="4.5" fill="#2a1f16"/>
-        <circle cx="396" cy="146" r="1.4" fill="#fff"/>
-        <!-- 鼻口 -->
-        <path data-part="口鼻" d="M436 156 Q452 156 452 170 Q448 180 432 178 L430 164 Z" fill="url(#cow-hide)" stroke="#8a7f70" stroke-width="1.1"/>
-        <ellipse cx="444" cy="168" rx="2.6" ry="3.4" fill="#3a2a24"/>
+        <!-- 遠側後腿（背景） -->
+        <path d="M112 210 Q106 266 110 306 Q110 316 122 316 L132 316 Q132 264 136 214 Z" fill="url(#cow-ext-leg)" stroke="#7a7062" stroke-width="1.1" opacity="0.72"/>
+        <path d="M106 312 Q102 324 118 326 L136 322 L134 312 Z" fill="#3a322c" stroke="#2f2a24" stroke-width="1" opacity="0.8"/>
+        <!-- 遠側前腿（背景） -->
+        <path d="M334 214 Q328 268 332 310 Q332 320 344 320 L354 320 Q356 266 358 216 Z" fill="url(#cow-ext-leg)" stroke="#7a7062" stroke-width="1.1" opacity="0.72"/>
+        <path d="M328 316 Q324 328 340 330 L358 326 L356 316 Z" fill="#3a322c" stroke="#2f2a24" stroke-width="1" opacity="0.8"/>
+        <!-- 尾（下垂＋末端叢毛） -->
+        <path data-part="尾" d="M60 152 Q42 182 46 232 Q50 246 42 260 Q38 252 34 238 Q30 190 46 150 Q54 148 60 152 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M40 254 Q34 274 40 288 Q46 274 48 258 Q44 254 40 254 Z" fill="#5a4f42" stroke="#3a3229" stroke-width="1"/>
+        <!-- 軀幹（壯碩，寬背深胸） -->
+        <path data-part="軀幹" d="M58 152
+          Q80 108 158 104 L322 106
+          Q378 108 398 138 Q406 150 396 160
+          Q388 202 336 216 L108 218
+          Q66 206 58 170 Q56 160 58 152 Z"
+          fill="url(#cow-ext-hi)" stroke="#8a7f70" stroke-width="1.7" stroke-linejoin="round"/>
+        <!-- 腹側深陰影（壯碩體積感） -->
+        <path d="M108 198 Q220 218 336 202 Q322 214 108 218 Q106 208 108 198 Z" fill="#9a9082" opacity="0.35"/>
+        <!-- 背脊高光 -->
+        <path d="M92 130 Q220 116 372 132" fill="none" stroke="#faf6f0" stroke-width="7" opacity="0.4" stroke-linecap="round"/>
+        <!-- 花斑（乳牛不規則深斑） -->
+        <path d="M132 128 Q178 118 204 148 Q194 182 156 176 Q118 158 132 128 Z" fill="#4a4038" opacity="0.62"/>
+        <path d="M262 138 Q312 130 328 168 Q312 198 272 186 Q246 158 262 138 Z" fill="#4a4038" opacity="0.62"/>
+        <path d="M96 176 Q120 170 130 190 Q116 204 98 196 Q88 184 96 176 Z" fill="#4a4038" opacity="0.5"/>
+        <!-- 近側後腿（前景，壯碩大腿） -->
+        <path data-part="後肢" d="M96 204 Q84 240 88 274 Q90 302 96 310 Q96 320 108 320 L120 320 Q122 268 120 234 Q124 216 130 204 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
+        <path data-part="蹄" d="M90 316 Q86 328 102 330 L122 326 L120 316 Z" fill="#3a322c" stroke="#221d18" stroke-width="1.1"/>
+        <path d="M104 210 Q98 244 102 278" fill="none" stroke="#9a9082" stroke-width="0.8" opacity="0.5"/>
+        <!-- 近側前腿（前景） -->
+        <path data-part="前肢" d="M322 210 Q316 268 320 312 Q320 322 334 322 L344 322 Q346 266 348 212 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
+        <path data-part="蹄" d="M316 318 Q312 330 328 332 L348 328 L346 318 Z" fill="#3a322c" stroke="#221d18" stroke-width="1.1"/>
+        <!-- 頭（大而方正） -->
+        <path data-part="頭部" d="M358 140 Q380 114 414 118 Q436 122 444 146 Q446 172 424 182 L390 180 Q366 172 360 154 Q358 148 358 140 Z" fill="url(#cow-ext-hi)" stroke="#8a7f70" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- 額前捲毛陰影 -->
+        <path d="M384 128 Q400 122 412 130 Q402 138 388 136 Q384 132 384 128 Z" fill="#9a9082" opacity="0.4"/>
+        <!-- 角（骨心角質鞘，彎曲） -->
+        <path data-part="角" d="M382 122 Q372 94 354 86 Q360 100 366 114 Q372 124 382 128 Z" fill="url(#cow-ext-horn)" stroke="#8a7a58" stroke-width="1.2" stroke-linejoin="round"/>
+        <path data-part="角" d="M412 120 Q424 92 442 86 Q434 100 426 114 Q420 124 412 128 Z" fill="url(#cow-ext-horn)" stroke="#8a7a58" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- 耳（大而下垂可轉動） -->
+        <path data-part="耳" d="M422 140 Q448 130 458 146 Q452 162 430 158 Q422 150 422 140 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.3" stroke-linejoin="round"/>
+        <path d="M428 144 Q444 140 452 148 Q442 152 430 150 Z" fill="#a87b6e" opacity="0.4"/>
+        <!-- 眼（大眼虹膜漸層＋高光） -->
+        <ellipse data-part="眼" cx="398" cy="150" rx="6" ry="5.5" fill="url(#cow-ext-eye)" stroke="#1a110a" stroke-width="0.9"/>
+        <circle cx="398" cy="150" r="2.2" fill="#0d0805"/>
+        <circle cx="396" cy="147.6" r="1.2" fill="#fff" opacity="0.9"/>
+        <!-- 口鼻（寬闊濕潤鼻鏡） -->
+        <path data-part="口鼻" d="M434 154 Q456 154 456 172 Q452 184 430 182 L426 166 Q428 156 434 154 Z" fill="url(#cow-ext-muzzle)" stroke="#8a6b60" stroke-width="1.2" stroke-linejoin="round"/>
+        <ellipse cx="446" cy="164" rx="2.8" ry="3.8" fill="#3a2a24"/>
+        <ellipse cx="437" cy="176" rx="2.4" ry="3.2" fill="#3a2a24"/>
+        <path d="M428 172 Q440 178 452 174" fill="none" stroke="#7a5b50" stroke-width="1" opacity="0.7"/>
         <g class="labels" font-size="13" fill="var(--ink)">
           <line x1="38" y1="230" x2="18" y2="270" stroke="#555" stroke-width="1"/>
           <text x="8" y="286">尾</text>
@@ -1082,40 +1210,60 @@
         viewBox: "0 0 460 260",
         svg: `
         <defs>
-          <linearGradient id="whale-skin" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#5f7d97"/>
-            <stop offset="55%" stop-color="#43617a"/>
-            <stop offset="100%" stop-color="#2e4557"/>
+          <linearGradient id="whale-ext-skin" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7492a9"/>
+            <stop offset="42%" stop-color="#4f6f88"/>
+            <stop offset="100%" stop-color="#293e4e"/>
           </linearGradient>
-          <linearGradient id="whale-belly" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#b8c6cd"/>
-            <stop offset="100%" stop-color="#8a9ba5"/>
+          <linearGradient id="whale-ext-belly" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c6d2d8"/>
+            <stop offset="100%" stop-color="#8fa0aa"/>
           </linearGradient>
-          <radialGradient id="whale-spout" cx="50%" cy="90%" r="80%">
-            <stop offset="0%" stop-color="#dbe9f2" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#dbe9f2" stop-opacity="0"/>
+          <radialGradient id="whale-ext-spout" cx="50%" cy="90%" r="80%">
+            <stop offset="0%" stop-color="#e4eff6" stop-opacity="0.92"/>
+            <stop offset="100%" stop-color="#e4eff6" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="whale-ext-eye" cx="40%" cy="32%" r="72%">
+            <stop offset="0%" stop-color="#3a5464"/>
+            <stop offset="55%" stop-color="#1a2a34"/>
+            <stop offset="100%" stop-color="#0a1218"/>
           </radialGradient>
         </defs>
         <!-- 噴出的水氣 -->
-        <path d="M96 78 Q92 40 82 22 M96 78 Q100 44 108 26 M96 78 Q96 46 96 24" fill="none" stroke="#cfe1ec" stroke-width="3" opacity="0.7"/>
-        <ellipse cx="96" cy="40" rx="26" ry="34" fill="url(#whale-spout)"/>
-        <!-- 身體 -->
-        <path data-part="軀幹" d="M92 120 Q140 92 240 96 Q360 100 410 128 Q436 140 410 152 Q360 178 240 178 Q150 178 100 154 Q78 140 92 120 Z" fill="url(#whale-skin)" stroke="#213541" stroke-width="1.4"/>
-        <!-- 腹部溝紋（喉腹褶） -->
-        <path data-part="喉腹褶" d="M120 150 Q220 176 330 168 L330 176 Q220 184 120 158 Z" fill="url(#whale-belly)" stroke="#6b7d87" stroke-width="0.8"/>
-        <path d="M140 158 L140 172 M160 160 L160 174 M180 162 L180 176 M200 162 L200 177 M220 162 L220 177 M240 162 L240 177 M260 161 L260 176" stroke="#5c6e78" stroke-width="0.8" opacity="0.7"/>
-        <!-- 尾柄 + 尾鰭 -->
-        <path data-part="尾鰭" d="M408 138 Q444 118 452 96 Q446 118 440 138 Q446 158 452 180 Q444 158 408 142 Z" fill="url(#whale-skin)" stroke="#213541" stroke-width="1.3"/>
-        <!-- 鰭肢 -->
-        <path data-part="鰭肢" d="M170 168 Q168 200 186 216 Q196 214 194 196 Q190 178 182 168 Z" fill="url(#whale-skin)" stroke="#213541" stroke-width="1.2"/>
-        <!-- 背鰭（小） -->
-        <path data-part="背鰭" d="M330 100 Q338 82 350 84 Q346 96 342 104 Z" fill="url(#whale-skin)" stroke="#213541" stroke-width="1.1"/>
+        <path data-part="噴出水氣" d="M96 78 Q92 40 82 22 M96 78 Q100 44 108 26 M96 78 Q96 46 96 24" fill="none" stroke="#d7e6f0" stroke-width="3" opacity="0.75" stroke-linecap="round"/>
+        <ellipse cx="96" cy="40" rx="26" ry="34" fill="url(#whale-ext-spout)"/>
+        <!-- 身體（流線紡錘型，平滑貝茲） -->
+        <path data-part="軀幹" d="M90 122
+          Q126 96 200 94 Q300 92 380 116 Q404 124 414 132
+          Q422 138 414 146 Q356 176 250 180 Q160 182 108 158
+          Q84 148 82 138 Q80 128 90 122 Z"
+          fill="url(#whale-ext-skin)" stroke="#213541" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- 背部受光高光帶 -->
+        <path d="M120 112 Q240 102 372 122" fill="none" stroke="#a8c0d0" stroke-width="6" opacity="0.4" stroke-linecap="round"/>
+        <!-- 體側明暗過渡（背暗腹亮的圓潤感） -->
+        <path d="M110 150 Q250 172 400 150 Q356 170 250 176 Q160 176 112 158 Q110 154 110 150 Z" fill="#293e4e" opacity="0.22"/>
+        <!-- 腹部淺色＋喉腹褶 -->
+        <path data-part="喉腹褶" d="M116 150 Q220 178 332 170 L332 178 Q220 186 116 160 Z" fill="url(#whale-ext-belly)" stroke="#728690" stroke-width="0.8" stroke-linejoin="round"/>
+        <g stroke="#5c6e78" stroke-width="0.8" opacity="0.7" fill="none" stroke-linecap="round">
+          <path d="M140 158 L140 174"/><path d="M158 160 L158 175"/><path d="M176 161 L176 177"/>
+          <path d="M194 162 L194 178"/><path d="M212 163 L212 179"/><path d="M230 163 L230 179"/>
+          <path d="M248 163 L248 179"/><path d="M266 162 L266 178"/><path d="M284 161 L284 176"/>
+        </g>
+        <!-- 尾柄 + 水平尾鰭（雙葉） -->
+        <path data-part="尾鰭" d="M410 138 Q446 116 456 92 Q452 116 444 138 Q452 160 456 184 Q446 160 410 144 Q406 141 410 138 Z" fill="url(#whale-ext-skin)" stroke="#213541" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M416 138 Q436 128 450 108 M416 142 Q436 152 450 172" fill="none" stroke="#1a2a34" stroke-width="0.8" opacity="0.5"/>
+        <!-- 鰭肢（前肢演化，細長弧線） -->
+        <path data-part="鰭肢" d="M168 168 Q164 202 184 220 Q196 218 194 198 Q190 178 180 167 Q174 165 168 168 Z" fill="url(#whale-ext-skin)" stroke="#213541" stroke-width="1.3" stroke-linejoin="round"/>
+        <!-- 背鰭（小三角） -->
+        <path data-part="背鰭" d="M330 100 Q340 80 352 84 Q348 96 344 104 Q336 106 330 100 Z" fill="url(#whale-ext-skin)" stroke="#213541" stroke-width="1.2" stroke-linejoin="round"/>
         <!-- 噴氣孔 -->
         <ellipse data-part="噴氣孔" cx="96" cy="112" rx="7" ry="4" fill="#182731" stroke="#0f1c24" stroke-width="1"/>
-        <!-- 眼 -->
-        <ellipse data-part="眼" cx="116" cy="140" rx="3.5" ry="3" fill="#141f26"/>
-        <!-- 口線 -->
-        <path data-part="口" d="M92 132 Q108 138 130 138" fill="none" stroke="#1a2a34" stroke-width="1.4"/>
+        <ellipse cx="94" cy="110.5" rx="2.4" ry="1.2" fill="#3a5464" opacity="0.6"/>
+        <!-- 眼（立體虹膜＋高光） -->
+        <ellipse data-part="眼" cx="118" cy="140" rx="4" ry="3.6" fill="url(#whale-ext-eye)" stroke="#0a1218" stroke-width="0.7"/>
+        <circle cx="116.6" cy="138.6" r="1" fill="#cfe0ea" opacity="0.85"/>
+        <!-- 口線（巨大口裂弧線） -->
+        <path data-part="口" d="M88 134 Q108 142 138 140 Q160 139 180 142" fill="none" stroke="#1a2a34" stroke-width="1.5" stroke-linecap="round"/>
         <g class="labels" font-size="13" fill="var(--ink)">
           <line x1="96" y1="40" x2="60" y2="24" stroke="#555" stroke-width="1"/>
           <text x="14" y="24">噴出水氣</text>
@@ -1238,55 +1386,77 @@
         viewBox: "0 0 460 380",
         svg: `
         <defs>
-          <linearGradient id="bat-fur" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#6b5040"/>
+          <linearGradient id="bat-ext-fur" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7a5c4a"/>
+            <stop offset="55%" stop-color="#4f3a2c"/>
+            <stop offset="100%" stop-color="#34261c"/>
+          </linearGradient>
+          <radialGradient id="bat-ext-hi" cx="42%" cy="26%" r="80%">
+            <stop offset="0%" stop-color="#9a7860"/>
+            <stop offset="55%" stop-color="#6b5040"/>
             <stop offset="100%" stop-color="#3f2e22"/>
-          </linearGradient>
-          <radialGradient id="bat-fur-hi" cx="42%" cy="30%" r="75%">
-            <stop offset="0%" stop-color="#8a6a54"/>
-            <stop offset="100%" stop-color="#4a3628"/>
           </radialGradient>
-          <linearGradient id="bat-membrane" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#7a5a4c" stop-opacity="0.92"/>
-            <stop offset="100%" stop-color="#4a342a" stop-opacity="0.92"/>
+          <linearGradient id="bat-ext-membrane" x1="0" y1="0" x2="0.2" y2="1">
+            <stop offset="0%" stop-color="#8a6355" stop-opacity="0.94"/>
+            <stop offset="55%" stop-color="#5f4436" stop-opacity="0.94"/>
+            <stop offset="100%" stop-color="#3f2c22" stop-opacity="0.94"/>
           </linearGradient>
+          <radialGradient id="bat-ext-eye" cx="40%" cy="32%" r="72%">
+            <stop offset="0%" stop-color="#4a3320"/>
+            <stop offset="60%" stop-color="#241610"/>
+            <stop offset="100%" stop-color="#0f0906"/>
+          </radialGradient>
         </defs>
-        <!-- 左翼膜 -->
-        <path data-part="翼膜" d="M210 150 Q120 96 40 118 Q66 150 60 176 Q100 168 130 186 Q108 210 96 240 Q140 220 168 236 Q160 262 168 288 Q192 262 210 250 Z" fill="url(#bat-membrane)" stroke="#2f2018" stroke-width="1.3"/>
-        <!-- 左指骨（延長） -->
-        <g data-part="指骨" stroke="#e6dcc4" stroke-width="2" fill="none" stroke-linecap="round">
-          <path d="M210 150 Q120 100 42 120"/>
-          <path d="M210 152 Q125 132 62 176"/>
-          <path d="M210 158 Q140 178 96 240"/>
-          <path d="M210 168 Q178 210 168 288"/>
+        <!-- 左翼膜（薄膜漸層，指間張開） -->
+        <path data-part="翼膜" d="M210 150 Q118 92 38 116 Q64 150 58 178 Q100 168 130 188 Q106 212 94 242 Q140 220 168 238 Q158 264 166 290 Q192 262 210 250 Z" fill="url(#bat-ext-membrane)" stroke="#2f2018" stroke-width="1.4" stroke-linejoin="round"/>
+        <!-- 左翼膜受光高光 -->
+        <path d="M150 160 Q110 158 70 168 M160 200 Q130 198 104 214" fill="none" stroke="#a88770" stroke-width="1" opacity="0.4"/>
+        <!-- 左指骨（延長，撐開翼膜） -->
+        <g data-part="指骨" stroke="#ece2ca" stroke-width="2.2" fill="none" stroke-linecap="round">
+          <path d="M210 150 Q118 96 40 118"/>
+          <path d="M210 152 Q123 130 60 178"/>
+          <path d="M210 158 Q138 178 94 242"/>
+          <path d="M210 168 Q176 212 166 290"/>
         </g>
         <!-- 右翼膜 -->
-        <path data-part="翼膜" d="M250 150 Q340 96 420 118 Q394 150 400 176 Q360 168 330 186 Q352 210 364 240 Q320 220 292 236 Q300 262 292 288 Q268 262 250 250 Z" fill="url(#bat-membrane)" stroke="#2f2018" stroke-width="1.3"/>
+        <path data-part="翼膜" d="M250 150 Q342 92 422 116 Q396 150 402 178 Q360 168 330 188 Q354 212 366 242 Q320 220 292 238 Q302 264 294 290 Q268 262 250 250 Z" fill="url(#bat-ext-membrane)" stroke="#2f2018" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M310 160 Q350 158 390 168 M300 200 Q330 198 356 214" fill="none" stroke="#a88770" stroke-width="1" opacity="0.4"/>
         <!-- 右指骨 -->
-        <g data-part="指骨" stroke="#e6dcc4" stroke-width="2" fill="none" stroke-linecap="round">
-          <path d="M250 150 Q340 100 418 120"/>
-          <path d="M250 152 Q335 132 398 176"/>
-          <path d="M250 158 Q320 178 364 240"/>
-          <path d="M250 168 Q282 210 292 288"/>
+        <g data-part="指骨" stroke="#ece2ca" stroke-width="2.2" fill="none" stroke-linecap="round">
+          <path d="M250 150 Q342 96 420 118"/>
+          <path d="M250 152 Q337 130 400 178"/>
+          <path d="M250 158 Q322 178 366 242"/>
+          <path d="M250 168 Q284 212 294 290"/>
         </g>
         <!-- 拇指鉤爪 -->
-        <path data-part="拇指" d="M210 150 Q198 138 190 142 Q196 150 206 154 Z" fill="#e6dcc4" stroke="#b3a67f" stroke-width="1"/>
-        <path data-part="拇指" d="M250 150 Q262 138 270 142 Q264 150 254 154 Z" fill="#e6dcc4" stroke="#b3a67f" stroke-width="1"/>
-        <!-- 軀幹 -->
-        <path data-part="軀幹" d="M212 148 Q206 200 214 262 Q230 274 246 262 Q254 200 248 148 Q232 138 212 148 Z" fill="url(#bat-fur-hi)" stroke="#2f2018" stroke-width="1.4"/>
-        <!-- 後足（倒掛） -->
-        <path data-part="後足" d="M220 262 Q214 288 220 300 Q226 292 226 274 Z" fill="url(#bat-fur)" stroke="#2f2018" stroke-width="1.1"/>
-        <path data-part="後足" d="M240 262 Q246 288 240 300 Q234 292 234 274 Z" fill="url(#bat-fur)" stroke="#2f2018" stroke-width="1.1"/>
-        <!-- 頭 -->
-        <ellipse data-part="頭部" cx="230" cy="126" rx="24" ry="22" fill="url(#bat-fur-hi)" stroke="#2f2018" stroke-width="1.4"/>
-        <!-- 耳（大） -->
-        <path data-part="耳" d="M214 112 Q204 78 222 74 Q226 94 224 114 Z" fill="url(#bat-fur)" stroke="#2f2018" stroke-width="1.2"/>
-        <path data-part="耳" d="M246 112 Q256 78 238 74 Q234 94 236 114 Z" fill="url(#bat-fur)" stroke="#2f2018" stroke-width="1.2"/>
-        <!-- 眼 -->
-        <circle data-part="眼" cx="222" cy="124" r="3" fill="#1a1108"/>
-        <circle data-part="眼" cx="238" cy="124" r="3" fill="#1a1108"/>
-        <!-- 鼻/口 -->
-        <path d="M226 136 Q230 142 234 136" fill="none" stroke="#2f2018" stroke-width="1.2"/>
+        <path data-part="拇指" d="M210 150 Q198 136 189 141 Q196 150 207 155 Z" fill="#ece2ca" stroke="#b3a67f" stroke-width="1"/>
+        <path data-part="拇指" d="M250 150 Q262 136 271 141 Q264 150 253 155 Z" fill="#ece2ca" stroke="#b3a67f" stroke-width="1"/>
+        <!-- 軀幹（毛茸紡錘身） -->
+        <path data-part="軀幹" d="M212 148 Q204 200 214 262 Q230 276 246 262 Q256 200 248 148 Q232 136 212 148 Z" fill="url(#bat-ext-hi)" stroke="#2f2018" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- 胸腹高光＋毛感 -->
+        <path d="M228 154 Q224 206 230 260" fill="none" stroke="#9a7860" stroke-width="4" opacity="0.35" stroke-linecap="round"/>
+        <g stroke="#2f2018" stroke-width="0.6" opacity="0.4" fill="none" stroke-linecap="round">
+          <path d="M218 170 q-3 6 -2 12"/><path d="M242 170 q3 6 2 12"/>
+          <path d="M216 200 q-3 6 -2 12"/><path d="M244 200 q3 6 2 12"/>
+        </g>
+        <!-- 後足（倒掛鉤爪） -->
+        <path data-part="後足" d="M220 262 Q213 288 219 302 Q226 292 226 274 Z" fill="url(#bat-ext-fur)" stroke="#2f2018" stroke-width="1.1" stroke-linejoin="round"/>
+        <path data-part="後足" d="M240 262 Q247 288 241 302 Q234 292 234 274 Z" fill="url(#bat-ext-fur)" stroke="#2f2018" stroke-width="1.1" stroke-linejoin="round"/>
+        <!-- 頭（圓，毛感） -->
+        <ellipse data-part="頭部" cx="230" cy="126" rx="24" ry="22" fill="url(#bat-ext-hi)" stroke="#2f2018" stroke-width="1.5"/>
+        <!-- 耳（碩大，內耳陰影） -->
+        <path data-part="耳" d="M214 112 Q202 76 222 72 Q227 94 224 116 Q218 116 214 112 Z" fill="url(#bat-ext-fur)" stroke="#2f2018" stroke-width="1.3" stroke-linejoin="round"/>
+        <path d="M216 108 Q210 84 220 78 Q223 96 221 110 Z" fill="#2a1c12" opacity="0.6"/>
+        <path data-part="耳" d="M246 112 Q258 76 238 72 Q233 94 236 116 Q242 116 246 112 Z" fill="url(#bat-ext-fur)" stroke="#2f2018" stroke-width="1.3" stroke-linejoin="round"/>
+        <path d="M244 108 Q250 84 240 78 Q237 96 239 110 Z" fill="#2a1c12" opacity="0.6"/>
+        <!-- 眼（小而立體，高光） -->
+        <circle data-part="眼" cx="222" cy="124" r="3.2" fill="url(#bat-ext-eye)" stroke="#0f0906" stroke-width="0.6"/>
+        <circle cx="221" cy="122.8" r="0.9" fill="#fff" opacity="0.85"/>
+        <circle data-part="眼" cx="238" cy="124" r="3.2" fill="url(#bat-ext-eye)" stroke="#0f0906" stroke-width="0.6"/>
+        <circle cx="237" cy="122.8" r="0.9" fill="#fff" opacity="0.85"/>
+        <!-- 鼻葉/口 -->
+        <path d="M228 132 Q230 136 232 132 Z" fill="#3a2a20"/>
+        <path d="M226 138 Q230 143 234 138" fill="none" stroke="#2f2018" stroke-width="1.2" stroke-linecap="round"/>
         <g class="labels" font-size="13" fill="var(--ink)">
           <line x1="90" y1="180" x2="40" y2="230" stroke="#555" stroke-width="1"/>
           <text x="18" y="246">翼膜</text>

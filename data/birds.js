@@ -20,108 +20,145 @@ window.ANATOMY.register({
       viewBox: "0 0 420 460",
       svg: `
       <defs>
-        <linearGradient id="chicken-body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f3e2c0"/>
-          <stop offset="55%" stop-color="#e0c391"/>
-          <stop offset="100%" stop-color="#b98f57"/>
+        <radialGradient id="chicken-ext-body" cx="42%" cy="34%" r="72%">
+          <stop offset="0%" stop-color="#f0d8a8"/>
+          <stop offset="48%" stop-color="#d9b775"/>
+          <stop offset="100%" stop-color="#9e7640"/>
+        </radialGradient>
+        <linearGradient id="chicken-ext-breast" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#f7e8c8"/>
+          <stop offset="100%" stop-color="#c69f66"/>
         </linearGradient>
-        <linearGradient id="chicken-neck" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#f6ead0"/>
-          <stop offset="100%" stop-color="#cba36a"/>
+        <linearGradient id="chicken-ext-neck" x1="0.2" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f8edd4"/>
+          <stop offset="100%" stop-color="#c39c62"/>
         </linearGradient>
-        <linearGradient id="chicken-tail" x1="0" y1="0" x2="1" y2="0.4">
-          <stop offset="0%" stop-color="#5a4630"/>
-          <stop offset="60%" stop-color="#8a6a3e"/>
-          <stop offset="100%" stop-color="#3a2c1c"/>
+        <linearGradient id="chicken-ext-head" x1="0" y1="0" x2="0.4" y2="1">
+          <stop offset="0%" stop-color="#f9efd8"/>
+          <stop offset="100%" stop-color="#cea86e"/>
         </linearGradient>
-        <linearGradient id="chicken-comb" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e8483f"/>
-          <stop offset="100%" stop-color="#a51f1c"/>
+        <linearGradient id="chicken-ext-tail" x1="0.1" y1="0" x2="0.9" y2="0.5">
+          <stop offset="0%" stop-color="#4a3826"/>
+          <stop offset="45%" stop-color="#7d5f38"/>
+          <stop offset="100%" stop-color="#2c2013"/>
         </linearGradient>
-        <linearGradient id="chicken-beak" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f2c14c"/>
-          <stop offset="100%" stop-color="#c98a1f"/>
+        <linearGradient id="chicken-ext-tail2" x1="0" y1="0" x2="1" y2="0.4">
+          <stop offset="0%" stop-color="#6a5030"/>
+          <stop offset="100%" stop-color="#38291a"/>
         </linearGradient>
-        <linearGradient id="chicken-leg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e6b95c"/>
-          <stop offset="100%" stop-color="#b07f2c"/>
+        <linearGradient id="chicken-ext-comb" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#ef5a4c"/>
+          <stop offset="55%" stop-color="#d0332c"/>
+          <stop offset="100%" stop-color="#951b18"/>
         </linearGradient>
-        <radialGradient id="chicken-eye" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#7a5b2a"/>
-          <stop offset="60%" stop-color="#2a1c0c"/>
-          <stop offset="100%" stop-color="#000"/>
+        <linearGradient id="chicken-ext-beak" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f5cd5c"/>
+          <stop offset="100%" stop-color="#bd831c"/>
+        </linearGradient>
+        <linearGradient id="chicken-ext-leg" x1="0" y1="0" x2="0.4" y2="1">
+          <stop offset="0%" stop-color="#eec06a"/>
+          <stop offset="100%" stop-color="#a5761f"/>
+        </linearGradient>
+        <radialGradient id="chicken-ext-eye" cx="38%" cy="32%" r="70%">
+          <stop offset="0%" stop-color="#b98a3c"/>
+          <stop offset="45%" stop-color="#6a4715"/>
+          <stop offset="100%" stop-color="#120b03"/>
         </radialGradient>
       </defs>
 
-      <!-- 尾羽 -->
-      <path d="M300 250 Q380 160 400 130 Q372 180 396 210 Q350 200 340 260 Z" fill="url(#chicken-tail)" stroke="#2e2214" stroke-width="1.5"/>
-      <path d="M298 260 Q360 210 392 220 Q345 235 350 290 Q320 270 300 300 Z" fill="url(#chicken-tail)" stroke="#2e2214" stroke-width="1.2" opacity="0.9"/>
+      <!-- 尾羽：層疊鐮刀狀主尾羽，深淺分層 -->
+      <path data-part="尾羽" d="M298 236 C356 176 386 132 402 108 C388 158 402 196 384 214 C356 200 332 214 320 250 C314 226 306 226 298 236 Z" fill="url(#chicken-ext-tail)" stroke="#241a0f" stroke-width="1.5"/>
+      <path d="M300 244 C352 190 380 156 396 138 C382 178 392 208 376 224 C352 210 334 220 322 252 Z" fill="url(#chicken-ext-tail2)" stroke="#241a0f" stroke-width="1" opacity="0.9"/>
+      <path d="M304 258 C350 214 378 194 396 190 C368 208 372 246 380 274 C356 254 330 266 314 296 C312 274 308 262 304 258 Z" fill="url(#chicken-ext-tail2)" stroke="#241a0f" stroke-width="1.1" opacity="0.95"/>
+      <!-- 尾羽羽軸細線 -->
+      <path d="M304 244 C348 198 374 162 392 132" fill="none" stroke="#c9ab72" stroke-width="0.8" opacity="0.55"/>
+      <path d="M308 262 C346 224 372 202 390 194" fill="none" stroke="#c9ab72" stroke-width="0.8" opacity="0.5"/>
 
-      <!-- 身體 -->
-      <ellipse data-part="翼" cx="215" cy="270" rx="120" ry="82" fill="url(#chicken-body)" stroke="#8a6a3a" stroke-width="1.6"/>
-      <!-- 翼羽紋理 -->
-      <path d="M160 235 Q225 250 285 250" fill="none" stroke="#a98553" stroke-width="1" opacity="0.7"/>
-      <path d="M150 260 Q225 278 290 275" fill="none" stroke="#a98553" stroke-width="1" opacity="0.7"/>
-      <path d="M150 285 Q225 303 285 300" fill="none" stroke="#a98553" stroke-width="1" opacity="0.7"/>
+      <!-- 身體（圓潤軀幹） -->
+      <path data-part="翼" d="M132 262 C132 196 178 168 226 172 C296 178 336 222 336 274 C336 330 292 360 232 360 C168 360 132 322 132 262 Z" fill="url(#chicken-ext-body)" stroke="#8a6738" stroke-width="1.7"/>
+      <!-- 胸腹淺色帶 -->
+      <path d="M150 300 C160 250 200 232 232 236 C210 250 194 300 200 344 C176 344 156 328 150 300 Z" fill="url(#chicken-ext-breast)" opacity="0.55"/>
 
-      <!-- 頸 -->
-      <path data-part="頸部" d="M150 210 Q150 150 175 120 L205 135 Q188 175 200 235 Z" fill="url(#chicken-neck)" stroke="#8a6a3a" stroke-width="1.4"/>
+      <!-- 翼（收攏於體側，覆羽分層） -->
+      <path d="M186 250 C244 236 296 250 322 288 C300 300 250 296 208 300 C186 288 182 266 186 250 Z" fill="url(#chicken-ext-tail2)" stroke="#5c451f" stroke-width="1.3" opacity="0.9"/>
+      <!-- 覆羽層次細線 -->
+      <path d="M196 262 C244 254 288 264 314 286" fill="none" stroke="#d8b878" stroke-width="1" opacity="0.5"/>
+      <path d="M194 276 C244 270 286 280 312 298" fill="none" stroke="#d8b878" stroke-width="1" opacity="0.45"/>
+      <path d="M200 288 C244 286 284 294 306 304" fill="none" stroke="#c8a260" stroke-width="0.9" opacity="0.4"/>
+      <!-- 軀幹羽毛短線紋理 -->
+      <path d="M160 235 Q225 245 300 250" fill="none" stroke="#b08d55" stroke-width="0.8" opacity="0.45"/>
+      <path d="M150 320 Q220 336 290 330" fill="none" stroke="#8f6d3d" stroke-width="0.8" opacity="0.4"/>
+
+      <!-- 頸（羽毛蓑衣） -->
+      <path data-part="頸部" d="M156 214 C150 158 166 122 190 108 L214 122 C196 156 192 190 202 236 C184 244 166 238 156 214 Z" fill="url(#chicken-ext-neck)" stroke="#8a6738" stroke-width="1.4"/>
+      <path d="M164 200 C160 162 172 134 190 120" fill="none" stroke="#a9834e" stroke-width="0.8" opacity="0.5"/>
+      <path d="M180 208 C176 168 184 142 200 128" fill="none" stroke="#a9834e" stroke-width="0.8" opacity="0.45"/>
 
       <!-- 頭 -->
-      <ellipse cx="182" cy="108" rx="38" ry="34" fill="url(#chicken-neck)" stroke="#8a6a3a" stroke-width="1.4"/>
+      <path d="M150 108 C150 84 166 68 190 68 C214 68 228 86 226 110 C224 132 206 144 184 143 C162 142 150 128 150 108 Z" fill="url(#chicken-ext-head)" stroke="#8a6738" stroke-width="1.4"/>
 
-      <!-- 肉冠 -->
-      <path data-part="肉冠" d="M158 78 Q162 56 172 62 Q176 46 188 56 Q194 40 204 54 Q212 44 216 62 Q220 78 200 84 Q180 88 158 78 Z" fill="url(#chicken-comb)" stroke="#7d1815" stroke-width="1.4"/>
+      <!-- 肉冠（鋸齒單片冠） -->
+      <path data-part="肉冠" d="M162 78 C160 58 168 60 172 68 C174 48 182 52 186 64 C190 46 198 50 202 62 C206 46 214 52 216 66 C220 52 226 60 224 74 C220 86 196 88 178 86 C168 85 163 82 162 78 Z" fill="url(#chicken-ext-comb)" stroke="#7a1512" stroke-width="1.3"/>
+      <path d="M170 74 C182 70 200 70 216 74" fill="none" stroke="#f28a80" stroke-width="0.8" opacity="0.5"/>
 
-      <!-- 肉垂 -->
-      <path data-part="肉垂" d="M172 132 Q166 158 178 160 Q190 158 186 134 Z" fill="url(#chicken-comb)" stroke="#7d1815" stroke-width="1.3"/>
+      <!-- 肉垂（成對垂片） -->
+      <path data-part="肉垂" d="M166 130 C158 156 166 168 176 166 C186 164 184 142 178 130 Z" fill="url(#chicken-ext-comb)" stroke="#7a1512" stroke-width="1.2"/>
+      <path d="M182 132 C178 154 186 164 194 160 C200 156 196 138 190 130 Z" fill="url(#chicken-ext-comb)" stroke="#7a1512" stroke-width="1.1" opacity="0.9"/>
 
-      <!-- 喙 -->
-      <path data-part="喙" d="M144 104 L108 100 L146 118 Z" fill="url(#chicken-beak)" stroke="#9a6a12" stroke-width="1.2"/>
-      <path d="M144 112 L112 112 L146 120 Z" fill="#b98724" stroke="#9a6a12" stroke-width="0.8"/>
+      <!-- 喙（上下喙，角質質感） -->
+      <path data-part="喙" d="M150 106 C132 100 116 100 106 104 C118 108 128 110 146 114 Z" fill="url(#chicken-ext-beak)" stroke="#9a6a12" stroke-width="1.1"/>
+      <path d="M150 116 C136 116 122 116 110 116 C124 120 136 122 148 120 Z" fill="#c89428" stroke="#9a6a12" stroke-width="0.9"/>
+      <line x1="112" y1="112" x2="146" y2="112" stroke="#8a5f10" stroke-width="0.7" opacity="0.7"/>
 
-      <!-- 眼 -->
-      <circle data-part="眼" cx="168" cy="100" r="7.5" fill="url(#chicken-eye)" stroke="#3a2810" stroke-width="1"/>
-      <circle cx="165.5" cy="97.5" r="2" fill="#fff" opacity="0.85"/>
+      <!-- 眼（立體虹膜＋瞳孔＋高光） -->
+      <ellipse cx="176" cy="102" rx="10" ry="9.4" fill="#d9a94e" stroke="#8a6420" stroke-width="0.8" opacity="0.6"/>
+      <circle data-part="眼" cx="176" cy="102" r="7.4" fill="url(#chicken-ext-eye)" stroke="#3a2810" stroke-width="1"/>
+      <circle cx="176" cy="102" r="3.4" fill="#120a02"/>
+      <circle cx="173.4" cy="99.4" r="1.9" fill="#fff" opacity="0.9"/>
 
-      <!-- 大腿與腿 -->
-      <path data-part="腿" d="M188 330 Q182 360 196 380 L214 378 Q206 350 210 330 Z" fill="url(#chicken-body)" stroke="#8a6a3a" stroke-width="1.4"/>
-      <rect x="198" y="378" width="10" height="42" rx="4" fill="url(#chicken-leg)" stroke="#8a5f20" stroke-width="1.2"/>
-      <path data-part="腿" d="M250 336 Q246 366 258 388 L276 384 Q266 356 270 334 Z" fill="url(#chicken-body)" stroke="#8a6a3a" stroke-width="1.2" opacity="0.85"/>
-      <rect x="260" y="384" width="9" height="40" rx="4" fill="url(#chicken-leg)" stroke="#8a5f20" stroke-width="1"/>
-
-      <!-- 爪（三前一後） -->
-      <g data-part="爪">
-        <path d="M203 420 L176 434" stroke="url(#chicken-leg)" stroke-width="6" stroke-linecap="round"/>
-        <path d="M203 420 L206 440" stroke="url(#chicken-leg)" stroke-width="6" stroke-linecap="round"/>
-        <path d="M203 420 L232 434" stroke="url(#chicken-leg)" stroke-width="6" stroke-linecap="round"/>
-        <path d="M203 420 L196 402" stroke="url(#chicken-leg)" stroke-width="5" stroke-linecap="round"/>
+      <!-- 遠側腿（後景，較暗） -->
+      <path data-part="腿" d="M250 330 C246 356 254 376 262 388 L278 384 C270 362 268 344 270 330 Z" fill="url(#chicken-ext-body)" stroke="#7a5a2f" stroke-width="1.1" opacity="0.8"/>
+      <rect x="262" y="384" width="9" height="40" rx="4" fill="url(#chicken-ext-leg)" stroke="#8a5f20" stroke-width="1" opacity="0.85"/>
+      <g data-part="爪" opacity="0.82">
+        <path d="M266 424 L242 436" stroke="url(#chicken-ext-leg)" stroke-width="5.5" stroke-linecap="round"/>
+        <path d="M266 424 L268 442" stroke="url(#chicken-ext-leg)" stroke-width="5.5" stroke-linecap="round"/>
+        <path d="M266 424 L292 436" stroke="url(#chicken-ext-leg)" stroke-width="5.5" stroke-linecap="round"/>
       </g>
-      <g data-part="爪" opacity="0.85">
-        <path d="M264 424 L240 436" stroke="url(#chicken-leg)" stroke-width="5.5" stroke-linecap="round"/>
-        <path d="M264 424 L266 442" stroke="url(#chicken-leg)" stroke-width="5.5" stroke-linecap="round"/>
-        <path d="M264 424 L290 436" stroke="url(#chicken-leg)" stroke-width="5.5" stroke-linecap="round"/>
+
+      <!-- 近側大腿與跗蹠 -->
+      <path data-part="腿" d="M186 330 C180 358 190 378 200 388 L216 384 C208 362 206 344 208 330 Z" fill="url(#chicken-ext-body)" stroke="#8a6738" stroke-width="1.4"/>
+      <rect x="199" y="384" width="10" height="42" rx="4" fill="url(#chicken-ext-leg)" stroke="#8a5f20" stroke-width="1.2"/>
+      <!-- 跗蹠鱗片橫線 -->
+      <line x1="200" y1="394" x2="209" y2="394" stroke="#8a5f10" stroke-width="0.7" opacity="0.6"/>
+      <line x1="200" y1="404" x2="209" y2="404" stroke="#8a5f10" stroke-width="0.7" opacity="0.6"/>
+      <line x1="200" y1="414" x2="209" y2="414" stroke="#8a5f10" stroke-width="0.7" opacity="0.6"/>
+      <!-- 近側爪（三前一後） -->
+      <g data-part="爪">
+        <path d="M204 426 L176 440" stroke="url(#chicken-ext-leg)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M204 426 L206 446" stroke="url(#chicken-ext-leg)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M204 426 L234 440" stroke="url(#chicken-ext-leg)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M204 426 L196 408" stroke="url(#chicken-ext-leg)" stroke-width="5" stroke-linecap="round"/>
       </g>
 
       <g class="labels">
-        <line x1="187" y1="60" x2="250" y2="40" stroke="#666" stroke-width="1"/>
-        <text x="254" y="44" font-size="13" fill="var(--ink)">肉冠</text>
-        <line x1="118" y1="104" x2="70" y2="92" stroke="#666" stroke-width="1"/>
-        <text x="26" y="96" font-size="13" fill="var(--ink)">喙</text>
-        <line x1="168" y1="100" x2="120" y2="66" stroke="#666" stroke-width="1"/>
-        <text x="78" y="64" font-size="13" fill="var(--ink)">眼</text>
-        <line x1="178" y1="156" x2="140" y2="182" stroke="#666" stroke-width="1"/>
-        <text x="96" y="186" font-size="13" fill="var(--ink)">肉垂</text>
-        <line x1="170" y1="170" x2="112" y2="200" stroke="#666" stroke-width="1"/>
-        <text x="60" y="204" font-size="13" fill="var(--ink)">頸部</text>
-        <line x1="215" y1="255" x2="300" y2="360" stroke="#666" stroke-width="1"/>
-        <text x="304" y="364" font-size="13" fill="var(--ink)">翼</text>
-        <line x1="360" y1="200" x2="392" y2="150" stroke="#666" stroke-width="1"/>
-        <text x="360" y="140" font-size="13" fill="var(--ink)">尾羽</text>
-        <line x1="255" y1="360" x2="330" y2="392" stroke="#666" stroke-width="1"/>
-        <text x="334" y="396" font-size="13" fill="var(--ink)">腿</text>
-        <line x1="220" y1="432" x2="270" y2="452" stroke="#666" stroke-width="1"/>
-        <text x="274" y="456" font-size="13" fill="var(--ink)">爪</text>
+        <line x1="192" y1="58" x2="252" y2="40" stroke="#666" stroke-width="1"/>
+        <text x="256" y="44" font-size="13" fill="var(--ink)">肉冠</text>
+        <line x1="116" y1="104" x2="66" y2="92" stroke="#666" stroke-width="1"/>
+        <text x="24" y="96" font-size="13" fill="var(--ink)">喙</text>
+        <line x1="176" y1="102" x2="120" y2="64" stroke="#666" stroke-width="1"/>
+        <text x="78" y="62" font-size="13" fill="var(--ink)">眼</text>
+        <line x1="176" y1="158" x2="140" y2="184" stroke="#666" stroke-width="1"/>
+        <text x="96" y="188" font-size="13" fill="var(--ink)">肉垂</text>
+        <line x1="172" y1="180" x2="112" y2="204" stroke="#666" stroke-width="1"/>
+        <text x="58" y="208" font-size="13" fill="var(--ink)">頸部</text>
+        <line x1="240" y1="292" x2="312" y2="336" stroke="#666" stroke-width="1"/>
+        <text x="316" y="340" font-size="13" fill="var(--ink)">翼</text>
+        <line x1="360" y1="188" x2="392" y2="146" stroke="#666" stroke-width="1"/>
+        <text x="360" y="138" font-size="13" fill="var(--ink)">尾羽</text>
+        <line x1="255" y1="360" x2="332" y2="392" stroke="#666" stroke-width="1"/>
+        <text x="336" y="396" font-size="13" fill="var(--ink)">腿</text>
+        <line x1="220" y1="438" x2="272" y2="454" stroke="#666" stroke-width="1"/>
+        <text x="276" y="458" font-size="13" fill="var(--ink)">爪</text>
       </g>`,
       parts: [
         { name: "肉冠", desc: "頭頂鮮紅肉質突起，用於散熱與求偶展示。" },
@@ -240,100 +277,136 @@ window.ANATOMY.register({
       viewBox: "0 0 460 420",
       svg: `
       <defs>
-        <linearGradient id="eagle-body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#7a5a3c"/>
-          <stop offset="60%" stop-color="#5a3f26"/>
-          <stop offset="100%" stop-color="#3a2917"/>
+        <radialGradient id="eagle-ext-body" cx="40%" cy="32%" r="75%">
+          <stop offset="0%" stop-color="#8a6a46"/>
+          <stop offset="55%" stop-color="#5c4127"/>
+          <stop offset="100%" stop-color="#301f10"/>
+        </radialGradient>
+        <linearGradient id="eagle-ext-head" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#fdf9f0"/>
+          <stop offset="100%" stop-color="#d4c8ac"/>
         </linearGradient>
-        <linearGradient id="eagle-head" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#fbf6ec"/>
-          <stop offset="100%" stop-color="#d8cdb4"/>
+        <linearGradient id="eagle-ext-wing" x1="0" y1="0" x2="1" y2="0.55">
+          <stop offset="0%" stop-color="#785838"/>
+          <stop offset="55%" stop-color="#4e3720"/>
+          <stop offset="100%" stop-color="#2a1c0e"/>
         </linearGradient>
-        <linearGradient id="eagle-wing" x1="0" y1="0" x2="1" y2="0.5">
-          <stop offset="0%" stop-color="#6e4f31"/>
-          <stop offset="100%" stop-color="#33241380"/>
+        <linearGradient id="eagle-ext-wing2" x1="0" y1="0" x2="1" y2="0.4">
+          <stop offset="0%" stop-color="#5c4229"/>
+          <stop offset="100%" stop-color="#2c1d0e"/>
         </linearGradient>
-        <linearGradient id="eagle-beak" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#4a4a4a"/>
-          <stop offset="100%" stop-color="#151515"/>
+        <linearGradient id="eagle-ext-beak" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#5a5550"/>
+          <stop offset="55%" stop-color="#33302c"/>
+          <stop offset="100%" stop-color="#111010"/>
         </linearGradient>
-        <linearGradient id="eagle-talon" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f2cf5a"/>
-          <stop offset="100%" stop-color="#b8891f"/>
+        <linearGradient id="eagle-ext-talon" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#f4d466"/>
+          <stop offset="100%" stop-color="#b0821b"/>
         </linearGradient>
-        <radialGradient id="eagle-eye" cx="42%" cy="35%">
-          <stop offset="0%" stop-color="#f4c94c"/>
-          <stop offset="70%" stop-color="#c8931c"/>
-          <stop offset="100%" stop-color="#5a3c08"/>
+        <linearGradient id="eagle-ext-claw" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4a4640"/>
+          <stop offset="100%" stop-color="#141210"/>
+        </linearGradient>
+        <radialGradient id="eagle-ext-eye" cx="40%" cy="33%" r="72%">
+          <stop offset="0%" stop-color="#fbe08c"/>
+          <stop offset="55%" stop-color="#e0a52a"/>
+          <stop offset="100%" stop-color="#7a5010"/>
         </radialGradient>
       </defs>
 
-      <!-- 右翼展開 -->
-      <path data-part="翅膀" d="M240 190 Q330 150 430 200 Q400 220 430 250 Q360 240 250 230 Z" fill="url(#eagle-wing)" stroke="#2c1e10" stroke-width="1.6"/>
-      <!-- 初級飛羽 -->
+      <!-- 右翼半展（覆羽層＋初級飛羽指狀展開） -->
+      <path data-part="翅膀" d="M244 196 C312 158 378 168 434 202 C412 214 424 236 442 254 C398 250 340 240 262 236 C246 224 240 208 244 196 Z" fill="url(#eagle-ext-wing)" stroke="#241708" stroke-width="1.7"/>
+      <!-- 翼上覆羽分層瓦片 -->
+      <path d="M262 208 C312 190 366 194 414 214 C372 210 322 214 274 224 Z" fill="url(#eagle-ext-wing2)" stroke="#3a2712" stroke-width="0.9" opacity="0.85"/>
+      <path d="M270 220 C316 208 360 212 402 228 C362 224 320 228 280 236 Z" fill="url(#eagle-ext-wing2)" stroke="#3a2712" stroke-width="0.8" opacity="0.75"/>
+      <path d="M276 200 C336 186 392 194 420 212" fill="none" stroke="#a5895e" stroke-width="1" opacity="0.5"/>
+      <path d="M278 216 C336 204 384 210 408 226" fill="none" stroke="#a5895e" stroke-width="0.9" opacity="0.45"/>
+      <!-- 初級飛羽（分開的翼指） -->
       <g data-part="飛羽">
-        <path d="M420 205 L448 190 L432 214 Z" fill="#4a3620" stroke="#241809" stroke-width="1"/>
-        <path d="M408 214 L442 208 L420 228 Z" fill="#4a3620" stroke="#241809" stroke-width="1"/>
-        <path d="M392 222 L430 226 L404 240 Z" fill="#4a3620" stroke="#241809" stroke-width="1"/>
+        <path d="M420 204 C432 194 446 186 452 182 C446 194 442 206 440 216 C432 212 426 208 420 204 Z" fill="#463320" stroke="#1e1408" stroke-width="1"/>
+        <path d="M408 214 C422 206 438 200 446 198 C438 210 434 220 432 230 C424 224 416 218 408 214 Z" fill="#463320" stroke="#1e1408" stroke-width="1"/>
+        <path d="M394 222 C410 216 426 214 436 214 C426 224 422 234 420 244 C410 236 402 228 394 222 Z" fill="#463320" stroke="#1e1408" stroke-width="1"/>
+        <path d="M380 226 C396 222 410 222 420 224 C410 232 406 242 404 252 C396 242 388 232 380 226 Z" fill="#3e2d1c" stroke="#1e1408" stroke-width="1"/>
       </g>
-      <!-- 翼上覆羽紋理 -->
-      <path d="M270 200 Q340 185 415 208" fill="none" stroke="#8a6a45" stroke-width="1" opacity="0.6"/>
-      <path d="M270 215 Q340 205 405 222" fill="none" stroke="#8a6a45" stroke-width="1" opacity="0.6"/>
 
-      <!-- 左翼收攏 -->
-      <path data-part="翅膀" d="M150 200 Q90 200 60 250 Q100 245 130 235 Z" fill="url(#eagle-wing)" stroke="#2c1e10" stroke-width="1.4"/>
+      <!-- 左翼收攏於體側 -->
+      <path data-part="翅膀" d="M154 202 C104 200 74 224 56 256 C92 250 118 244 138 234 C148 224 152 212 154 202 Z" fill="url(#eagle-ext-wing2)" stroke="#241708" stroke-width="1.5"/>
+      <path d="M74 244 C100 238 122 232 140 224" fill="none" stroke="#a5895e" stroke-width="0.9" opacity="0.45"/>
 
-      <!-- 身體 -->
-      <ellipse cx="200" cy="230" rx="70" ry="55" fill="url(#eagle-body)" stroke="#2c1e10" stroke-width="1.6"/>
+      <!-- 身體（渾厚軀幹） -->
+      <path d="M198 178 C240 178 272 206 272 244 C272 288 238 312 200 312 C160 312 132 286 132 246 C132 206 158 178 198 178 Z" fill="url(#eagle-ext-body)" stroke="#241708" stroke-width="1.7"/>
+      <!-- 胸羽鱗狀質感短線 -->
+      <path d="M158 224 C180 218 210 218 240 226" fill="none" stroke="#8a6a45" stroke-width="0.8" opacity="0.4"/>
+      <path d="M152 250 C182 244 216 244 248 252" fill="none" stroke="#8a6a45" stroke-width="0.8" opacity="0.4"/>
+      <path d="M156 276 C184 272 214 272 244 278" fill="none" stroke="#8a6a45" stroke-width="0.8" opacity="0.35"/>
 
-      <!-- 尾羽 -->
-      <path data-part="尾羽" d="M200 275 Q195 340 175 380 Q200 360 215 385 Q235 350 245 285 Z" fill="url(#eagle-body)" stroke="#2c1e10" stroke-width="1.4"/>
+      <!-- 尾羽（短扇形，白基深端） -->
+      <path data-part="尾羽" d="M196 300 C190 340 176 366 168 384 C186 372 198 372 210 386 C224 362 238 336 244 302 C226 316 214 316 196 300 Z" fill="url(#eagle-ext-body)" stroke="#241708" stroke-width="1.4"/>
+      <path d="M198 306 C194 336 186 360 180 380" fill="none" stroke="#8a6a45" stroke-width="0.8" opacity="0.5"/>
+      <path d="M212 306 C214 336 220 358 228 376" fill="none" stroke="#8a6a45" stroke-width="0.8" opacity="0.45"/>
 
-      <!-- 頸與頭（白頭） -->
-      <path d="M160 185 Q158 150 180 130 L210 140 Q198 175 215 200 Z" fill="url(#eagle-head)" stroke="#b6a988" stroke-width="1.2"/>
-      <ellipse cx="180" cy="130" rx="34" ry="30" fill="url(#eagle-head)" stroke="#b6a988" stroke-width="1.2"/>
+      <!-- 頸與白頭 -->
+      <path d="M162 188 C156 154 172 130 194 122 L214 134 C200 160 200 186 214 206 C194 210 172 206 162 188 Z" fill="url(#eagle-ext-head)" stroke="#b6a988" stroke-width="1.2"/>
+      <path d="M180 128 C176 156 178 180 190 200" fill="none" stroke="#cfc3a6" stroke-width="0.8" opacity="0.6"/>
+      <ellipse cx="182" cy="126" rx="36" ry="31" fill="url(#eagle-ext-head)" stroke="#b6a988" stroke-width="1.2"/>
+      <!-- 頭羽細紋 -->
+      <path d="M158 120 C170 112 196 110 214 120" fill="none" stroke="#d8cdb2" stroke-width="0.7" opacity="0.6"/>
 
-      <!-- 鉤狀喙 -->
-      <path data-part="鉤狀喙" d="M150 122 Q118 120 108 130 Q120 128 128 138 Q124 148 138 146 Q150 142 154 128 Z" fill="url(#eagle-beak)" stroke="#000" stroke-width="1.2"/>
-      <!-- 蠟膜 -->
-      <path d="M150 118 Q156 116 158 124 L150 128 Z" fill="#e8c24a"/>
+      <!-- 鉤狀喙（猛禽下鉤，蠟膜） -->
+      <path d="M150 116 C154 112 162 112 164 118 C170 118 172 122 170 126 L150 130 Z" fill="#e8c24a" stroke="#a98a24" stroke-width="0.8"/>
+      <path data-part="鉤狀喙" d="M150 120 C122 116 106 122 100 132 C114 130 124 130 130 138 C124 146 128 154 140 152 C152 150 156 138 156 126 C154 122 152 120 150 120 Z" fill="url(#eagle-ext-beak)" stroke="#000" stroke-width="1.2"/>
+      <path d="M124 132 C116 132 108 134 104 138" fill="none" stroke="#6a6560" stroke-width="0.7" opacity="0.7"/>
+      <!-- 鼻孔 -->
+      <ellipse cx="140" cy="124" rx="2.4" ry="1.6" fill="#111"/>
 
-      <!-- 眼（銳利黃眼） -->
-      <circle data-part="眼" cx="172" cy="122" r="9" fill="url(#eagle-eye)" stroke="#4a3208" stroke-width="1.2"/>
-      <circle cx="172" cy="122" r="3.4" fill="#1a1206"/>
-      <circle cx="169.5" cy="119.5" r="1.6" fill="#fff" opacity="0.85"/>
-      <!-- 眉脊（威嚴表情） -->
-      <path d="M162 112 Q176 108 188 116" fill="none" stroke="#6a5836" stroke-width="2"/>
+      <!-- 眼（銳利黃眼＋威嚴眉脊） -->
+      <path d="M158 108 C172 100 190 102 202 114 C188 106 172 108 162 118 Z" fill="#4a3a22" stroke="#2c2010" stroke-width="1"/>
+      <ellipse cx="174" cy="122" rx="11" ry="10.4" fill="#c8991f" stroke="#4a3208" stroke-width="0.8" opacity="0.6"/>
+      <circle data-part="眼" cx="174" cy="122" r="8.8" fill="url(#eagle-ext-eye)" stroke="#4a3208" stroke-width="1.2"/>
+      <circle cx="176" cy="123" r="3.6" fill="#120c02"/>
+      <circle cx="171.4" cy="118.6" r="1.9" fill="#fff" opacity="0.9"/>
 
-      <!-- 腿與利爪 -->
-      <path data-part="腿" d="M185 280 L180 320 L192 320 L196 282 Z" fill="#c9a24a" stroke="#8a6a20" stroke-width="1.2"/>
-      <path data-part="腿" d="M220 282 L222 322 L234 320 L228 282 Z" fill="#c9a24a" stroke="#8a6a20" stroke-width="1.2"/>
-      <g data-part="爪">
-        <path d="M186 320 L166 344 Q172 352 180 346" fill="none" stroke="url(#eagle-talon)" stroke-width="7" stroke-linecap="round"/>
-        <path d="M186 320 L188 350 Q194 352 196 344" fill="none" stroke="url(#eagle-talon)" stroke-width="7" stroke-linecap="round"/>
-        <path d="M186 320 L206 344 Q200 352 194 346" fill="none" stroke="url(#eagle-talon)" stroke-width="7" stroke-linecap="round"/>
+      <!-- 遠側腿（後景） -->
+      <path data-part="腿" d="M222 306 C224 320 224 332 226 340 L238 338 C236 326 234 316 232 306 Z" fill="#c9a24a" stroke="#8a6a20" stroke-width="1.1" opacity="0.85"/>
+      <g data-part="爪" opacity="0.85">
+        <path d="M230 340 L212 366" fill="none" stroke="url(#eagle-ext-talon)" stroke-width="6.5" stroke-linecap="round"/>
+        <path d="M230 340 L232 372" fill="none" stroke="url(#eagle-ext-talon)" stroke-width="6.5" stroke-linecap="round"/>
+        <path d="M230 340 L250 366" fill="none" stroke="url(#eagle-ext-talon)" stroke-width="6.5" stroke-linecap="round"/>
+        <path d="M212 366 C206 372 208 380 216 378" fill="none" stroke="url(#eagle-ext-claw)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M250 366 C256 372 254 380 246 378" fill="none" stroke="url(#eagle-ext-claw)" stroke-width="3" stroke-linecap="round"/>
       </g>
+
+      <!-- 近側腿（羽褲＋粗跗蹠＋利爪） -->
+      <path d="M180 300 C176 314 176 324 180 334 L200 332 C198 320 198 310 200 300 Z" fill="url(#eagle-ext-body)" stroke="#241708" stroke-width="1.2" opacity="0.9"/>
+      <path data-part="腿" d="M184 332 C182 344 182 354 184 362 L198 360 C196 350 196 342 196 332 Z" fill="#d0a94e" stroke="#8a6a20" stroke-width="1.3"/>
+      <line x1="185" y1="342" x2="197" y2="341" stroke="#8a6a20" stroke-width="0.7" opacity="0.6"/>
+      <line x1="185" y1="350" x2="197" y2="349" stroke="#8a6a20" stroke-width="0.7" opacity="0.6"/>
       <g data-part="爪">
-        <path d="M226 320 L208 346" fill="none" stroke="url(#eagle-talon)" stroke-width="6.5" stroke-linecap="round"/>
-        <path d="M226 320 L228 352" fill="none" stroke="url(#eagle-talon)" stroke-width="6.5" stroke-linecap="round"/>
-        <path d="M226 320 L246 346" fill="none" stroke="url(#eagle-talon)" stroke-width="6.5" stroke-linecap="round"/>
+        <path d="M190 362 L168 388 C174 396 182 390 186 384" fill="none" stroke="url(#eagle-ext-talon)" stroke-width="7" stroke-linecap="round"/>
+        <path d="M190 362 L192 394 C200 396 202 388 200 382" fill="none" stroke="url(#eagle-ext-talon)" stroke-width="7" stroke-linecap="round"/>
+        <path d="M190 362 L212 388 C206 396 198 392 194 384" fill="none" stroke="url(#eagle-ext-talon)" stroke-width="7" stroke-linecap="round"/>
+        <!-- 黑色鉤爪尖 -->
+        <path d="M168 388 C162 394 164 402 172 400" fill="none" stroke="url(#eagle-ext-claw)" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M192 394 C192 402 200 404 202 396" fill="none" stroke="url(#eagle-ext-claw)" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M212 388 C218 394 216 402 208 400" fill="none" stroke="url(#eagle-ext-claw)" stroke-width="3.4" stroke-linecap="round"/>
       </g>
 
       <g class="labels">
-        <line x1="118" y1="128" x2="60" y2="118" stroke="#666" stroke-width="1"/>
-        <text x="16" y="122" font-size="13" fill="var(--ink)">鉤狀喙</text>
-        <line x1="172" y1="122" x2="150" y2="78" stroke="#666" stroke-width="1"/>
-        <text x="120" y="74" font-size="13" fill="var(--ink)">眼</text>
-        <line x1="380" y1="200" x2="400" y2="150" stroke="#666" stroke-width="1"/>
-        <text x="384" y="142" font-size="13" fill="var(--ink)">翅膀</text>
-        <line x1="440" y1="208" x2="450" y2="176" stroke="#666" stroke-width="1"/>
-        <text x="408" y="170" font-size="13" fill="var(--ink)">飛羽</text>
-        <line x1="200" y1="350" x2="140" y2="368" stroke="#666" stroke-width="1"/>
-        <text x="82" y="372" font-size="13" fill="var(--ink)">尾羽</text>
-        <line x1="222" y1="300" x2="290" y2="300" stroke="#666" stroke-width="1"/>
-        <text x="294" y="304" font-size="13" fill="var(--ink)">腿</text>
-        <line x1="188" y1="346" x2="130" y2="340" stroke="#666" stroke-width="1"/>
-        <text x="82" y="344" font-size="13" fill="var(--ink)">爪</text>
+        <line x1="112" y1="132" x2="58" y2="120" stroke="#666" stroke-width="1"/>
+        <text x="14" y="124" font-size="13" fill="var(--ink)">鉤狀喙</text>
+        <line x1="174" y1="122" x2="150" y2="76" stroke="#666" stroke-width="1"/>
+        <text x="120" y="72" font-size="13" fill="var(--ink)">眼</text>
+        <line x1="380" y1="204" x2="402" y2="152" stroke="#666" stroke-width="1"/>
+        <text x="386" y="144" font-size="13" fill="var(--ink)">翅膀</text>
+        <line x1="440" y1="212" x2="452" y2="178" stroke="#666" stroke-width="1"/>
+        <text x="410" y="172" font-size="13" fill="var(--ink)">飛羽</text>
+        <line x1="200" y1="356" x2="138" y2="372" stroke="#666" stroke-width="1"/>
+        <text x="80" y="376" font-size="13" fill="var(--ink)">尾羽</text>
+        <line x1="192" y1="344" x2="290" y2="322" stroke="#666" stroke-width="1"/>
+        <text x="294" y="326" font-size="13" fill="var(--ink)">腿</text>
+        <line x1="188" y1="388" x2="126" y2="380" stroke="#666" stroke-width="1"/>
+        <text x="78" y="384" font-size="13" fill="var(--ink)">爪</text>
       </g>`,
       parts: [
         { name: "鉤狀喙", desc: "尖銳下鉤的角質喙，用於撕裂獵物血肉。" },
@@ -541,76 +614,109 @@ window.ANATOMY.register({
       viewBox: "0 0 380 460",
       svg: `
       <defs>
-        <linearGradient id="penguin-back" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#3a4650"/>
-          <stop offset="60%" stop-color="#232c33"/>
-          <stop offset="100%" stop-color="#12171b"/>
+        <linearGradient id="penguin-ext-back" x1="0.2" y1="0" x2="0.8" y2="1">
+          <stop offset="0%" stop-color="#3f4c58"/>
+          <stop offset="55%" stop-color="#232c34"/>
+          <stop offset="100%" stop-color="#0e1216"/>
         </linearGradient>
-        <linearGradient id="penguin-belly" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="penguin-ext-back2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2c353d"/>
+          <stop offset="100%" stop-color="#0c1013"/>
+        </linearGradient>
+        <radialGradient id="penguin-ext-belly" cx="45%" cy="34%" r="70%">
           <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="100%" stop-color="#dfe4e8"/>
+          <stop offset="70%" stop-color="#eef2f5"/>
+          <stop offset="100%" stop-color="#d3dade"/>
+        </radialGradient>
+        <linearGradient id="penguin-ext-head" x1="0.2" y1="0" x2="0.7" y2="1">
+          <stop offset="0%" stop-color="#39454f"/>
+          <stop offset="100%" stop-color="#0e1318"/>
         </linearGradient>
-        <linearGradient id="penguin-beak" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#d88a3a"/>
-          <stop offset="100%" stop-color="#8a4f18"/>
+        <linearGradient id="penguin-ext-beak" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#3a3f45"/>
+          <stop offset="100%" stop-color="#14171a"/>
         </linearGradient>
-        <linearGradient id="penguin-foot" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e0a24a"/>
-          <stop offset="100%" stop-color="#a86a1c"/>
+        <linearGradient id="penguin-ext-mandible" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e88f3e"/>
+          <stop offset="100%" stop-color="#9a5418"/>
         </linearGradient>
-        <radialGradient id="penguin-eye" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#4a3a24"/>
+        <linearGradient id="penguin-ext-foot" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0%" stop-color="#e6a850"/>
+          <stop offset="100%" stop-color="#9c611a"/>
+        </linearGradient>
+        <radialGradient id="penguin-ext-eye" cx="38%" cy="32%" r="72%">
+          <stop offset="0%" stop-color="#5a4a32"/>
+          <stop offset="60%" stop-color="#241a0e"/>
           <stop offset="100%" stop-color="#000"/>
         </radialGradient>
-        <radialGradient id="penguin-cheek" cx="50%" cy="50%">
-          <stop offset="0%" stop-color="#f6c94a"/>
+        <radialGradient id="penguin-ext-cheek" cx="50%" cy="45%" r="60%">
+          <stop offset="0%" stop-color="#f9d05a"/>
+          <stop offset="60%" stop-color="#f0b636"/>
           <stop offset="100%" stop-color="#e0a22a00"/>
         </radialGradient>
       </defs>
 
-      <!-- 身體（背側深色） -->
-      <path data-part="羽衣" d="M190 70 Q120 80 108 200 Q100 320 130 400 Q160 430 190 430 Q220 430 250 400 Q280 320 272 200 Q260 80 190 70 Z" fill="url(#penguin-back)" stroke="#0c1013" stroke-width="1.6"/>
+      <!-- 遠側鰭狀翼（後景，收於體後） -->
+      <path data-part="鰭狀翼" d="M264 176 C306 214 314 288 296 340 C288 316 272 268 256 236 C254 210 258 190 264 176 Z" fill="url(#penguin-ext-back2)" stroke="#0c1013" stroke-width="1.4" opacity="0.9"/>
 
-      <!-- 腹部（白色反光偽裝） -->
-      <path data-part="羽衣" d="M190 120 Q150 130 142 240 Q140 340 165 405 Q190 420 215 405 Q240 340 238 240 Q230 130 190 120 Z" fill="url(#penguin-belly)" stroke="#c4ccd2" stroke-width="1"/>
+      <!-- 身體（直立紡錘形，背側深色羽衣） -->
+      <path data-part="羽衣" d="M190 66 C138 70 116 132 110 200 C104 280 108 348 132 402 C150 434 172 442 190 442 C208 442 230 434 248 402 C272 348 276 280 270 200 C264 132 242 70 190 66 Z" fill="url(#penguin-ext-back)" stroke="#0c1013" stroke-width="1.7"/>
+      <!-- 背羽走向細線 -->
+      <path d="M132 160 C126 240 130 330 152 400" fill="none" stroke="#4a5661" stroke-width="0.8" opacity="0.5"/>
+      <path d="M248 160 C254 240 250 330 228 400" fill="none" stroke="#4a5661" stroke-width="0.8" opacity="0.5"/>
 
-      <!-- 頭 -->
-      <ellipse cx="190" cy="90" rx="52" ry="46" fill="url(#penguin-back)" stroke="#0c1013" stroke-width="1.4"/>
-      <!-- 頰部黃斑（帝王企鵝特徵） -->
-      <ellipse cx="152" cy="98" rx="18" ry="26" fill="url(#penguin-cheek)" opacity="0.9"/>
-      <ellipse cx="228" cy="98" rx="18" ry="26" fill="url(#penguin-cheek)" opacity="0.9"/>
+      <!-- 腹側白羽（反蔭偽裝，柔和邊界） -->
+      <path data-part="羽衣" d="M190 118 C154 126 142 200 140 268 C139 340 158 400 178 418 C185 424 195 424 202 418 C222 400 241 340 240 268 C238 200 226 126 190 118 Z" fill="url(#penguin-ext-belly)" stroke="#cbd3d8" stroke-width="1"/>
+      <!-- 腹羽柔和陰影 -->
+      <path d="M158 220 C152 290 160 360 178 408" fill="none" stroke="#c8d1d6" stroke-width="1" opacity="0.6"/>
+      <path d="M222 220 C228 290 220 360 202 408" fill="none" stroke="#c8d1d6" stroke-width="1" opacity="0.6"/>
 
-      <!-- 喙 -->
-      <path data-part="喙" d="M164 96 Q138 100 128 108 Q140 112 150 110 Q158 116 168 108 Z" fill="url(#penguin-beak)" stroke="#6a3c10" stroke-width="1.2"/>
+      <!-- 頭（黑頭連背） -->
+      <path data-part="羽衣" d="M190 44 C154 46 136 76 138 110 C140 142 164 158 190 158 C216 158 240 142 242 110 C244 76 226 46 190 44 Z" fill="url(#penguin-ext-head)" stroke="#0c1013" stroke-width="1.5"/>
+      <!-- 頰部橙黃斑（帝王企鵝特徵，向頸部漸暈） -->
+      <path d="M146 92 C132 100 130 128 140 150 C150 138 152 112 154 94 Z" fill="url(#penguin-ext-cheek)" opacity="0.95"/>
+      <path d="M234 92 C248 100 250 128 240 150 C230 138 228 112 226 94 Z" fill="url(#penguin-ext-cheek)" opacity="0.95"/>
+      <!-- 喉部橙暈 -->
+      <path d="M168 150 C176 168 204 168 212 150 C204 176 176 176 168 150 Z" fill="url(#penguin-ext-cheek)" opacity="0.7"/>
 
-      <!-- 眼 -->
-      <circle data-part="眼" cx="168" cy="80" r="6.5" fill="url(#penguin-eye)" stroke="#1a1206" stroke-width="0.8"/>
-      <circle cx="166" cy="78" r="1.8" fill="#fff" opacity="0.85"/>
+      <!-- 喙（細長，下喙橙色喙板） -->
+      <path data-part="喙" d="M162 104 C136 106 118 114 108 122 C122 124 136 122 150 118 C158 124 168 120 172 112 Z" fill="url(#penguin-ext-beak)" stroke="#111417" stroke-width="1.1"/>
+      <path d="M138 121 C126 124 116 128 110 132 C124 132 138 130 150 126 Z" fill="url(#penguin-ext-mandible)" stroke="#7a4210" stroke-width="0.9"/>
+      <line x1="118" y1="120" x2="164" y2="112" stroke="#0a0d10" stroke-width="0.7" opacity="0.7"/>
 
-      <!-- 鰭狀翼（左） -->
-      <path data-part="鰭狀翼" d="M112 180 Q70 230 74 320 Q92 300 116 250 Z" fill="url(#penguin-back)" stroke="#0c1013" stroke-width="1.4"/>
-      <!-- 鰭狀翼（右） -->
-      <path data-part="鰭狀翼" d="M268 180 Q310 230 306 320 Q288 300 264 250 Z" fill="url(#penguin-back)" stroke="#0c1013" stroke-width="1.4"/>
+      <!-- 眼（立體） -->
+      <ellipse cx="170" cy="86" rx="8.4" ry="8" fill="#2a2016" opacity="0.5"/>
+      <circle data-part="眼" cx="170" cy="86" r="6.6" fill="url(#penguin-ext-eye)" stroke="#1a1206" stroke-width="0.8"/>
+      <circle cx="170" cy="86" r="3" fill="#0a0703"/>
+      <circle cx="167.6" cy="83.6" r="1.8" fill="#fff" opacity="0.9"/>
 
-      <!-- 蹼足 -->
+      <!-- 近側鰭狀翼（前景，硬挺槳狀） -->
+      <path data-part="鰭狀翼" d="M116 174 C72 214 62 292 82 348 C92 322 106 270 122 236 C124 210 120 190 116 174 Z" fill="url(#penguin-ext-back)" stroke="#0c1013" stroke-width="1.5"/>
+      <path d="M104 200 C88 244 84 300 92 338" fill="none" stroke="#4a5661" stroke-width="0.8" opacity="0.55"/>
+      <!-- 鰭翼白色後緣 -->
+      <path d="M84 344 C78 322 84 268 100 232" fill="none" stroke="#dfe6ea" stroke-width="1.4" opacity="0.55"/>
+
+      <!-- 蹼足（身體後端，橙色蹼） -->
       <g data-part="蹼足">
-        <path d="M158 428 Q150 448 132 452 Q152 452 168 442 Z" fill="url(#penguin-foot)" stroke="#7a4a10" stroke-width="1.2"/>
-        <path d="M222 428 Q230 448 248 452 Q228 452 212 442 Z" fill="url(#penguin-foot)" stroke="#7a4a10" stroke-width="1.2"/>
+        <path d="M160 434 C150 452 132 456 118 456 C136 448 150 446 160 440 Z" fill="url(#penguin-ext-foot)" stroke="#7a4a10" stroke-width="1.2"/>
+        <path d="M156 438 L134 452 M156 438 L146 456 M156 438 L160 456" stroke="#a8681a" stroke-width="0.8" opacity="0.7"/>
+        <path d="M220 434 C230 452 248 456 262 456 C244 448 230 446 220 440 Z" fill="url(#penguin-ext-foot)" stroke="#7a4a10" stroke-width="1.2"/>
+        <path d="M224 438 L246 452 M224 438 L234 456 M224 438 L220 456" stroke="#a8681a" stroke-width="0.8" opacity="0.7"/>
       </g>
 
       <g class="labels">
-        <line x1="140" y1="106" x2="70" y2="120" stroke="#666" stroke-width="1"/>
-        <text x="26" y="124" font-size="13" fill="var(--ink)">喙</text>
-        <line x1="168" y1="80" x2="120" y2="52" stroke="#666" stroke-width="1"/>
-        <text x="78" y="50" font-size="13" fill="var(--ink)">眼</text>
-        <line x1="88" y1="270" x2="40" y2="270" stroke="#666" stroke-width="1"/>
+        <line x1="130" y1="118" x2="66" y2="128" stroke="#666" stroke-width="1"/>
+        <text x="24" y="132" font-size="13" fill="var(--ink)">喙</text>
+        <line x1="170" y1="86" x2="120" y2="54" stroke="#666" stroke-width="1"/>
+        <text x="78" y="52" font-size="13" fill="var(--ink)">眼</text>
+        <line x1="92" y1="272" x2="42" y2="264" stroke="#666" stroke-width="1"/>
         <text x="6" y="252" font-size="13" fill="var(--ink)">鰭狀翼</text>
-        <line x1="190" y1="180" x2="300" y2="150" stroke="#666" stroke-width="1"/>
-        <text x="296" y="142" font-size="13" fill="var(--ink)">背側深色羽衣</text>
-        <line x1="190" y1="300" x2="300" y2="330" stroke="#666" stroke-width="1"/>
-        <text x="296" y="334" font-size="13" fill="var(--ink)">腹側白羽</text>
-        <line x1="222" y1="444" x2="288" y2="440" stroke="#666" stroke-width="1"/>
-        <text x="292" y="444" font-size="13" fill="var(--ink)">蹼足</text>
+        <line x1="196" y1="180" x2="300" y2="150" stroke="#666" stroke-width="1"/>
+        <text x="292" y="142" font-size="13" fill="var(--ink)">背側深色羽衣</text>
+        <line x1="196" y1="300" x2="300" y2="330" stroke="#666" stroke-width="1"/>
+        <text x="292" y="334" font-size="13" fill="var(--ink)">腹側白羽</text>
+        <line x1="228" y1="446" x2="290" y2="440" stroke="#666" stroke-width="1"/>
+        <text x="294" y="444" font-size="13" fill="var(--ink)">蹼足</text>
       </g>`,
       parts: [
         { name: "喙", desc: "尖長的喙用於捕捉魚類、磷蝦等滑溜獵物。" },

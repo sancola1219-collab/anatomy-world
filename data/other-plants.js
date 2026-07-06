@@ -21,49 +21,73 @@ window.ANATOMY.register({
       viewBox: "0 0 400 560",
       svg: `
 <defs>
-  <linearGradient id="pine-sky" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#eaf4f8"/><stop offset="100%" stop-color="#f6fbf7"/>
+  <linearGradient id="pine-ext-sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#dcecf4"/><stop offset="55%" stop-color="#eaf4f5"/><stop offset="100%" stop-color="#f4f8ee"/>
   </linearGradient>
-  <linearGradient id="pine-trunk" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#8a5a34"/><stop offset="50%" stop-color="#a9764a"/><stop offset="100%" stop-color="#6e4526"/>
+  <linearGradient id="pine-ext-trunk" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#5c3a20"/><stop offset="30%" stop-color="#8a5a34"/><stop offset="55%" stop-color="#b3835a"/><stop offset="100%" stop-color="#5a3a22"/>
   </linearGradient>
-  <linearGradient id="pine-foliage" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#4fae66"/><stop offset="100%" stop-color="#1f6f39"/>
+  <linearGradient id="pine-ext-foliage" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#5fbf72"/><stop offset="55%" stop-color="#2f8a46"/><stop offset="100%" stop-color="#175a2d"/>
   </linearGradient>
-  <linearGradient id="pine-needle" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#3f9d5a"/><stop offset="100%" stop-color="#20623a"/>
+  <linearGradient id="pine-ext-foliage-dk" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#2f8a46"/><stop offset="100%" stop-color="#124d26"/>
   </linearGradient>
-  <radialGradient id="pine-root" cx="50%" cy="20%">
-    <stop offset="0%" stop-color="#a9764a"/><stop offset="100%" stop-color="#5c3a20"/>
+  <linearGradient id="pine-ext-needle" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#4fb066"/><stop offset="100%" stop-color="#1c6236"/>
+  </linearGradient>
+  <radialGradient id="pine-ext-cone" cx="38%" cy="30%">
+    <stop offset="0%" stop-color="#b3824c"/><stop offset="100%" stop-color="#5c3a1c"/>
+  </radialGradient>
+  <radialGradient id="pine-ext-ground" cx="50%" cy="0%" r="90%">
+    <stop offset="0%" stop-color="#c9d7ac"/><stop offset="100%" stop-color="#a7bb84"/>
   </radialGradient>
 </defs>
-<rect x="0" y="0" width="400" height="560" fill="url(#pine-sky)"/>
+<rect x="0" y="0" width="400" height="560" fill="url(#pine-ext-sky)"/>
+<ellipse cx="200" cy="486" rx="180" ry="30" fill="url(#pine-ext-ground)" opacity="0.9"/>
 
-<!-- 樹幹 -->
-<path data-part="樹幹" d="M188 300 Q184 400 178 480 L222 480 Q216 400 212 300 Z" fill="url(#pine-trunk)" stroke="#5c3a20"/>
-<path d="M196 320 L196 470 M204 320 L205 470" stroke="#6e4526" stroke-width="1.4" fill="none" opacity="0.6"/>
+<!-- 樹幹（帶樹脂樹皮質感）-->
+<path data-part="樹幹" d="M190 300 Q186 392 179 482 Q188 490 200 490 Q212 490 221 482 Q214 392 210 300 Q200 296 190 300 Z" fill="url(#pine-ext-trunk)" stroke="#4a2f18" stroke-width="1.4"/>
+<g stroke="#4a2f18" stroke-width="1" fill="none" opacity="0.5">
+  <path d="M195 322 Q193 400 191 474 M203 322 Q205 400 206 474 M199 330 L199 470"/>
+</g>
+<path d="M188 340 Q184 348 190 356 M212 372 Q218 380 212 388 M187 410 Q182 418 189 424" stroke="#3a2412" stroke-width="1.2" fill="none" opacity="0.55"/>
 
-<!-- 樹冠（圓錐分層）-->
-<path data-part="樹冠" d="M200 40 L150 150 L250 150 Z" fill="url(#pine-foliage)" stroke="#1c5c30"/>
-<path d="M200 110 L128 230 L272 230 Z" fill="url(#pine-foliage)" stroke="#1c5c30"/>
-<path d="M200 190 L108 320 L292 320 Z" fill="url(#pine-foliage)" stroke="#1c5c30"/>
-<!-- 針葉肌理 -->
-<g stroke="#1c5c30" stroke-width="0.8" opacity="0.45">
-  <path d="M200 70 L170 130 M200 70 L230 130 M170 200 L140 280 M230 200 L262 280" fill="none"/>
+<!-- 樹冠（圓錐多層，明暗分面）-->
+<path data-part="樹冠" d="M200 36 Q182 96 150 152 Q200 138 250 152 Q218 96 200 36 Z" fill="url(#pine-ext-foliage)" stroke="#144d27" stroke-width="1.2"/>
+<path d="M200 36 Q218 96 250 152 Q222 142 200 138 Z" fill="url(#pine-ext-foliage-dk)" opacity="0.6"/>
+<path d="M200 108 Q176 172 128 232 Q200 214 272 232 Q224 172 200 108 Z" fill="url(#pine-ext-foliage)" stroke="#144d27" stroke-width="1.2"/>
+<path d="M200 108 Q224 172 272 232 Q238 220 200 214 Z" fill="url(#pine-ext-foliage-dk)" opacity="0.6"/>
+<path d="M200 188 Q170 258 108 322 Q200 300 292 322 Q230 258 200 188 Z" fill="url(#pine-ext-foliage)" stroke="#144d27" stroke-width="1.2"/>
+<path d="M200 188 Q230 258 292 322 Q248 306 200 300 Z" fill="url(#pine-ext-foliage-dk)" opacity="0.6"/>
+<!-- 針葉束肌理短線 -->
+<g stroke="#144d27" stroke-width="0.7" opacity="0.5" fill="none">
+  <path d="M186 74 L176 96 M200 68 L200 92 M214 74 L224 96 M168 150 L152 176 M200 140 L200 168 M232 150 L248 176 M150 232 L128 262 M200 218 L200 254 M250 232 L272 262"/>
 </g>
 
-<!-- 根系 -->
-<path data-part="根系" d="M200 480 Q160 500 120 540 M200 480 Q200 510 200 548 M200 480 Q240 500 282 540 M200 490 Q170 512 150 548 M200 490 Q232 512 252 548" stroke="url(#pine-root)" stroke-width="6" fill="none" stroke-linecap="round"/>
+<!-- 根系（漸細鬚根）-->
+<g data-part="根系" fill="none" stroke-linecap="round">
+  <path d="M182 484 Q150 508 116 540" stroke="#5c3a20" stroke-width="7"/>
+  <path d="M195 488 Q186 516 176 548" stroke="#6e4526" stroke-width="6"/>
+  <path d="M205 488 Q214 516 224 548" stroke="#6e4526" stroke-width="6"/>
+  <path d="M218 484 Q252 508 286 540" stroke="#5c3a20" stroke-width="7"/>
+  <path d="M170 500 Q150 522 138 548 M232 500 Q252 522 264 548" stroke="#7a5030" stroke-width="3.5"/>
+</g>
 
-<!-- 針葉束特寫 -->
+<!-- 針葉束特寫（束生針葉）-->
 <g transform="translate(322 250)">
-  <path data-part="針葉" d="M0 0 L-14 -70 M0 0 L-2 -78 M0 0 L12 -72" stroke="url(#pine-needle)" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <ellipse cx="0" cy="4" rx="10" ry="6" fill="#8a5a34"/>
+  <path data-part="針葉" d="M0 4 L-18 -74 M0 4 L-8 -80 M0 4 L2 -82 M0 4 L12 -78 M0 4 L20 -70" stroke="url(#pine-ext-needle)" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+  <path d="M-14 2 Q0 12 14 2 Q0 20 -14 2 Z" fill="#7a4f2c" stroke="#4a2f18" stroke-width="0.8"/>
 </g>
 
-<!-- 掛在枝上的毬果 -->
-<ellipse data-part="毬果" cx="150" cy="240" rx="12" ry="20" fill="#7a4f2c" stroke="#5c3a20"/>
-<path d="M142 226 L158 226 M139 236 L161 236 M142 250 L158 250" stroke="#4a2f18" stroke-width="1" opacity="0.7"/>
+<!-- 掛在枝上的毬果（木質鱗片）-->
+<g data-part="毬果" transform="translate(150 240)">
+  <ellipse cx="0" cy="0" rx="13" ry="21" fill="url(#pine-ext-cone)" stroke="#4a2f18" stroke-width="1.2"/>
+  <g stroke="#3a2412" stroke-width="1" fill="none" opacity="0.75">
+    <path d="M-11 -14 Q0 -8 11 -14 M-13 -4 Q0 3 13 -4 M-12 6 Q0 13 12 6 M-10 15 Q0 21 10 15"/>
+  </g>
+  <path d="M0 -20 Q-3 -6 0 8" stroke="#2f1c0e" stroke-width="0.8" fill="none" opacity="0.5"/>
+</g>
 
 <g class="labels">
   <line x1="230" y1="90" x2="330" y2="80" stroke="#666" stroke-width="1"/>
@@ -192,55 +216,81 @@ window.ANATOMY.register({
       viewBox: "0 0 440 560",
       svg: `
 <defs>
-  <linearGradient id="fern-frond" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#5cb86e"/><stop offset="100%" stop-color="#2b8145"/>
+  <linearGradient id="fern-ext-frond" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#74cd82"/><stop offset="55%" stop-color="#3f9d54"/><stop offset="100%" stop-color="#22753b"/>
   </linearGradient>
-  <linearGradient id="fern-rachis" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#7cbf5a"/><stop offset="100%" stop-color="#3f8a2f"/>
+  <linearGradient id="fern-ext-frond-dk" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3f9d54"/><stop offset="100%" stop-color="#1c6231"/>
   </linearGradient>
-  <linearGradient id="fern-rhizome" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#8a6a3a"/><stop offset="100%" stop-color="#5c4322"/>
+  <linearGradient id="fern-ext-rachis" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#8fca62"/><stop offset="55%" stop-color="#5aa338"/><stop offset="100%" stop-color="#357224"/>
   </linearGradient>
-  <radialGradient id="fern-croz" cx="50%" cy="50%">
-    <stop offset="0%" stop-color="#8ccf72"/><stop offset="100%" stop-color="#3f8a2f"/>
+  <linearGradient id="fern-ext-rhizome" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9a7844"/><stop offset="50%" stop-color="#7a5c30"/><stop offset="100%" stop-color="#4f3a1c"/>
+  </linearGradient>
+  <radialGradient id="fern-ext-croz" cx="45%" cy="40%">
+    <stop offset="0%" stop-color="#9dd97e"/><stop offset="100%" stop-color="#3f8a2f"/>
   </radialGradient>
+  <linearGradient id="fern-ext-ground" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#e5dcc0"/><stop offset="100%" stop-color="#cabf98"/>
+  </linearGradient>
 </defs>
-<rect x="0" y="0" width="440" height="560" fill="#f4faf2"/>
-<!-- 地面線 -->
-<path d="M0 400 L440 400" stroke="#c8b892" stroke-width="1.5" opacity="0.6"/>
+<rect x="0" y="0" width="440" height="560" fill="#f2f9ee"/>
+<!-- 土壤帶 -->
+<rect x="0" y="404" width="440" height="156" fill="url(#fern-ext-ground)"/>
+<path d="M0 404 Q220 396 440 404" stroke="#b8a878" stroke-width="1.6" fill="none" opacity="0.6"/>
 
-<!-- 羽狀複葉（葉柄 + 主脈 + 羽片）-->
+<!-- 羽狀複葉（葉柄 + 葉軸 + 羽片）-->
 <g transform="translate(220 400)">
   <!-- 葉柄 -->
-  <path data-part="葉柄" d="M0 0 Q-4 -40 -6 -80" stroke="url(#fern-rachis)" stroke-width="9" fill="none" stroke-linecap="round"/>
-  <!-- 主軸（葉軸）-->
-  <path data-part="葉軸" d="M-6 -80 Q-10 -200 -18 -330" stroke="url(#fern-rachis)" stroke-width="6" fill="none" stroke-linecap="round"/>
-  <!-- 左右羽片，逐漸變小 -->
-  <g fill="url(#fern-frond)" stroke="#256f39" stroke-width="0.8">
-    <g data-part="羽片">
-      <path d="M-8 -100 Q-90 -110 -140 -84 Q-90 -96 -8 -108 Z"/>
-      <path d="M-4 -100 Q78 -110 128 -84 Q78 -96 -4 -108 Z"/>
-      <path d="M-10 -150 Q-84 -160 -128 -136 Q-84 -146 -10 -158 Z"/>
-      <path d="M-6 -150 Q68 -160 112 -136 Q68 -146 -6 -158 Z"/>
-      <path d="M-12 -200 Q-74 -210 -110 -188 Q-74 -196 -12 -208 Z"/>
-      <path d="M-8 -200 Q58 -210 94 -188 Q58 -196 -8 -208 Z"/>
-      <path d="M-14 -250 Q-58 -258 -86 -240 Q-58 -246 -14 -258 Z"/>
-      <path d="M-10 -250 Q44 -258 72 -240 Q44 -246 -10 -258 Z"/>
-      <path d="M-16 -298 Q-40 -304 -60 -290 Q-40 -296 -16 -304 Z"/>
-      <path d="M-13 -298 Q28 -304 48 -290 Q28 -296 -13 -304 Z"/>
+  <path data-part="葉柄" d="M0 2 Q-4 -38 -6 -80" stroke="url(#fern-ext-rachis)" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- 葉軸（主軸，向頂端漸細）-->
+  <path data-part="葉軸" d="M-6 -80 Q-10 -200 -18 -330" stroke="url(#fern-ext-rachis)" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+  <!-- 左右羽片：填色片＋深色背面＋中肋 -->
+  <g data-part="羽片">
+    <g fill="url(#fern-ext-frond)" stroke="#1c6231" stroke-width="0.8">
+      <path d="M-8 -100 Q-84 -116 -140 -84 Q-118 -100 -60 -100 Q-90 -92 -8 -108 Z"/>
+      <path d="M-4 -100 Q72 -116 128 -84 Q106 -100 48 -100 Q78 -92 -4 -108 Z"/>
+      <path d="M-10 -150 Q-80 -166 -128 -136 Q-108 -150 -54 -150 Q-84 -142 -10 -158 Z"/>
+      <path d="M-6 -150 Q64 -166 112 -136 Q92 -150 42 -150 Q68 -142 -6 -158 Z"/>
+      <path d="M-12 -200 Q-70 -214 -110 -188 Q-92 -200 -46 -200 Q-74 -192 -12 -208 Z"/>
+      <path d="M-8 -200 Q54 -214 94 -188 Q76 -200 34 -200 Q58 -192 -8 -208 Z"/>
+      <path d="M-14 -250 Q-56 -262 -86 -240 Q-70 -250 -34 -250 Q-58 -244 -14 -258 Z"/>
+      <path d="M-10 -250 Q42 -262 72 -240 Q56 -250 24 -250 Q44 -244 -10 -258 Z"/>
+      <path d="M-16 -298 Q-40 -306 -60 -290 Q-48 -298 -24 -298 Q-40 -294 -16 -304 Z"/>
+      <path d="M-13 -298 Q28 -306 48 -290 Q36 -298 14 -298 Q28 -294 -13 -304 Z"/>
+    </g>
+    <!-- 羽片深色下緣層次 -->
+    <g fill="url(#fern-ext-frond-dk)" opacity="0.5" stroke="none">
+      <path d="M-8 -100 Q-84 -116 -140 -84 Q-96 -100 -8 -104 Z"/>
+      <path d="M-4 -100 Q72 -116 128 -84 Q84 -100 -4 -104 Z"/>
+      <path d="M-12 -200 Q-70 -214 -110 -188 Q-78 -200 -12 -204 Z"/>
+      <path d="M-8 -200 Q54 -214 94 -188 Q62 -200 -8 -204 Z"/>
+    </g>
+    <!-- 羽片中肋細脈 -->
+    <g stroke="#1c6231" stroke-width="0.6" opacity="0.55" fill="none">
+      <path d="M-8 -104 Q-70 -104 -132 -86 M-4 -104 Q64 -104 120 -86 M-14 -254 Q-52 -252 -82 -242 M-10 -254 Q40 -252 68 -242"/>
     </g>
   </g>
-  <!-- 頂端未展開的幼葉（拳卷 croziers）-->
-  <path data-part="幼葉（拳卷）" d="M-18 -330 q-16 -6 -14 -22 q2 -14 16 -10 q10 3 6 14 q-3 8 -10 5" fill="none" stroke="url(#fern-croz)" stroke-width="6" stroke-linecap="round"/>
+  <!-- 頂端幼葉（拳卷 crozier）-->
+  <path data-part="幼葉（拳卷）" d="M-18 -330 q-18 -8 -14 -26 q3 -16 18 -10 q11 4 6 15 q-4 9 -12 5" fill="none" stroke="url(#fern-ext-croz)" stroke-width="6.5" stroke-linecap="round"/>
 </g>
 
-<!-- 地下莖（根莖）與不定根 -->
-<path data-part="地下莖（根莖）" d="M120 430 Q220 415 330 432" stroke="url(#fern-rhizome)" stroke-width="16" fill="none" stroke-linecap="round"/>
-<g data-part="不定根" stroke="#6b5230" stroke-width="3" fill="none" stroke-linecap="round">
-  <path d="M150 442 Q140 480 128 520 M200 446 Q198 486 196 524 M260 446 Q268 486 278 524 M310 440 Q322 478 336 516"/>
+<!-- 地下莖（根莖，帶明暗與鱗片）-->
+<path data-part="地下莖（根莖）" d="M116 430 Q220 412 332 432" stroke="url(#fern-ext-rhizome)" stroke-width="17" fill="none" stroke-linecap="round"/>
+<g stroke="#4f3a1c" stroke-width="0.8" fill="none" opacity="0.5">
+  <path d="M150 424 Q152 432 150 440 M200 421 Q202 430 200 438 M258 423 Q260 432 258 440 M300 426 Q302 434 300 442"/>
+</g>
+<!-- 不定根（鬚狀漸細）-->
+<g data-part="不定根" stroke="#6b5230" fill="none" stroke-linecap="round">
+  <path d="M150 442 Q140 482 128 522" stroke-width="3"/>
+  <path d="M200 446 Q198 488 196 526" stroke-width="3"/>
+  <path d="M260 446 Q268 488 278 526" stroke-width="3"/>
+  <path d="M310 440 Q324 480 338 518" stroke-width="3"/>
+  <path d="M176 444 Q168 480 162 516 M230 446 Q234 482 240 518" stroke-width="1.8" opacity="0.8"/>
 </g>
 <!-- 另一片幼葉自根莖冒出 -->
-<path d="M300 430 q10 -30 -4 -46 q-14 -14 -24 0 q-8 10 4 18" fill="none" stroke="url(#fern-croz)" stroke-width="6" stroke-linecap="round"/>
+<path d="M300 430 q11 -32 -4 -48 q-15 -15 -25 0 q-9 11 4 19" fill="none" stroke="url(#fern-ext-croz)" stroke-width="6" stroke-linecap="round"/>
 
 <g class="labels">
   <line x1="120" y1="250" x2="40" y2="230" stroke="#666" stroke-width="1"/>
@@ -438,59 +488,68 @@ window.ANATOMY.register({
       viewBox: "0 0 420 520",
       svg: `
 <defs>
-  <linearGradient id="moss-leaf" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#6fc06a"/><stop offset="100%" stop-color="#2f8a3f"/>
+  <linearGradient id="moss-ext-leaf" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#7ec877"/><stop offset="55%" stop-color="#409a4a"/><stop offset="100%" stop-color="#256f30"/>
   </linearGradient>
-  <linearGradient id="moss-stem" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#4f9e54"/><stop offset="100%" stop-color="#2f7a38"/>
+  <linearGradient id="moss-ext-stem" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#63b562"/><stop offset="50%" stop-color="#3f8a45"/><stop offset="100%" stop-color="#256f30"/>
   </linearGradient>
-  <linearGradient id="moss-seta" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#c9a24a"/><stop offset="100%" stop-color="#8a6a2a"/>
+  <linearGradient id="moss-ext-seta" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#e0c46e"/><stop offset="50%" stop-color="#c09a44"/><stop offset="100%" stop-color="#8a6a2a"/>
   </linearGradient>
-  <radialGradient id="moss-capsule" cx="42%" cy="35%">
-    <stop offset="0%" stop-color="#c98a3e"/><stop offset="100%" stop-color="#7a4a1c"/>
+  <radialGradient id="moss-ext-capsule" cx="38%" cy="30%">
+    <stop offset="0%" stop-color="#d69a4c"/><stop offset="100%" stop-color="#6e4018"/>
   </radialGradient>
-  <radialGradient id="moss-ground" cx="50%" cy="30%">
-    <stop offset="0%" stop-color="#e7dcc0"/><stop offset="100%" stop-color="#c3b088"/>
-  </radialGradient>
+  <linearGradient id="moss-ext-calyptra" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#d0a866"/><stop offset="100%" stop-color="#8a6028"/>
+  </linearGradient>
+  <linearGradient id="moss-ext-ground" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#e2d6b6"/><stop offset="100%" stop-color="#b8a67c"/>
+  </linearGradient>
 </defs>
-<rect x="0" y="0" width="420" height="520" fill="#f3faf1"/>
+<rect x="0" y="0" width="420" height="520" fill="#f2f9ee"/>
 <!-- 土壤 -->
-<rect x="0" y="440" width="420" height="80" fill="url(#moss-ground)"/>
+<rect x="0" y="440" width="420" height="80" fill="url(#moss-ext-ground)"/>
+<path d="M0 440 Q210 432 420 440" stroke="#a8966c" stroke-width="1.4" fill="none" opacity="0.6"/>
 
 <!-- 一叢配子體植株 -->
 <g transform="translate(150 440)">
   <!-- 莖狀體 -->
-  <path data-part="莖狀體" d="M0 0 Q-4 -100 -6 -190" stroke="url(#moss-stem)" stroke-width="6" fill="none" stroke-linecap="round"/>
-  <!-- 葉狀體（小葉螺旋排列）-->
-  <g data-part="葉狀體" fill="url(#moss-leaf)" stroke="#256f30" stroke-width="0.6">
-    <path d="M-4 -30 Q-30 -36 -40 -24 Q-24 -30 -4 -34 Z"/><path d="M-4 -30 Q22 -36 32 -24 Q16 -30 -4 -34 Z"/>
-    <path d="M-4 -70 Q-32 -76 -42 -64 Q-26 -70 -4 -74 Z"/><path d="M-4 -70 Q24 -76 34 -64 Q18 -70 -4 -74 Z"/>
-    <path d="M-5 -110 Q-30 -116 -40 -104 Q-24 -110 -5 -114 Z"/><path d="M-5 -110 Q22 -116 32 -104 Q16 -110 -5 -114 Z"/>
-    <path d="M-6 -150 Q-26 -156 -34 -146 Q-20 -150 -6 -154 Z"/><path d="M-6 -150 Q18 -156 26 -146 Q12 -150 -6 -154 Z"/>
-    <path d="M-6 -186 Q-18 -192 -24 -184 M-6 -186 Q12 -192 18 -184" fill="none" stroke="#2f8a3f"/>
+  <path data-part="莖狀體" d="M0 2 Q-4 -100 -6 -190" stroke="url(#moss-ext-stem)" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+  <!-- 葉狀體（細密小葉螺旋排列，帶中肋）-->
+  <g data-part="葉狀體" fill="url(#moss-ext-leaf)" stroke="#1c5c28" stroke-width="0.6">
+    <path d="M-4 -28 Q-30 -40 -42 -22 Q-26 -30 -4 -34 Z"/><path d="M-4 -28 Q22 -40 34 -22 Q18 -30 -4 -34 Z"/>
+    <path d="M-4 -50 Q-32 -60 -44 -42 Q-26 -50 -4 -56 Z"/><path d="M-4 -50 Q24 -60 36 -42 Q18 -50 -4 -56 Z"/>
+    <path d="M-4 -72 Q-32 -82 -44 -64 Q-26 -72 -4 -78 Z"/><path d="M-4 -72 Q24 -82 36 -64 Q18 -72 -4 -78 Z"/>
+    <path d="M-5 -96 Q-30 -106 -42 -88 Q-24 -96 -5 -102 Z"/><path d="M-5 -96 Q22 -106 34 -88 Q16 -96 -5 -102 Z"/>
+    <path d="M-5 -120 Q-28 -130 -40 -112 Q-22 -120 -5 -126 Z"/><path d="M-5 -120 Q20 -130 32 -112 Q14 -120 -5 -126 Z"/>
+    <path d="M-6 -146 Q-24 -156 -34 -138 Q-18 -146 -6 -152 Z"/><path d="M-6 -146 Q16 -156 26 -138 Q10 -146 -6 -152 Z"/>
+    <path d="M-6 -170 Q-18 -180 -26 -164 Q-12 -170 -6 -176 Z"/><path d="M-6 -170 Q10 -180 18 -164 Q4 -170 -6 -176 Z"/>
+    <path d="M-6 -190 Q-12 -198 -18 -186 M-6 -190 Q6 -198 12 -186" fill="none" stroke="#2f8a3f"/>
   </g>
-  <!-- 假根 -->
-  <g data-part="假根" stroke="#8a6a3a" stroke-width="2" fill="none" stroke-linecap="round">
-    <path d="M0 0 Q-6 26 -14 52 M-2 2 Q0 28 4 56 M2 2 Q14 26 24 50 M0 4 Q-16 24 -28 46"/>
+  <!-- 假根（絲狀） -->
+  <g data-part="假根" stroke="#8a6a3a" stroke-width="1.8" fill="none" stroke-linecap="round">
+    <path d="M0 2 Q-6 28 -16 54 M-2 4 Q0 30 4 58 M2 4 Q14 28 26 52 M0 6 Q-18 26 -30 48 M-1 4 Q-2 30 -6 58"/>
   </g>
 </g>
 
 <!-- 孢子體（生長在配子體頂端）-->
 <g transform="translate(270 440)">
   <!-- 配子體莖（承載孢子體）-->
-  <path d="M0 0 Q-4 -60 -6 -120" stroke="url(#moss-stem)" stroke-width="6" fill="none" stroke-linecap="round"/>
-  <g fill="url(#moss-leaf)" stroke="#256f30" stroke-width="0.6">
-    <path d="M-4 -40 Q-26 -46 -34 -34 Q-20 -40 -4 -44 Z"/><path d="M-4 -40 Q18 -46 26 -34 Q12 -40 -4 -44 Z"/>
-    <path d="M-5 -90 Q-24 -96 -32 -84 Q-18 -90 -5 -94 Z"/><path d="M-5 -90 Q16 -96 24 -84 Q10 -90 -5 -94 Z"/>
+  <path d="M0 2 Q-4 -60 -6 -120" stroke="url(#moss-ext-stem)" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+  <g fill="url(#moss-ext-leaf)" stroke="#1c5c28" stroke-width="0.6">
+    <path d="M-4 -38 Q-26 -48 -36 -32 Q-20 -40 -4 -44 Z"/><path d="M-4 -38 Q18 -48 28 -32 Q12 -40 -4 -44 Z"/>
+    <path d="M-5 -66 Q-26 -76 -36 -60 Q-20 -68 -5 -72 Z"/><path d="M-5 -66 Q16 -76 26 -60 Q10 -68 -5 -72 Z"/>
+    <path d="M-5 -94 Q-24 -104 -32 -88 Q-18 -96 -5 -100 Z"/><path d="M-5 -94 Q14 -104 22 -88 Q8 -96 -5 -100 Z"/>
   </g>
   <!-- 蒴柄 -->
-  <path data-part="蒴柄" d="M-6 -120 Q-8 -190 -6 -260" stroke="url(#moss-seta)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <path data-part="蒴柄" d="M-6 -120 Q-8 -190 -6 -260" stroke="url(#moss-ext-seta)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
   <!-- 孢蒴 -->
-  <g transform="translate(-6 -276)">
-    <path data-part="蒴帽" d="M0 -20 Q-8 -34 0 -44 Q8 -34 0 -20 Z" fill="#b98a4a" stroke="#7a4a1c"/>
-    <ellipse data-part="孢蒴" cx="0" cy="0" rx="13" ry="20" fill="url(#moss-capsule)" stroke="#5c3a18"/>
-    <line x1="-13" y1="-2" x2="13" y2="-2" stroke="#5c3a18" stroke-width="0.8" opacity="0.6"/>
+  <g transform="translate(-6 -278)">
+    <path data-part="蒴帽" d="M0 -18 Q-9 -36 -1 -50 Q9 -36 0 -18 Z" fill="url(#moss-ext-calyptra)" stroke="#6e4018" stroke-width="0.8"/>
+    <ellipse data-part="孢蒴" cx="0" cy="0" rx="13" ry="21" fill="url(#moss-ext-capsule)" stroke="#5c3a18" stroke-width="1"/>
+    <path d="M-13 -1 Q0 4 13 -1" stroke="#4a2f14" stroke-width="0.8" fill="none" opacity="0.6"/>
+    <ellipse cx="0" cy="-21" rx="4" ry="2.5" fill="#8a6028" stroke="#5c3a18" stroke-width="0.6"/>
   </g>
 </g>
 
@@ -612,48 +671,60 @@ window.ANATOMY.register({
       viewBox: "0 0 420 560",
       svg: `
 <defs>
-  <linearGradient id="algae-water" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#cfeef4"/><stop offset="100%" stop-color="#7fb9cf"/>
+  <linearGradient id="algae-ext-water" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#d6f0f5"/><stop offset="45%" stop-color="#a3d3e0"/><stop offset="100%" stop-color="#5f9fb8"/>
   </linearGradient>
-  <linearGradient id="algae-blade" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#6a7a2e"/><stop offset="50%" stop-color="#4a6b22"/><stop offset="100%" stop-color="#5c7a2a"/>
+  <linearGradient id="algae-ext-blade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#7a8a38"/><stop offset="45%" stop-color="#4a6b22"/><stop offset="100%" stop-color="#37541a"/>
   </linearGradient>
-  <linearGradient id="algae-stipe" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#7a5c2a"/><stop offset="100%" stop-color="#4a3a16"/>
+  <linearGradient id="algae-ext-blade-hi" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#a3b358"/><stop offset="100%" stop-color="#5c7a2a"/>
   </linearGradient>
-  <radialGradient id="algae-bladder" cx="40%" cy="35%">
-    <stop offset="0%" stop-color="#b6c46a"/><stop offset="100%" stop-color="#6a7a2e"/>
+  <linearGradient id="algae-ext-stipe" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#9a7838"/><stop offset="50%" stop-color="#6a4e22"/><stop offset="100%" stop-color="#3e2e12"/>
+  </linearGradient>
+  <radialGradient id="algae-ext-bladder" cx="36%" cy="30%">
+    <stop offset="0%" stop-color="#cdd888"/><stop offset="60%" stop-color="#8a9a44"/><stop offset="100%" stop-color="#5c6e26"/>
   </radialGradient>
-  <radialGradient id="algae-hold" cx="50%" cy="30%">
-    <stop offset="0%" stop-color="#7a5c2a"/><stop offset="100%" stop-color="#3a2c10"/>
+  <radialGradient id="algae-ext-hold" cx="50%" cy="20%">
+    <stop offset="0%" stop-color="#8a6830"/><stop offset="100%" stop-color="#33260e"/>
   </radialGradient>
 </defs>
-<rect x="0" y="0" width="420" height="560" fill="url(#algae-water)"/>
+<rect x="0" y="0" width="420" height="560" fill="url(#algae-ext-water)"/>
+<!-- 透光光柱 -->
+<g fill="#ffffff" opacity="0.12"><path d="M60 0 L120 0 L90 520 L40 520 Z"/><path d="M300 0 L340 0 L322 520 L286 520 Z"/></g>
 <!-- 海床 -->
-<path d="M0 510 Q210 490 420 512 L420 560 L0 560 Z" fill="#9a8a5c"/>
+<path d="M0 508 Q210 486 420 510 L420 560 L0 560 Z" fill="#a4936238" stroke="none"/>
+<path d="M0 508 Q210 486 420 510 L420 560 L0 560 Z" fill="#9a8a5c"/>
+<path d="M0 508 Q210 486 420 510" stroke="#7c6c44" stroke-width="1.4" fill="none" opacity="0.6"/>
 <!-- 氣泡 -->
-<g fill="#ffffff" opacity="0.4"><circle cx="60" cy="120" r="4"/><circle cx="70" cy="90" r="3"/><circle cx="350" cy="200" r="4"/><circle cx="360" cy="170" r="2.6"/></g>
+<g fill="#ffffff" opacity="0.4"><circle cx="60" cy="120" r="4"/><circle cx="70" cy="90" r="3"/><circle cx="66" cy="150" r="2.4"/><circle cx="350" cy="200" r="4"/><circle cx="360" cy="170" r="2.6"/><circle cx="344" cy="230" r="2.2"/></g>
 
-<!-- 固著器 -->
-<g data-part="固著器" transform="translate(200 505)">
-  <path d="M0 0 Q-30 20 -46 44 M0 0 Q-12 24 -18 50 M0 0 Q12 24 18 50 M0 0 Q30 20 46 44 M0 0 Q0 26 0 52" stroke="url(#algae-hold)" stroke-width="6" fill="none" stroke-linecap="round"/>
+<!-- 固著器（分叉根狀，抓附岩石）-->
+<g data-part="固著器" transform="translate(200 506)">
+  <path d="M0 -2 Q-32 18 -50 46 M0 -2 Q-14 24 -22 52 M0 -2 Q0 26 0 54 M0 -2 Q14 24 22 52 M0 -2 Q32 18 50 46 M0 -2 Q-24 22 -36 50 M0 -2 Q24 22 36 50" stroke="url(#algae-ext-hold)" stroke-width="6" fill="none" stroke-linecap="round"/>
 </g>
 
-<!-- 柄狀部（stipe）-->
-<path data-part="柄狀部" d="M200 505 Q204 400 200 300" stroke="url(#algae-stipe)" stroke-width="10" fill="none" stroke-linecap="round"/>
+<!-- 柄狀部（stipe，柔韌帶明暗）-->
+<path data-part="柄狀部" d="M200 506 Q206 400 200 300" stroke="url(#algae-ext-stipe)" stroke-width="11" fill="none" stroke-linecap="round"/>
+<path d="M197 490 Q203 400 197 306" stroke="#c9a86a" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
 
-<!-- 氣囊（浮於柄與葉狀部交界）-->
-<ellipse data-part="氣囊" cx="200" cy="290" rx="26" ry="34" fill="url(#algae-bladder)" stroke="#4a6b22"/>
+<!-- 氣囊（浮囊，帶高光）-->
+<ellipse data-part="氣囊" cx="200" cy="288" rx="27" ry="35" fill="url(#algae-ext-bladder)" stroke="#4a6b22" stroke-width="1.2"/>
+<ellipse cx="192" cy="276" rx="8" ry="12" fill="#ffffff" opacity="0.35"/>
 
-<!-- 葉狀部（寬大葉片）-->
-<g data-part="葉狀部" fill="url(#algae-blade)" stroke="#3a5518" stroke-width="0.8">
-  <path d="M200 268 Q120 200 96 60 Q150 130 200 210 Z"/>
-  <path d="M200 268 Q280 200 304 60 Q250 130 200 210 Z"/>
-  <path d="M200 250 Q170 160 160 30 Q196 120 200 220 Z"/>
+<!-- 葉狀部（寬大帶狀葉片，光澤層次）-->
+<g data-part="葉狀部" stroke="#37541a" stroke-width="0.8">
+  <path d="M200 266 Q118 198 92 56 Q150 128 200 208 Z" fill="url(#algae-ext-blade)"/>
+  <path d="M200 266 Q282 198 308 56 Q250 128 200 208 Z" fill="url(#algae-ext-blade)"/>
+  <path d="M200 252 Q168 158 158 26 Q196 118 200 218 Z" fill="url(#algae-ext-blade-hi)"/>
 </g>
-<!-- 葉脈肌理 -->
-<g stroke="#3a5518" stroke-width="0.7" opacity="0.5" fill="none">
-  <path d="M150 220 Q130 140 116 70 M250 220 Q270 140 284 70 M180 220 Q172 130 168 50"/>
+<!-- 葉狀部中肋與光澤紋理 -->
+<g stroke="#2c4514" stroke-width="0.7" opacity="0.55" fill="none">
+  <path d="M148 218 Q126 138 110 64 M252 218 Q274 138 292 64 M180 220 Q170 128 166 46"/>
+</g>
+<g stroke="#c4d47a" stroke-width="1" opacity="0.4" fill="none">
+  <path d="M160 210 Q142 140 128 74 M262 208 Q280 140 294 78"/>
 </g>
 
 <g class="labels">

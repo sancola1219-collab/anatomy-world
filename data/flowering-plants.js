@@ -22,78 +22,89 @@ window.ANATOMY.register({
       viewBox: "0 0 440 480",
       svg: `
       <defs>
-        <linearGradient id="flower-sky" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="flower-ext-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#eef6ff"/><stop offset="100%" stop-color="#f7fbff"/>
         </linearGradient>
-        <linearGradient id="flower-petal" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f7a8cf"/><stop offset="55%" stop-color="#ec6fae"/><stop offset="100%" stop-color="#c73f86"/>
+        <linearGradient id="flower-ext-petal" x1="0.2" y1="1" x2="0.5" y2="0">
+          <stop offset="0%" stop-color="#f9c4de"/><stop offset="45%" stop-color="#ec7fb6"/><stop offset="100%" stop-color="#cf4f92"/>
         </linearGradient>
-        <linearGradient id="flower-petal2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#fbc7e0"/><stop offset="100%" stop-color="#e879b3"/>
+        <linearGradient id="flower-ext-petal2" x1="0.3" y1="1" x2="0.6" y2="0">
+          <stop offset="0%" stop-color="#fddcec"/><stop offset="55%" stop-color="#f3a1cd"/><stop offset="100%" stop-color="#e178b1"/>
         </linearGradient>
-        <linearGradient id="flower-sepal" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#67b874"/><stop offset="100%" stop-color="#357f46"/>
-        </linearGradient>
-        <linearGradient id="flower-filament" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#fce8b0"/><stop offset="100%" stop-color="#e6c766"/>
-        </linearGradient>
-        <radialGradient id="flower-anther" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#ffd54a"/><stop offset="100%" stop-color="#d99518"/>
+        <radialGradient id="flower-ext-petalcore" cx="50%" cy="90%" r="70%">
+          <stop offset="0%" stop-color="#b83b7f" stop-opacity="0.55"/><stop offset="60%" stop-color="#b83b7f" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="flower-stigma" cx="45%" cy="35%">
-          <stop offset="0%" stop-color="#ffe08a"/><stop offset="100%" stop-color="#e0a72e"/>
+        <linearGradient id="flower-ext-sepal" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7cc686"/><stop offset="100%" stop-color="#357f46"/>
+        </linearGradient>
+        <linearGradient id="flower-ext-filament" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#fdefbe"/><stop offset="50%" stop-color="#f5dd8f"/><stop offset="100%" stop-color="#e0bc5c"/>
+        </linearGradient>
+        <radialGradient id="flower-ext-anther" cx="38%" cy="32%" r="70%">
+          <stop offset="0%" stop-color="#ffe07a"/><stop offset="60%" stop-color="#f2b52f"/><stop offset="100%" stop-color="#c9860f"/>
         </radialGradient>
-        <linearGradient id="flower-style" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#d6efbf"/><stop offset="100%" stop-color="#9fd08a"/>
+        <radialGradient id="flower-ext-stigma" cx="42%" cy="32%" r="70%">
+          <stop offset="0%" stop-color="#ffe9a4"/><stop offset="100%" stop-color="#dc9f2a"/>
+        </radialGradient>
+        <linearGradient id="flower-ext-style" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#e4f4d3"/><stop offset="50%" stop-color="#bfe3a6"/><stop offset="100%" stop-color="#93c67c"/>
         </linearGradient>
-        <linearGradient id="flower-ovary" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#bfe3a6"/><stop offset="100%" stop-color="#7cbb63"/>
+        <linearGradient id="flower-ext-ovary" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#cfeab3"/><stop offset="100%" stop-color="#72b25a"/>
         </linearGradient>
-        <linearGradient id="flower-recept" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8fbf6f"/><stop offset="100%" stop-color="#5c8f3f"/>
+        <linearGradient id="flower-ext-recept" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#9ecb7f"/><stop offset="50%" stop-color="#6ba14a"/><stop offset="100%" stop-color="#4d7a34"/>
         </linearGradient>
-        <radialGradient id="flower-ovule" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#fff4d6"/><stop offset="100%" stop-color="#e8cf8a"/>
+        <radialGradient id="flower-ext-ovule" cx="38%" cy="32%" r="70%">
+          <stop offset="0%" stop-color="#fff8e2"/><stop offset="100%" stop-color="#e3c87d"/>
         </radialGradient>
       </defs>
-      <rect x="0" y="0" width="440" height="480" fill="url(#flower-sky)"/>
+      <rect x="0" y="0" width="440" height="480" fill="url(#flower-ext-sky)"/>
 
       <!-- 花梗 -->
-      <rect x="207" y="360" width="14" height="110" rx="6" fill="url(#flower-recept)" stroke="#4d7a34"/>
+      <path d="M207 366 C206 400 206 436 208 470 C213 470 217 470 221 470 C222 436 222 400 221 366 Z" fill="url(#flower-ext-recept)" stroke="#4d7a34" stroke-width="1.4"/>
 
       <!-- 花托 -->
-      <path data-part="花托" d="M180 372 Q214 400 248 372 Q240 352 214 350 Q188 352 180 372 Z" fill="url(#flower-recept)" stroke="#4d7a34"/>
+      <path data-part="花托" d="M178 372 C196 396 232 396 250 372 C242 350 214 346 214 346 C214 346 186 350 178 372 Z" fill="url(#flower-ext-recept)" stroke="#4d7a34" stroke-width="1.4"/>
 
-      <!-- 花萼（左右各一，綠色） -->
-      <path data-part="花萼" d="M180 366 Q150 348 128 300 Q168 342 196 356 Z" fill="url(#flower-sepal)" stroke="#2f6d3d"/>
-      <path data-part="花萼" d="M248 366 Q278 348 300 300 Q260 342 232 356 Z" fill="url(#flower-sepal)" stroke="#2f6d3d"/>
+      <!-- 花萼（左右各一，綠色，尖披針形） -->
+      <path data-part="花萼" d="M182 366 C154 350 132 314 122 288 C150 328 180 348 198 358 Z" fill="url(#flower-ext-sepal)" stroke="#2f6d3d" stroke-width="1.4"/>
+      <path data-part="花萼" d="M246 366 C274 350 296 314 306 288 C278 328 248 348 230 358 Z" fill="url(#flower-ext-sepal)" stroke="#2f6d3d" stroke-width="1.4"/>
 
-      <!-- 花瓣（外張，多片） -->
-      <path data-part="花瓣" d="M196 352 Q120 300 96 176 Q150 268 208 322 Z" fill="url(#flower-petal2)" stroke="#c04d8c"/>
-      <path data-part="花瓣" d="M232 352 Q312 300 336 176 Q282 268 224 322 Z" fill="url(#flower-petal2)" stroke="#c04d8c"/>
-      <path data-part="花瓣" d="M204 344 Q168 250 190 132 Q206 236 214 320 Z" fill="url(#flower-petal)" stroke="#a83b78"/>
-      <path data-part="花瓣" d="M228 344 Q264 250 242 132 Q226 236 218 320 Z" fill="url(#flower-petal)" stroke="#a83b78"/>
+      <!-- 花瓣（外張，柔和漸層＋縱向脈紋） -->
+      <path data-part="花瓣" d="M196 352 C132 316 100 236 92 168 C132 244 172 300 208 330 Z" fill="url(#flower-ext-petal2)" stroke="#cf5f97" stroke-width="1.3"/>
+      <path data-part="花瓣" d="M232 352 C296 316 328 236 336 168 C296 244 256 300 220 330 Z" fill="url(#flower-ext-petal2)" stroke="#cf5f97" stroke-width="1.3"/>
+      <path data-part="花瓣" d="M204 346 C176 258 182 176 200 124 C202 216 210 288 216 328 Z" fill="url(#flower-ext-petal)" stroke="#b83b7f" stroke-width="1.3"/>
+      <path data-part="花瓣" d="M228 346 C256 258 250 176 232 124 C230 216 222 288 216 328 Z" fill="url(#flower-ext-petal)" stroke="#b83b7f" stroke-width="1.3"/>
+      <!-- 花瓣脈紋與基部深色暈染 -->
+      <g fill="none" stroke="#c9558f" stroke-width="0.9" opacity="0.5">
+        <path d="M198 330 C158 288 130 232 116 186 M212 328 C198 250 200 180 208 132 M220 328 C234 250 232 180 224 132 M226 330 C266 288 294 232 308 186"/>
+      </g>
+      <path d="M196 352 C160 320 138 268 128 214 C170 280 200 316 214 336 C228 316 258 280 300 214 C290 268 268 320 232 352 C224 344 208 344 196 352 Z" fill="url(#flower-ext-petalcore)"/>
 
       <!-- 雄蕊：花絲 + 花藥（左右對稱數枚） -->
       <g>
-        <rect data-part="花絲" x="163" y="212" width="6" height="120" rx="3" fill="url(#flower-filament)" transform="rotate(-14 166 272)"/>
-        <ellipse data-part="花藥" cx="150" cy="206" rx="15" ry="22" fill="url(#flower-anther)" stroke="#b9800f" transform="rotate(-14 150 206)"/>
-        <rect data-part="花絲" x="271" y="212" width="6" height="120" rx="3" fill="url(#flower-filament)" transform="rotate(14 274 272)"/>
-        <ellipse data-part="花藥" cx="290" cy="206" rx="15" ry="22" fill="url(#flower-anther)" stroke="#b9800f" transform="rotate(14 290 206)"/>
-        <rect x="185" y="200" width="5" height="128" rx="2.5" fill="url(#flower-filament)" transform="rotate(-6 187 264)"/>
-        <ellipse cx="180" cy="196" rx="12" ry="18" fill="url(#flower-anther)" stroke="#b9800f"/>
-        <rect x="250" y="200" width="5" height="128" rx="2.5" fill="url(#flower-filament)" transform="rotate(6 253 264)"/>
-        <ellipse cx="260" cy="196" rx="12" ry="18" fill="url(#flower-anther)" stroke="#b9800f"/>
-        <circle cx="150" cy="200" r="1.6" fill="#fff2b0"/><circle cx="290" cy="200" r="1.6" fill="#fff2b0"/>
+        <path data-part="花絲" d="M170 330 C164 288 158 246 152 214" fill="none" stroke="url(#flower-ext-filament)" stroke-width="6" stroke-linecap="round"/>
+        <ellipse data-part="花藥" cx="150" cy="204" rx="14" ry="21" fill="url(#flower-ext-anther)" stroke="#b9800f" stroke-width="1.2" transform="rotate(-14 150 204)"/>
+        <path data-part="花絲" d="M270 330 C276 288 282 246 288 214" fill="none" stroke="url(#flower-ext-filament)" stroke-width="6" stroke-linecap="round"/>
+        <ellipse data-part="花藥" cx="290" cy="204" rx="14" ry="21" fill="url(#flower-ext-anther)" stroke="#b9800f" stroke-width="1.2" transform="rotate(14 290 204)"/>
+        <path d="M187 328 C184 286 181 244 180 210" fill="none" stroke="url(#flower-ext-filament)" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="180" cy="196" rx="11" ry="17" fill="url(#flower-ext-anther)" stroke="#b9800f" stroke-width="1"/>
+        <path d="M253 328 C256 286 259 244 260 210" fill="none" stroke="url(#flower-ext-filament)" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="260" cy="196" rx="11" ry="17" fill="url(#flower-ext-anther)" stroke="#b9800f" stroke-width="1"/>
+        <line x1="150" y1="192" x2="150" y2="216" stroke="#b9800f" stroke-width="0.8" opacity="0.6"/>
+        <line x1="290" y1="192" x2="290" y2="216" stroke="#b9800f" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="148" cy="196" r="1.6" fill="#fff6c8"/><circle cx="288" cy="196" r="1.6" fill="#fff6c8"/>
       </g>
 
       <!-- 雌蕊：柱頭 / 花柱 / 子房 / 胚珠 -->
-      <ellipse data-part="柱頭" cx="214" cy="150" rx="20" ry="12" fill="url(#flower-stigma)" stroke="#c79420"/>
-      <rect data-part="花柱" x="208" y="158" width="12" height="150" rx="6" fill="url(#flower-style)" stroke="#6ca34f"/>
-      <path data-part="子房" d="M182 308 Q182 262 214 258 Q246 262 246 308 Q246 356 214 362 Q182 356 182 308 Z" fill="url(#flower-ovary)" stroke="#5c9142"/>
-      <circle data-part="胚珠" cx="200" cy="316" r="9" fill="url(#flower-ovule)" stroke="#c7a651"/>
-      <circle data-part="胚珠" cx="228" cy="316" r="9" fill="url(#flower-ovule)" stroke="#c7a651"/>
-      <circle data-part="胚珠" cx="214" cy="338" r="9" fill="url(#flower-ovule)" stroke="#c7a651"/>
+      <ellipse data-part="柱頭" cx="214" cy="148" rx="20" ry="12" fill="url(#flower-ext-stigma)" stroke="#c79420" stroke-width="1.2"/>
+      <g stroke="#c79420" stroke-width="0.9" opacity="0.6"><line x1="200" y1="142" x2="196" y2="134"/><line x1="214" y1="139" x2="214" y2="130"/><line x1="228" y1="142" x2="232" y2="134"/></g>
+      <path data-part="花柱" d="M209 158 C208 210 208 262 210 306 C214 306 216 306 219 306 C221 262 220 210 219 158 Z" fill="url(#flower-ext-style)" stroke="#6ca34f" stroke-width="1.2"/>
+      <path data-part="子房" d="M182 308 C182 264 196 256 214 256 C232 256 246 264 246 308 C246 352 232 362 214 362 C196 362 182 352 182 308 Z" fill="url(#flower-ext-ovary)" stroke="#5c9142" stroke-width="1.4"/>
+      <circle data-part="胚珠" cx="200" cy="316" r="9" fill="url(#flower-ext-ovule)" stroke="#c7a651" stroke-width="1.1"/>
+      <circle data-part="胚珠" cx="228" cy="316" r="9" fill="url(#flower-ext-ovule)" stroke="#c7a651" stroke-width="1.1"/>
+      <circle data-part="胚珠" cx="214" cy="338" r="9" fill="url(#flower-ext-ovule)" stroke="#c7a651" stroke-width="1.1"/>
 
       <g class="labels">
         <line x1="118" y1="308" x2="60" y2="300" stroke="#666" stroke-width="1"/>
@@ -209,40 +220,61 @@ window.ANATOMY.register({
       viewBox: "0 0 420 460",
       svg: `
       <defs>
-        <linearGradient id="leaf-blade" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#6fc07a"/><stop offset="55%" stop-color="#3f9d5a"/><stop offset="100%" stop-color="#2c7a43"/>
+        <linearGradient id="leaf-ext-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f2f9ee"/><stop offset="100%" stop-color="#e7f2df"/>
         </linearGradient>
-        <linearGradient id="leaf-petiole" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8ec97a"/><stop offset="100%" stop-color="#5a9142"/>
+        <linearGradient id="leaf-ext-blade" x1="0.15" y1="0.05" x2="0.9" y2="0.95">
+          <stop offset="0%" stop-color="#8fd08c"/><stop offset="42%" stop-color="#57ab5f"/><stop offset="100%" stop-color="#2f7d41"/>
+        </linearGradient>
+        <radialGradient id="leaf-ext-sheen" cx="38%" cy="26%" r="62%">
+          <stop offset="0%" stop-color="#e9f8dd" stop-opacity="0.85"/><stop offset="45%" stop-color="#c6ebb4" stop-opacity="0.3"/><stop offset="100%" stop-color="#2f7d41" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="leaf-ext-shade" x1="0.9" y1="0.9" x2="0.3" y2="0.3">
+          <stop offset="0%" stop-color="#1f5c30" stop-opacity="0.5"/><stop offset="60%" stop-color="#1f5c30" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="leaf-ext-midrib" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#7cb06a"/><stop offset="45%" stop-color="#dff0cb"/><stop offset="100%" stop-color="#6ba05c"/>
+        </linearGradient>
+        <linearGradient id="leaf-ext-petiole" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#a7d68e"/><stop offset="45%" stop-color="#dff0cb"/><stop offset="100%" stop-color="#5f9445"/>
         </linearGradient>
       </defs>
-      <rect x="0" y="0" width="420" height="460" fill="#f5faf3"/>
+      <rect x="0" y="0" width="420" height="460" fill="url(#leaf-ext-bg)"/>
 
       <!-- 葉柄 -->
-      <rect data-part="葉柄" x="200" y="360" width="16" height="90" rx="8" fill="url(#leaf-petiole)" stroke="#4d7a34"/>
+      <path data-part="葉柄" d="M204 356 C202 392 200 420 202 452 C207 454 213 454 218 452 C220 420 218 392 216 356 Z" fill="url(#leaf-ext-petiole)" stroke="#4d7a34" stroke-width="1.4"/>
 
-      <!-- 葉片 -->
-      <path data-part="葉片" d="M208 44 C300 90 340 200 300 320 C270 400 236 372 208 366 C180 372 146 400 116 320 C76 200 116 90 208 44 Z" fill="url(#leaf-blade)" stroke="#2c7a43" stroke-width="1.5"/>
+      <!-- 葉片：柔軟卵形、先端漸尖 -->
+      <path data-part="葉片" d="M210 40 C266 62 314 118 322 196 C328 262 302 322 258 356 C238 372 224 366 210 362 C196 366 182 372 162 356 C118 322 92 262 98 196 C106 118 154 62 210 40 Z" fill="url(#leaf-ext-blade)" stroke="#276d38" stroke-width="1.7"/>
+      <!-- 光澤與陰影疊層（立體感） -->
+      <path d="M210 40 C266 62 314 118 322 196 C328 262 302 322 258 356 C238 372 224 366 210 362 C196 366 182 372 162 356 C118 322 92 262 98 196 C106 118 154 62 210 40 Z" fill="url(#leaf-ext-sheen)"/>
+      <path d="M210 40 C266 62 314 118 322 196 C328 262 302 322 258 356 C238 372 224 366 210 362 C196 366 182 372 162 356 C118 322 92 262 98 196 C106 118 154 62 210 40 Z" fill="url(#leaf-ext-shade)"/>
 
-      <!-- 主脈與側脈（葉脈） -->
-      <path data-part="葉脈" d="M208 52 L208 362" fill="none" stroke="#bfe3a6" stroke-width="4"/>
-      <path data-part="葉脈" d="M208 110 Q150 120 128 160 M208 110 Q266 120 288 160" fill="none" stroke="#bfe3a6" stroke-width="2"/>
-      <path data-part="葉脈" d="M208 170 Q140 178 116 224 M208 170 Q276 178 300 224" fill="none" stroke="#bfe3a6" stroke-width="2"/>
-      <path data-part="葉脈" d="M208 240 Q146 246 128 288 M208 240 Q270 246 288 288" fill="none" stroke="#bfe3a6" stroke-width="2"/>
-      <path data-part="葉脈" d="M208 300 Q158 306 146 336 M208 300 Q258 306 270 336" fill="none" stroke="#bfe3a6" stroke-width="2"/>
+      <!-- 主脈與側脈（葉脈）：曲線羽狀＋細網紋 -->
+      <path data-part="葉脈" d="M210 46 C210 140 208 260 210 358" fill="none" stroke="url(#leaf-ext-midrib)" stroke-width="6" stroke-linecap="round"/>
+      <g fill="none" stroke="#d3ecbc" stroke-width="2.2" stroke-linecap="round" opacity="0.9">
+        <path data-part="葉脈" d="M210 96 C176 106 148 128 122 158 M210 96 C244 106 272 128 298 158"/>
+        <path data-part="葉脈" d="M210 150 C170 160 140 186 112 222 M210 150 C250 160 280 186 308 222"/>
+        <path data-part="葉脈" d="M210 210 C172 220 146 246 124 284 M210 210 C248 220 274 246 296 284"/>
+        <path data-part="葉脈" d="M210 272 C180 282 160 302 146 330 M210 272 C240 282 260 302 274 330"/>
+      </g>
+      <!-- 細三級脈網紋 -->
+      <g fill="none" stroke="#bde0a2" stroke-width="1" opacity="0.55">
+        <path d="M180 118 q-14 18 -30 34 M234 128 q16 16 32 30 M172 176 q-16 20 -34 38 M248 182 q18 18 36 34 M176 240 q-14 20 -30 36 M244 244 q16 18 32 34"/>
+      </g>
 
-      <!-- 葉緣鋸齒示意 -->
-      <path data-part="葉緣" d="M300 320 l-14 6 l12 8 l-15 5" fill="none" stroke="#256b39" stroke-width="1.4"/>
+      <!-- 葉緣鋸齒示意（沿右下輪廓） -->
+      <path data-part="葉緣" d="M300 246 q-10 8 -6 18 q10 -4 14 4 q-6 10 4 14 q10 -2 12 8" fill="none" stroke="#1f5c30" stroke-width="1.5"/>
 
       <g class="labels">
-        <line x1="288" y1="200" x2="360" y2="170" stroke="#666" stroke-width="1"/>
-        <text x="352" y="164" font-size="13" fill="var(--ink)">葉片</text>
-        <line x1="208" y1="150" x2="58" y2="130" stroke="#666" stroke-width="1"/>
+        <line x1="292" y1="200" x2="366" y2="176" stroke="#666" stroke-width="1"/>
+        <text x="360" y="170" font-size="13" fill="var(--ink)">葉片</text>
+        <line x1="210" y1="150" x2="58" y2="130" stroke="#666" stroke-width="1"/>
         <text x="10" y="134" font-size="13" fill="var(--ink)">葉脈（主脈/側脈）</text>
-        <line x1="208" y1="410" x2="300" y2="424" stroke="#666" stroke-width="1"/>
-        <text x="304" y="428" font-size="13" fill="var(--ink)">葉柄</text>
-        <line x1="298" y1="330" x2="360" y2="340" stroke="#666" stroke-width="1"/>
-        <text x="352" y="356" font-size="13" fill="var(--ink)">葉緣</text>
+        <line x1="210" y1="420" x2="300" y2="430" stroke="#666" stroke-width="1"/>
+        <text x="304" y="434" font-size="13" fill="var(--ink)">葉柄</text>
+        <line x1="316" y1="280" x2="366" y2="300" stroke="#666" stroke-width="1"/>
+        <text x="358" y="316" font-size="13" fill="var(--ink)">葉緣</text>
       </g>`,
       parts: [
         { name: "葉片", desc: "葉扁平寬大的部分，含大量葉綠體行光合作用。" },
@@ -369,51 +401,64 @@ window.ANATOMY.register({
       viewBox: "0 0 420 460",
       svg: `
       <defs>
-        <linearGradient id="root-main" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#f0e2c6"/><stop offset="50%" stop-color="#e2cfa4"/><stop offset="100%" stop-color="#c7ac78"/>
+        <linearGradient id="root-ext-main" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#f4ead2"/><stop offset="42%" stop-color="#e6d3a9"/><stop offset="100%" stop-color="#bf9f68"/>
         </linearGradient>
-        <linearGradient id="root-cap" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#d9c191"/><stop offset="100%" stop-color="#b6935e"/>
+        <linearGradient id="root-ext-lat" x1="0" y1="0" x2="1" y2="0.3">
+          <stop offset="0%" stop-color="#eaddbd"/><stop offset="100%" stop-color="#c4a570"/>
         </linearGradient>
-        <linearGradient id="root-soil" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#efe6d3"/><stop offset="100%" stop-color="#e5d6ba"/>
+        <linearGradient id="root-ext-cap" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e0c896"/><stop offset="100%" stop-color="#a98550"/>
+        </linearGradient>
+        <linearGradient id="root-ext-soil" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f1e8d5"/><stop offset="18%" stop-color="#eaddc2"/><stop offset="100%" stop-color="#dcc9a4"/>
         </linearGradient>
       </defs>
-      <rect x="0" y="0" width="420" height="460" fill="url(#root-soil)"/>
+      <rect x="0" y="0" width="420" height="460" fill="url(#root-ext-soil)"/>
       <line x1="0" y1="40" x2="420" y2="40" stroke="#b9a377" stroke-width="1" stroke-dasharray="6 5"/>
       <text x="12" y="30" font-size="12" fill="#8a7550">地面</text>
 
-      <!-- 主根 -->
-      <path data-part="主根" d="M198 40 C196 150 190 250 204 340 C210 380 214 400 214 418 C214 400 220 370 226 330 C238 240 224 150 222 40 Z" fill="url(#root-main)" stroke="#a98d58"/>
+      <!-- 主根：漸細的錐狀直根，柔和貝茲輪廓 -->
+      <path data-part="主根" d="M196 40 C193 130 188 232 202 330 C207 372 212 396 214 420 C216 396 221 366 227 322 C240 226 224 132 224 40 Z" fill="url(#root-ext-main)" stroke="#9c7c48" stroke-width="1.6"/>
+      <!-- 主根縱向立體陰影 -->
+      <path d="M214 46 C210 150 206 250 214 416 C214 250 218 150 220 46 Z" fill="#8a6b3c" opacity="0.18"/>
+      <path d="M200 60 C197 150 193 240 205 340 C201 240 202 150 205 60 Z" fill="#fff4dc" opacity="0.4"/>
 
-      <!-- 側根 -->
-      <path data-part="側根" d="M204 130 C150 140 120 128 84 112" fill="none" stroke="url(#root-main)" stroke-width="9" stroke-linecap="round"/>
-      <path data-part="側根" d="M218 168 C280 178 312 168 350 150" fill="none" stroke="url(#root-main)" stroke-width="9" stroke-linecap="round"/>
-      <path data-part="側根" d="M206 220 C156 232 128 228 96 216" fill="none" stroke="url(#root-main)" stroke-width="8" stroke-linecap="round"/>
-      <path data-part="側根" d="M222 262 C276 274 306 272 340 262" fill="none" stroke="url(#root-main)" stroke-width="8" stroke-linecap="round"/>
+      <!-- 側根：分枝並帶次級細根 -->
+      <path data-part="側根" d="M202 126 C158 138 128 128 86 108 C120 122 156 132 200 132" fill="none" stroke="url(#root-ext-lat)" stroke-width="8" stroke-linecap="round"/>
+      <path data-part="側根" d="M216 166 C272 178 306 168 352 146 C312 166 268 176 214 172" fill="none" stroke="url(#root-ext-lat)" stroke-width="8" stroke-linecap="round"/>
+      <path data-part="側根" d="M204 220 C156 234 126 230 92 214 C126 232 162 238 202 226" fill="none" stroke="url(#root-ext-lat)" stroke-width="7" stroke-linecap="round"/>
+      <path data-part="側根" d="M222 260 C274 274 306 272 344 260 C306 276 268 280 218 266" fill="none" stroke="url(#root-ext-lat)" stroke-width="7" stroke-linecap="round"/>
+      <!-- 側根末端的細分枝 -->
+      <g fill="none" stroke="url(#root-ext-lat)" stroke-width="3.5" stroke-linecap="round">
+        <path d="M86 108 C72 100 66 90 60 80 M86 108 C74 114 66 122 58 126"/>
+        <path d="M352 146 C366 138 374 128 380 118 M352 146 C364 152 372 160 380 166"/>
+        <path d="M92 214 C80 210 72 202 64 194 M344 260 C356 256 364 250 372 244"/>
+      </g>
 
-      <!-- 根毛（吸收區） -->
-      <g stroke="#cbb27f" stroke-width="1.2">
-        <line x1="84" y1="112" x2="72" y2="104"/><line x1="84" y1="112" x2="70" y2="116"/><line x1="84" y1="112" x2="76" y2="124"/>
-        <line x1="350" y1="150" x2="362" y2="142"/><line x1="350" y1="150" x2="364" y2="154"/><line x1="350" y1="150" x2="358" y2="162"/>
-        <line x1="96" y1="216" x2="84" y2="210"/><line x1="96" y1="216" x2="82" y2="220"/>
-        <line x1="340" y1="262" x2="352" y2="256"/><line x1="340" y1="262" x2="354" y2="266"/>
+      <!-- 根毛（吸收區）：沿側根與根尖密生細鬚 -->
+      <g data-part="根毛" stroke="#c7ab77" stroke-width="1" stroke-linecap="round" opacity="0.85">
+        <line x1="86" y1="108" x2="76" y2="98"/><line x1="90" y1="112" x2="80" y2="122"/><line x1="100" y1="118" x2="92" y2="130"/>
+        <line x1="352" y1="146" x2="362" y2="136"/><line x1="348" y1="150" x2="360" y2="158"/><line x1="338" y1="152" x2="348" y2="164"/>
+        <line x1="92" y1="214" x2="82" y2="206"/><line x1="98" y1="218" x2="88" y2="228"/>
+        <line x1="344" y1="260" x2="354" y2="252"/><line x1="338" y1="264" x2="348" y2="272"/>
+        <line x1="206" y1="360" x2="196" y2="356"/><line x1="222" y1="360" x2="232" y2="356"/><line x1="204" y1="380" x2="194" y2="378"/><line x1="224" y1="380" x2="234" y2="378"/>
       </g>
 
       <!-- 生長區與根冠 -->
-      <rect data-part="生長區" x="204" y="374" width="24" height="30" fill="#f2e7cd" opacity="0.6"/>
-      <path data-part="根冠" d="M204 412 Q214 434 226 412 Q220 424 214 424 Q208 424 204 412 Z" fill="url(#root-cap)" stroke="#9c7c48"/>
+      <path data-part="生長區" d="M205 386 C205 378 225 378 224 386 C226 398 224 406 220 412 C214 408 210 408 208 412 C204 406 203 398 205 386 Z" fill="#f6ecd4" opacity="0.7" stroke="#d9c191" stroke-width="0.8"/>
+      <path data-part="根冠" d="M206 410 C208 428 220 428 224 410 C222 422 216 428 215 430 C214 428 208 422 206 410 Z" fill="url(#root-ext-cap)" stroke="#9c7c48" stroke-width="1.2"/>
 
       <g class="labels">
         <line x1="222" y1="90" x2="330" y2="70" stroke="#666" stroke-width="1"/>
         <text x="334" y="74" font-size="13" fill="var(--ink)">主根</text>
         <line x1="120" y1="128" x2="40" y2="150" stroke="#666" stroke-width="1"/>
         <text x="10" y="154" font-size="13" fill="var(--ink)">側根</text>
-        <line x1="72" y1="112" x2="30" y2="96" stroke="#666" stroke-width="1"/>
-        <text x="8" y="90" font-size="13" fill="var(--ink)">根毛（吸收水分）</text>
+        <line x1="76" y1="108" x2="30" y2="92" stroke="#666" stroke-width="1"/>
+        <text x="8" y="86" font-size="13" fill="var(--ink)">根毛（吸收水分）</text>
         <line x1="216" y1="386" x2="330" y2="360" stroke="#666" stroke-width="1"/>
         <text x="334" y="364" font-size="13" fill="var(--ink)">生長區（細胞分裂伸長）</text>
-        <line x1="214" y1="420" x2="330" y2="434" stroke="#666" stroke-width="1"/>
+        <line x1="214" y1="422" x2="330" y2="434" stroke="#666" stroke-width="1"/>
         <text x="334" y="438" font-size="13" fill="var(--ink)">根冠</text>
       </g>`,
       parts: [
@@ -665,39 +710,53 @@ window.ANATOMY.register({
       viewBox: "0 0 440 380",
       svg: `
       <defs>
-        <radialGradient id="seed-coat" cx="42%" cy="35%">
-          <stop offset="0%" stop-color="#d9b98a"/><stop offset="100%" stop-color="#a9773f"/>
+        <radialGradient id="seed-ext-coat" cx="38%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#e6c99a"/><stop offset="55%" stop-color="#c79a5f"/><stop offset="100%" stop-color="#9c6b34"/>
         </radialGradient>
-        <linearGradient id="seed-cotyl" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f2e7a8"/><stop offset="100%" stop-color="#d9c463"/>
+        <linearGradient id="seed-ext-cotyl" x1="0.2" y1="0" x2="0.8" y2="1">
+          <stop offset="0%" stop-color="#f6efb4"/><stop offset="60%" stop-color="#e6d276"/><stop offset="100%" stop-color="#cdb551"/>
         </linearGradient>
-        <linearGradient id="seed-endo" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#fbf0c4"/><stop offset="100%" stop-color="#ead98c"/>
+        <linearGradient id="seed-ext-endo" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#fdf4cd"/><stop offset="100%" stop-color="#e5d284"/>
         </linearGradient>
-        <linearGradient id="seed-embryo" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8ed07a"/><stop offset="100%" stop-color="#4d9d4d"/>
+        <linearGradient id="seed-ext-embryo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#9cd987"/><stop offset="100%" stop-color="#468f47"/>
         </linearGradient>
       </defs>
       <rect x="0" y="0" width="440" height="380" fill="#f7f4ea"/>
       <text x="52" y="30" font-size="14" fill="var(--ink)">雙子葉（如：菜豆）</text>
       <text x="278" y="30" font-size="14" fill="var(--ink)">單子葉（如：玉米）</text>
 
-      <!-- 雙子葉種子 -->
+      <!-- 雙子葉種子：腎形菜豆 -->
       <g transform="translate(120 210)">
-        <path data-part="種皮" d="M-88 0 Q-70 -96 0 -100 Q78 -96 92 0 Q78 96 0 100 Q-70 96 -88 0 Z" fill="url(#seed-coat)" stroke="#8a5f30" stroke-width="2"/>
-        <path data-part="子葉" d="M-70 -6 Q-40 -78 6 -74 Q34 -60 30 6 Q6 66 -40 60 Q-72 40 -70 -6 Z" fill="url(#seed-cotyl)" stroke="#c1a94e"/>
-        <path d="M-58 -2 Q-30 -60 8 -56 Q28 -44 24 4 Q6 48 -30 44 Q-58 30 -58 -2 Z" fill="url(#seed-cotyl)" opacity="0.55" stroke="#c1a94e" stroke-width="0.6"/>
-        <path data-part="胚芽" d="M40 -34 Q64 -46 74 -30 Q60 -24 52 -12 Q44 -24 40 -34 Z" fill="url(#seed-embryo)" stroke="#357f46"/>
-        <path data-part="胚根" d="M44 22 Q70 30 80 50 Q60 48 50 40 Q44 32 44 22 Z" fill="url(#seed-embryo)" stroke="#357f46"/>
+        <path data-part="種皮" d="M-86 -8 C-84 -70 -34 -104 20 -98 C64 -92 92 -54 90 -4 C88 56 44 100 -14 100 C-58 98 -88 62 -86 -8 Z" fill="url(#seed-ext-coat)" stroke="#8a5f30" stroke-width="2"/>
+        <!-- 種臍與種皮光澤 -->
+        <ellipse cx="-58" cy="8" rx="8" ry="14" fill="#7a5228" opacity="0.6"/>
+        <path d="M-70 -50 C-50 -84 -10 -92 26 -84" fill="none" stroke="#f1dcb4" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+        <!-- 子葉（貼合的兩片，帶陰影分界） -->
+        <path data-part="子葉" d="M-66 -10 C-58 -66 -14 -84 24 -78 C50 -70 58 -30 50 8 C40 60 -8 78 -44 66 C-66 56 -68 24 -66 -10 Z" fill="url(#seed-ext-cotyl)" stroke="#c1a94e" stroke-width="1.2"/>
+        <path d="M-52 -6 C-44 -54 -8 -70 22 -64 C42 -58 48 -26 42 6 C34 48 -4 62 -34 52 C-52 44 -54 20 -52 -6 Z" fill="#ead77e" opacity="0.5"/>
+        <path d="M-8 -74 C-6 -30 -6 20 -14 66" fill="none" stroke="#c1a94e" stroke-width="1" opacity="0.7"/>
+        <!-- 胚芽（幼小葉芽） -->
+        <path data-part="胚芽" d="M40 -36 C58 -50 76 -44 80 -26 C68 -22 58 -14 52 -6 C46 -18 42 -28 40 -36 Z" fill="url(#seed-ext-embryo)" stroke="#357f46" stroke-width="1.2"/>
+        <path d="M52 -34 C60 -40 68 -38 72 -30" fill="none" stroke="#2f6d3d" stroke-width="0.9" opacity="0.7"/>
+        <!-- 胚根（下端錐狀） -->
+        <path data-part="胚根" d="M44 20 C64 26 78 42 84 58 C68 54 56 48 48 40 C44 32 43 26 44 20 Z" fill="url(#seed-ext-embryo)" stroke="#357f46" stroke-width="1.2"/>
       </g>
 
-      <!-- 單子葉種子 -->
+      <!-- 單子葉種子：玉米粒 -->
       <g transform="translate(330 210)">
-        <path data-part="種皮" d="M-58 -86 Q60 -92 66 0 Q60 92 -58 86 Q-46 0 -58 -86 Z" fill="url(#seed-coat)" stroke="#8a5f30" stroke-width="2"/>
-        <path data-part="胚乳" d="M-40 -70 Q52 -74 56 0 Q52 74 -40 70 Q0 0 -40 -70 Z" fill="url(#seed-endo)" stroke="#d3c079"/>
-        <path data-part="子葉" d="M-46 -46 Q-14 -40 -12 0 Q-14 40 -46 46 Q-34 0 -46 -46 Z" fill="url(#seed-cotyl)" stroke="#c1a94e"/>
-        <path data-part="胚芽" d="M-40 -20 Q-20 -22 -18 -4 Q-30 -6 -40 -20 Z" fill="url(#seed-embryo)" stroke="#357f46"/>
-        <path data-part="胚根" d="M-40 20 Q-22 24 -18 40 Q-32 34 -40 20 Z" fill="url(#seed-embryo)" stroke="#357f46"/>
+        <path data-part="種皮" d="M-56 -84 C0 -98 58 -78 66 -4 C60 78 0 96 -54 84 C-46 60 -44 20 -50 -6 C-54 -34 -52 -60 -56 -84 Z" fill="url(#seed-ext-coat)" stroke="#8a5f30" stroke-width="2"/>
+        <path d="M40 -70 C58 -48 60 22 44 66" fill="none" stroke="#f1dcb4" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+        <!-- 胚乳（占大部分，帶顆粒質感） -->
+        <path data-part="胚乳" d="M-38 -68 C46 -76 56 -4 56 -2 C56 0 46 74 -38 66 C0 34 4 -30 -38 -68 Z" fill="url(#seed-ext-endo)" stroke="#d3c079" stroke-width="1.2"/>
+        <g fill="#dcc873" opacity="0.4"><circle cx="8" cy="-30" r="4"/><circle cx="22" cy="-8" r="3.5"/><circle cx="10" cy="18" r="4"/><circle cx="28" cy="24" r="3"/><circle cx="-4" cy="40" r="3.5"/></g>
+        <!-- 子葉（盾片，貼近胚乳的一片） -->
+        <path data-part="子葉" d="M-44 -48 C-14 -42 -10 0 -14 2 C-12 42 -44 48 -46 46 C-36 20 -34 -22 -44 -48 Z" fill="url(#seed-ext-cotyl)" stroke="#c1a94e" stroke-width="1.2"/>
+        <!-- 胚芽（上方鞘） -->
+        <path data-part="胚芽" d="M-40 -22 C-22 -26 -14 -12 -16 -2 C-28 -2 -38 -10 -40 -22 Z" fill="url(#seed-ext-embryo)" stroke="#357f46" stroke-width="1.2"/>
+        <!-- 胚根（下方鞘） -->
+        <path data-part="胚根" d="M-40 22 C-22 26 -14 12 -16 2 C-28 2 -38 10 -40 22 Z" fill="url(#seed-ext-embryo)" stroke="#357f46" stroke-width="1.2"/>
       </g>
 
       <g class="labels">
@@ -817,64 +876,77 @@ window.ANATOMY.register({
       viewBox: "0 0 440 560",
       svg: `
       <defs>
-        <linearGradient id="wp-sky" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="wp-ext-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#eaf6ff"/><stop offset="100%" stop-color="#f4fbf2"/>
         </linearGradient>
-        <linearGradient id="wp-soil" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e6d4b2"/><stop offset="100%" stop-color="#c9ad82"/>
+        <linearGradient id="wp-ext-soil" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ecdcbc"/><stop offset="18%" stop-color="#e2cea6"/><stop offset="100%" stop-color="#c6a87c"/>
         </linearGradient>
-        <linearGradient id="wp-stem" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#8ec97a"/><stop offset="50%" stop-color="#5a9142"/><stop offset="100%" stop-color="#3f6f2c"/>
+        <linearGradient id="wp-ext-stem" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#a3d488"/><stop offset="45%" stop-color="#5f9445"/><stop offset="100%" stop-color="#3a662a"/>
         </linearGradient>
-        <linearGradient id="wp-leaf" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#6fc07a"/><stop offset="100%" stop-color="#2c7a43"/>
+        <linearGradient id="wp-ext-leaf" x1="0.15" y1="0.1" x2="0.85" y2="0.95">
+          <stop offset="0%" stop-color="#84cd82"/><stop offset="55%" stop-color="#3f9d5a"/><stop offset="100%" stop-color="#276d38"/>
         </linearGradient>
-        <linearGradient id="wp-root" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#e2cfa4"/><stop offset="100%" stop-color="#c7ac78"/>
+        <linearGradient id="wp-ext-root" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#eadcbe"/><stop offset="100%" stop-color="#c2a26e"/>
         </linearGradient>
-        <linearGradient id="wp-petal" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f7a8cf"/><stop offset="100%" stop-color="#d6539a"/>
+        <linearGradient id="wp-ext-petal" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fbc0dc"/><stop offset="100%" stop-color="#d6539a"/>
         </linearGradient>
-        <radialGradient id="wp-fruit" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#ff8a6a"/><stop offset="100%" stop-color="#d63f2e"/>
+        <radialGradient id="wp-ext-fruit" cx="36%" cy="30%" r="72%">
+          <stop offset="0%" stop-color="#ff9c74"/><stop offset="60%" stop-color="#ec5a3a"/><stop offset="100%" stop-color="#c02f24"/>
         </radialGradient>
       </defs>
-      <rect x="0" y="0" width="440" height="380" fill="url(#wp-sky)"/>
-      <rect x="0" y="380" width="440" height="180" fill="url(#wp-soil)"/>
+      <rect x="0" y="0" width="440" height="380" fill="url(#wp-ext-sky)"/>
+      <rect x="0" y="380" width="440" height="180" fill="url(#wp-ext-soil)"/>
       <line x1="0" y1="380" x2="440" y2="380" stroke="#a9773f" stroke-width="1.5"/>
 
-      <!-- 莖 -->
-      <rect data-part="莖" x="212" y="120" width="16" height="262" rx="7" fill="url(#wp-stem)" stroke="#3f6f2c"/>
+      <!-- 莖：略帶起伏、有縱紋 -->
+      <path data-part="莖" d="M212 118 C210 200 209 300 210 382 C215 382 221 382 226 382 C227 300 226 200 224 118 Z" fill="url(#wp-ext-stem)" stroke="#3a662a" stroke-width="1.4"/>
+      <line x1="216" y1="130" x2="215" y2="378" stroke="#dff0cb" stroke-width="1.2" opacity="0.6"/>
+      <line x1="221" y1="130" x2="222" y2="378" stroke="#2f5522" stroke-width="0.9" opacity="0.4"/>
 
-      <!-- 葉 -->
-      <path data-part="葉" d="M214 300 C150 296 118 250 96 214 C150 236 196 262 216 300 Z" fill="url(#wp-leaf)" stroke="#2c7a43"/>
-      <path data-part="葉" d="M226 260 C290 256 322 210 344 174 C290 196 244 222 224 260 Z" fill="url(#wp-leaf)" stroke="#2c7a43"/>
-      <path data-part="葉" d="M214 210 C158 206 130 168 112 138 C160 156 198 176 216 210 Z" fill="url(#wp-leaf)" stroke="#2c7a43"/>
-      <path d="M118 214 Q160 250 214 300 M330 174 Q276 216 226 260 M124 138 Q170 174 214 210" fill="none" stroke="#bfe3a6" stroke-width="1.4"/>
+      <!-- 葉：卵形帶羽狀脈 -->
+      <path data-part="葉" d="M214 302 C158 300 118 262 92 214 C120 250 168 280 216 296 C218 298 216 302 214 302 Z" fill="url(#wp-ext-leaf)" stroke="#276d38" stroke-width="1.3"/>
+      <path data-part="葉" d="M226 262 C282 260 322 222 348 174 C320 210 272 240 224 256 C222 258 224 262 226 262 Z" fill="url(#wp-ext-leaf)" stroke="#276d38" stroke-width="1.3"/>
+      <path data-part="葉" d="M214 212 C162 210 128 176 108 132 C134 166 178 192 216 206 C218 208 216 212 214 212 Z" fill="url(#wp-ext-leaf)" stroke="#276d38" stroke-width="1.3"/>
+      <g fill="none" stroke="#bfe3a6" stroke-width="1.4" opacity="0.85">
+        <path d="M108 216 C150 250 190 278 214 300 M108 240 Q150 258 180 268 M150 236 Q170 258 190 280"/>
+        <path d="M334 176 Q288 214 226 260 M330 200 Q296 224 268 240 M300 190 Q278 220 250 246"/>
+        <path d="M120 136 C158 168 192 190 214 210 M124 158 Q160 176 186 186 M158 152 Q178 176 198 196"/>
+      </g>
 
       <!-- 花 -->
-      <g transform="translate(220 96)">
-        <path data-part="花" d="M0 -34 Q22 -22 0 0 Q-22 -22 0 -34 Z" fill="url(#wp-petal)"/>
-        <path data-part="花" d="M34 0 Q22 22 0 0 Q22 -22 34 0 Z" fill="url(#wp-petal)"/>
-        <path data-part="花" d="M0 34 Q-22 22 0 0 Q22 22 0 34 Z" fill="url(#wp-petal)"/>
-        <path data-part="花" d="M-34 0 Q-22 -22 0 0 Q-22 22 -34 0 Z" fill="url(#wp-petal)"/>
-        <circle cx="0" cy="0" r="10" fill="#ffd54a" stroke="#d99518"/>
+      <g transform="translate(220 94)">
+        <path data-part="花" d="M0 -36 C20 -30 20 -8 0 0 C-20 -8 -20 -30 0 -36 Z" fill="url(#wp-ext-petal)" stroke="#c74d90" stroke-width="0.8"/>
+        <path data-part="花" d="M36 0 C30 20 8 20 0 0 C8 -20 30 -20 36 0 Z" fill="url(#wp-ext-petal)" stroke="#c74d90" stroke-width="0.8"/>
+        <path data-part="花" d="M0 36 C-20 30 -20 8 0 0 C20 8 20 30 0 36 Z" fill="url(#wp-ext-petal)" stroke="#c74d90" stroke-width="0.8"/>
+        <path data-part="花" d="M-36 0 C-30 -20 -8 -20 0 0 C-8 20 -30 20 -36 0 Z" fill="url(#wp-ext-petal)" stroke="#c74d90" stroke-width="0.8"/>
+        <path data-part="花" d="M26 -26 C30 -12 16 -4 0 0 C4 -16 12 -22 26 -26 Z" fill="url(#wp-ext-petal)" stroke="#c74d90" stroke-width="0.7" opacity="0.9"/>
+        <path data-part="花" d="M-26 26 C-30 12 -16 4 0 0 C-4 16 -12 22 -26 26 Z" fill="url(#wp-ext-petal)" stroke="#c74d90" stroke-width="0.7" opacity="0.9"/>
+        <circle cx="0" cy="0" r="11" fill="#ffd54a" stroke="#d99518" stroke-width="1.2"/>
+        <g fill="#c9860f"><circle cx="-4" cy="-3" r="1.6"/><circle cx="4" cy="-2" r="1.6"/><circle cx="0" cy="4" r="1.6"/><circle cx="-3" cy="3" r="1.4"/><circle cx="4" cy="3" r="1.4"/></g>
       </g>
 
       <!-- 果實（內含種子） -->
+      <line x1="228" y1="140" x2="278" y2="130" stroke="#3a662a" stroke-width="4" stroke-linecap="round"/>
       <g transform="translate(300 130)">
-        <circle data-part="果實" cx="0" cy="0" r="26" fill="url(#wp-fruit)" stroke="#a83023"/>
-        <circle data-part="種子" cx="-6" cy="2" r="4.5" fill="#efe0c2" stroke="#a9773f"/>
-        <circle data-part="種子" cx="7" cy="-2" r="4.5" fill="#efe0c2" stroke="#a9773f"/>
-        <circle data-part="種子" cx="2" cy="9" r="4.5" fill="#efe0c2" stroke="#a9773f"/>
+        <circle data-part="果實" cx="0" cy="0" r="26" fill="url(#wp-ext-fruit)" stroke="#a83023" stroke-width="1.4"/>
+        <ellipse cx="-9" cy="-9" rx="8" ry="5" fill="#ffd9c4" opacity="0.6"/>
+        <circle data-part="種子" cx="-6" cy="2" r="4.5" fill="#efe0c2" stroke="#a9773f" stroke-width="1"/>
+        <circle data-part="種子" cx="7" cy="-2" r="4.5" fill="#efe0c2" stroke="#a9773f" stroke-width="1"/>
+        <circle data-part="種子" cx="2" cy="9" r="4.5" fill="#efe0c2" stroke="#a9773f" stroke-width="1"/>
       </g>
-      <line x1="228" y1="140" x2="278" y2="130" stroke="#3f6f2c" stroke-width="4"/>
 
-      <!-- 根 -->
-      <path data-part="根" d="M212 382 C210 430 206 470 216 510 C222 470 228 430 228 382 Z" fill="url(#wp-root)" stroke="#a98d58"/>
-      <path data-part="根" d="M214 410 C168 420 138 414 104 402" fill="none" stroke="url(#wp-root)" stroke-width="7" stroke-linecap="round"/>
-      <path data-part="根" d="M224 440 C276 450 306 446 340 436" fill="none" stroke="url(#wp-root)" stroke-width="7" stroke-linecap="round"/>
-      <path data-part="根" d="M214 470 C176 480 150 478 120 470" fill="none" stroke="url(#wp-root)" stroke-width="6" stroke-linecap="round"/>
+      <!-- 根：直根＋側根 -->
+      <path data-part="根" d="M211 382 C209 428 205 468 214 512 C222 468 227 428 227 382 Z" fill="url(#wp-ext-root)" stroke="#a98d58" stroke-width="1.4"/>
+      <path data-part="根" d="M214 410 C168 420 138 414 100 400 C136 416 172 424 216 422" fill="none" stroke="url(#wp-ext-root)" stroke-width="6" stroke-linecap="round"/>
+      <path data-part="根" d="M224 440 C276 450 306 446 344 434 C308 452 268 458 220 448" fill="none" stroke="url(#wp-ext-root)" stroke-width="6" stroke-linecap="round"/>
+      <path data-part="根" d="M214 470 C176 480 150 478 118 468 C150 482 182 486 216 480" fill="none" stroke="url(#wp-ext-root)" stroke-width="5" stroke-linecap="round"/>
+      <g fill="none" stroke="url(#wp-ext-root)" stroke-width="2.5" stroke-linecap="round">
+        <path d="M100 400 C88 394 80 386 74 378 M344 434 C356 428 364 422 370 414 M118 468 C106 464 98 458 92 450"/>
+      </g>
 
       <!-- 器官分組標示 -->
       <rect x="352" y="60" width="14" height="14" rx="3" fill="#3f9d5a"/>

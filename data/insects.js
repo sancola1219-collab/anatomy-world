@@ -20,74 +20,106 @@ window.ANATOMY.register({
       viewBox: "0 0 460 420",
       svg: `
       <defs>
-        <linearGradient id="butterfly-wingU" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#ff9d2e"/>
-          <stop offset="45%" stop-color="#f4711b"/>
-          <stop offset="100%" stop-color="#b23c0a"/>
-        </linearGradient>
-        <linearGradient id="butterfly-wingL" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#ffb648"/>
-          <stop offset="100%" stop-color="#c9560f"/>
-        </linearGradient>
-        <linearGradient id="butterfly-body" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#5a4632"/>
-          <stop offset="100%" stop-color="#241a10"/>
-        </linearGradient>
-        <radialGradient id="butterfly-eye" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#4a4a52"/>
-          <stop offset="100%" stop-color="#141416"/>
+        <radialGradient id="butterfly-ext-wingU" cx="72%" cy="60%" r="80%">
+          <stop offset="0%" stop-color="#ffd27a"/>
+          <stop offset="30%" stop-color="#ff9d2e"/>
+          <stop offset="62%" stop-color="#f4711b"/>
+          <stop offset="100%" stop-color="#a83607"/>
         </radialGradient>
+        <radialGradient id="butterfly-ext-wingL" cx="78%" cy="35%" r="85%">
+          <stop offset="0%" stop-color="#ffc95f"/>
+          <stop offset="55%" stop-color="#ee8018"/>
+          <stop offset="100%" stop-color="#b0480c"/>
+        </radialGradient>
+        <linearGradient id="butterfly-ext-body" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#1c130a"/>
+          <stop offset="42%" stop-color="#5a4632"/>
+          <stop offset="60%" stop-color="#6b5540"/>
+          <stop offset="100%" stop-color="#221810"/>
+        </linearGradient>
+        <radialGradient id="butterfly-ext-eye" cx="38%" cy="32%" r="75%">
+          <stop offset="0%" stop-color="#5b5b64"/>
+          <stop offset="60%" stop-color="#26262c"/>
+          <stop offset="100%" stop-color="#0e0e10"/>
+        </radialGradient>
+        <radialGradient id="butterfly-ext-spot" cx="42%" cy="38%" r="70%">
+          <stop offset="0%" stop-color="#3a4fb0"/>
+          <stop offset="100%" stop-color="#101a44"/>
+        </radialGradient>
+        <pattern id="butterfly-ext-scale" width="7" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(12)">
+          <path d="M0 5 Q3.5 1 7 5" fill="none" stroke="#8a3a06" stroke-width="0.5" opacity="0.35"/>
+        </pattern>
       </defs>
 
       <!-- 左翅 -->
       <g>
         <!-- 前翅（上） -->
-        <path data-part="翅（前翅）" d="M230 150 C150 60 60 60 40 130 C25 185 70 210 150 200 C200 193 225 175 230 150 Z" fill="url(#butterfly-wingU)" stroke="#5a2400" stroke-width="2"/>
+        <path data-part="翅（前翅）" d="M228 150 C186 96 120 52 62 60 C24 66 20 116 40 150 C64 190 150 206 200 196 C221 191 228 172 228 150 Z" fill="url(#butterfly-ext-wingU)" stroke="#5a2400" stroke-width="1.8"/>
+        <path d="M228 150 C186 96 120 52 62 60 C24 66 20 116 40 150 C64 190 150 206 200 196 C221 191 228 172 228 150 Z" fill="url(#butterfly-ext-scale)"/>
         <!-- 後翅（下） -->
-        <path data-part="翅（後翅）" d="M230 175 C185 210 90 215 70 270 C58 310 110 330 165 300 C205 278 228 220 230 175 Z" fill="url(#butterfly-wingL)" stroke="#5a2400" stroke-width="2"/>
-        <!-- 翅脈 + 斑點 -->
-        <path d="M60 130 L200 165 M70 165 L205 180 M90 250 L215 205 M120 290 L200 210" stroke="#7a3405" stroke-width="1.2" fill="none" opacity="0.7"/>
-        <circle cx="95" cy="130" r="9" fill="#3a1a05" opacity="0.85"/>
-        <circle cx="130" cy="270" r="8" fill="#fff3d6" opacity="0.9"/>
+        <path data-part="翅（後翅）" d="M228 178 C190 206 118 214 78 258 C50 290 64 332 108 328 C158 323 204 274 224 224 C230 208 230 192 228 178 Z" fill="url(#butterfly-ext-wingL)" stroke="#5a2400" stroke-width="1.8"/>
+        <path d="M228 178 C190 206 118 214 78 258 C50 290 64 332 108 328 C158 323 204 274 224 224 C230 208 230 192 228 178 Z" fill="url(#butterfly-ext-scale)"/>
+        <!-- 翅緣深色帶 -->
+        <path d="M62 60 C24 66 20 116 40 150 C64 190 150 206 200 196" fill="none" stroke="#3a1804" stroke-width="6" opacity="0.5"/>
+        <path d="M78 258 C50 290 64 332 108 328 C158 323 204 274 224 224" fill="none" stroke="#3a1804" stroke-width="6" opacity="0.5"/>
+        <!-- 翅脈（放射狀） -->
+        <path d="M222 152 L70 96 M222 158 L52 132 M222 166 L64 168 M220 176 L96 214 M218 190 L110 268 M216 200 L128 312" stroke="#7a3405" stroke-width="1.1" fill="none" opacity="0.6"/>
+        <!-- 前翅眼斑 + 後翅白斑列 -->
+        <circle cx="118" cy="112" r="12" fill="url(#butterfly-ext-spot)"/>
+        <circle cx="118" cy="112" r="4" fill="#fff3d6" opacity="0.9"/>
+        <circle cx="94" cy="268" r="6" fill="#fff3d6" opacity="0.85"/>
+        <circle cx="128" cy="290" r="6" fill="#fff3d6" opacity="0.85"/>
+        <circle cx="164" cy="296" r="5" fill="#fff3d6" opacity="0.85"/>
       </g>
 
       <!-- 右翅（鏡像） -->
-      <g transform="translate(460,0) scale(-1,1)">
-        <path d="M230 150 C150 60 60 60 40 130 C25 185 70 210 150 200 C200 193 225 175 230 150 Z" fill="url(#butterfly-wingU)" stroke="#5a2400" stroke-width="2"/>
-        <path d="M230 175 C185 210 90 215 70 270 C58 310 110 330 165 300 C205 278 228 220 230 175 Z" fill="url(#butterfly-wingL)" stroke="#5a2400" stroke-width="2"/>
-        <path d="M60 130 L200 165 M70 165 L205 180 M90 250 L215 205 M120 290 L200 210" stroke="#7a3405" stroke-width="1.2" fill="none" opacity="0.7"/>
-        <circle cx="95" cy="130" r="9" fill="#3a1a05" opacity="0.85"/>
-        <circle cx="130" cy="270" r="8" fill="#fff3d6" opacity="0.9"/>
+      <g transform="translate(456,0) scale(-1,1)">
+        <path d="M228 150 C186 96 120 52 62 60 C24 66 20 116 40 150 C64 190 150 206 200 196 C221 191 228 172 228 150 Z" fill="url(#butterfly-ext-wingU)" stroke="#5a2400" stroke-width="1.8"/>
+        <path d="M228 150 C186 96 120 52 62 60 C24 66 20 116 40 150 C64 190 150 206 200 196 C221 191 228 172 228 150 Z" fill="url(#butterfly-ext-scale)"/>
+        <path d="M228 178 C190 206 118 214 78 258 C50 290 64 332 108 328 C158 323 204 274 224 224 C230 208 230 192 228 178 Z" fill="url(#butterfly-ext-wingL)" stroke="#5a2400" stroke-width="1.8"/>
+        <path d="M228 178 C190 206 118 214 78 258 C50 290 64 332 108 328 C158 323 204 274 224 224 C230 208 230 192 228 178 Z" fill="url(#butterfly-ext-scale)"/>
+        <path d="M62 60 C24 66 20 116 40 150 C64 190 150 206 200 196" fill="none" stroke="#3a1804" stroke-width="6" opacity="0.5"/>
+        <path d="M78 258 C50 290 64 332 108 328 C158 323 204 274 224 224" fill="none" stroke="#3a1804" stroke-width="6" opacity="0.5"/>
+        <path d="M222 152 L70 96 M222 158 L52 132 M222 166 L64 168 M220 176 L96 214 M218 190 L110 268 M216 200 L128 312" stroke="#7a3405" stroke-width="1.1" fill="none" opacity="0.6"/>
+        <circle cx="118" cy="112" r="12" fill="url(#butterfly-ext-spot)"/>
+        <circle cx="118" cy="112" r="4" fill="#fff3d6" opacity="0.9"/>
+        <circle cx="94" cy="268" r="6" fill="#fff3d6" opacity="0.85"/>
+        <circle cx="128" cy="290" r="6" fill="#fff3d6" opacity="0.85"/>
+        <circle cx="164" cy="296" r="5" fill="#fff3d6" opacity="0.85"/>
       </g>
 
       <!-- 身體 三段 -->
-      <ellipse data-part="頭部" cx="230" cy="120" rx="17" ry="16" fill="url(#butterfly-body)" stroke="#160f08"/>
-      <ellipse data-part="胸部" cx="230" cy="165" rx="15" ry="30" fill="url(#butterfly-body)" stroke="#160f08"/>
-      <path data-part="腹部" d="M215 190 C215 260 245 260 245 190 Z" fill="url(#butterfly-body)" stroke="#160f08"/>
+      <ellipse data-part="頭部" cx="228" cy="118" rx="15" ry="14" fill="url(#butterfly-ext-body)" stroke="#160f08" stroke-width="1.4"/>
+      <path data-part="胸部" d="M214 138 C214 128 242 128 242 138 C246 158 244 186 228 190 C212 186 210 158 214 138 Z" fill="url(#butterfly-ext-body)" stroke="#160f08" stroke-width="1.4"/>
+      <!-- 胸部絨毛 -->
+      <path d="M220 136 L216 128 M228 134 L228 126 M236 136 L240 128 M222 148 L217 143 M234 148 L239 143" stroke="#7a6448" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
+      <path data-part="腹部" d="M218 190 C216 250 240 250 238 190 Z" fill="url(#butterfly-ext-body)" stroke="#160f08" stroke-width="1.4"/>
       <!-- 腹部環節 -->
-      <path d="M218 205 H242 M219 220 H241 M221 235 H239 M223 248 H237" stroke="#0e0a06" stroke-width="1" opacity="0.6"/>
+      <path d="M219 204 H237 M220 218 H236 M222 232 H234 M223 244 H233" stroke="#0e0a06" stroke-width="1" opacity="0.55"/>
 
       <!-- 複眼 -->
-      <circle data-part="複眼" cx="222" cy="115" r="6" fill="url(#butterfly-eye)"/>
-      <circle cx="238" cy="115" r="6" fill="url(#butterfly-eye)"/>
+      <circle data-part="複眼" cx="221" cy="114" r="6" fill="url(#butterfly-ext-eye)"/>
+      <circle cx="235" cy="114" r="6" fill="url(#butterfly-ext-eye)"/>
+      <circle cx="219" cy="112" r="1.6" fill="#fff" opacity="0.7"/>
+      <circle cx="233" cy="112" r="1.6" fill="#fff" opacity="0.7"/>
 
       <!-- 觸角（棒狀） -->
-      <path data-part="觸角" d="M225 108 C210 80 200 55 190 42" stroke="#2a1c10" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-      <path d="M235 108 C250 80 260 55 270 42" stroke="#2a1c10" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-      <circle cx="190" cy="42" r="4" fill="#2a1c10"/>
-      <circle cx="270" cy="42" r="4" fill="#2a1c10"/>
+      <path data-part="觸角" d="M224 106 C210 78 200 54 190 40" stroke="#2a1c10" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <path d="M232 106 C246 78 256 54 266 40" stroke="#2a1c10" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="190" cy="40" rx="3.5" ry="5" fill="#2a1c10"/>
+      <ellipse cx="266" cy="40" rx="3.5" ry="5" fill="#2a1c10"/>
 
       <!-- 口器 虹吸式（捲曲吸管） -->
-      <path data-part="口器（虹吸式）" d="M230 133 C232 150 244 158 240 145 C236 134 230 140 230 133 Z" fill="none" stroke="#c98a2e" stroke-width="2.2"/>
+      <path data-part="口器（虹吸式）" d="M228 130 C230 148 244 156 242 142 C240 130 232 138 234 130" fill="none" stroke="#c98a2e" stroke-width="2" stroke-linecap="round"/>
 
       <!-- 六足 -->
-      <g data-part="足（六足）" stroke="#241a10" stroke-width="2.2" fill="none" stroke-linecap="round">
-        <path d="M218 150 C200 158 195 172 190 184"/>
-        <path d="M218 162 C198 172 192 188 188 202"/>
-        <path d="M218 174 C200 186 196 202 194 216"/>
-        <path d="M242 150 C260 158 265 172 270 184"/>
-        <path d="M242 162 C262 172 268 188 272 202"/>
-        <path d="M242 174 C260 186 264 202 266 216"/>
+      <g data-part="足（六足）" stroke="#241a10" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M216 148 C200 156 195 170 190 182"/>
+        <path d="M216 160 C198 170 192 186 188 200"/>
+        <path d="M216 172 C200 184 196 200 194 214"/>
+        <path d="M240 148 C256 156 261 170 266 182"/>
+        <path d="M240 160 C258 170 264 186 268 200"/>
+        <path d="M240 172 C256 184 260 200 262 214"/>
       </g>
 
       <g class="labels">
@@ -218,55 +250,81 @@ window.ANATOMY.register({
       viewBox: "0 0 400 480",
       svg: `
       <defs>
-        <linearGradient id="beetle-shell" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#5fd39a"/>
-          <stop offset="35%" stop-color="#1f8f5a"/>
-          <stop offset="70%" stop-color="#0d5a37"/>
-          <stop offset="100%" stop-color="#04331e"/>
+        <radialGradient id="beetle-ext-shell" cx="38%" cy="22%" r="90%">
+          <stop offset="0%" stop-color="#8ff0c0"/>
+          <stop offset="28%" stop-color="#2fb374"/>
+          <stop offset="60%" stop-color="#128f56"/>
+          <stop offset="85%" stop-color="#0a5a37"/>
+          <stop offset="100%" stop-color="#043320"/>
+        </radialGradient>
+        <linearGradient id="beetle-ext-pronotum" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#6fd8a0"/>
+          <stop offset="55%" stop-color="#1a9a60"/>
+          <stop offset="100%" stop-color="#06422a"/>
         </linearGradient>
-        <linearGradient id="beetle-hind" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#d9e6f2"/>
+        <linearGradient id="beetle-ext-hind" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#e4eefa"/>
           <stop offset="100%" stop-color="#9fb6cf"/>
         </linearGradient>
-        <radialGradient id="beetle-head" cx="40%" cy="30%">
-          <stop offset="0%" stop-color="#2a7a4e"/>
-          <stop offset="100%" stop-color="#08301c"/>
+        <radialGradient id="beetle-ext-head" cx="40%" cy="28%" r="80%">
+          <stop offset="0%" stop-color="#3a9a64"/>
+          <stop offset="100%" stop-color="#06301c"/>
+        </radialGradient>
+        <radialGradient id="beetle-ext-sheen" cx="50%" cy="30%" r="60%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
         </radialGradient>
       </defs>
 
       <!-- 後翅（掀開的膜質翅，示意在左側外露） -->
-      <path data-part="後翅（膜質翅）" d="M150 210 C90 200 55 260 70 330 C82 380 130 360 160 300 C172 275 168 240 150 210 Z" fill="url(#beetle-hind)" stroke="#7f97b3" opacity="0.85"/>
-      <path d="M110 240 L150 300 M95 275 L155 320 M100 310 L150 335" stroke="#7f97b3" stroke-width="0.8" fill="none" opacity="0.8"/>
+      <path data-part="後翅（膜質翅）" d="M150 210 C90 196 52 258 66 332 C78 384 128 362 160 300 C173 274 170 240 150 210 Z" fill="url(#beetle-ext-hind)" stroke="#7f97b3" opacity="0.85"/>
+      <path d="M118 232 C130 280 142 312 152 336 M100 262 C118 296 138 322 156 340 M96 302 C118 322 138 334 152 342" stroke="#7f97b3" stroke-width="0.7" fill="none" opacity="0.75"/>
 
       <!-- 頭部 -->
-      <ellipse data-part="頭部" cx="200" cy="90" rx="34" ry="28" fill="url(#beetle-head)" stroke="#052316"/>
+      <ellipse data-part="頭部" cx="200" cy="88" rx="33" ry="27" fill="url(#beetle-ext-head)" stroke="#052316" stroke-width="1.6"/>
       <!-- 大顎 -->
-      <path data-part="大顎" d="M186 66 C176 52 170 52 176 66 M214 66 C224 52 230 52 224 66" stroke="#052316" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path data-part="大顎" d="M186 64 C176 48 168 48 174 64 C177 70 183 68 186 64 Z M214 64 C224 48 232 48 226 64 C223 70 217 68 214 64 Z" fill="url(#beetle-ext-head)" stroke="#052316" stroke-width="1.6"/>
       <!-- 複眼 -->
-      <circle cx="180" cy="86" r="7" fill="#0a1410"/>
-      <circle cx="220" cy="86" r="7" fill="#0a1410"/>
+      <circle cx="180" cy="84" r="7" fill="#0a1410"/>
+      <circle cx="220" cy="84" r="7" fill="#0a1410"/>
+      <circle cx="178" cy="82" r="2" fill="#5fb98a" opacity="0.7"/>
+      <circle cx="218" cy="82" r="2" fill="#5fb98a" opacity="0.7"/>
       <!-- 觸角 -->
-      <path data-part="觸角" d="M184 72 C160 55 150 44 138 40 M216 72 C240 55 250 44 262 40" stroke="#0a2a1a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path data-part="觸角" d="M184 70 C160 54 150 44 138 40 M216 70 C240 54 250 44 262 40" stroke="#0a2a1a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <circle cx="138" cy="40" r="3" fill="#0a2a1a"/>
+      <circle cx="262" cy="40" r="3" fill="#0a2a1a"/>
 
       <!-- 前胸背板 -->
-      <path data-part="前胸背板" d="M155 118 C160 105 240 105 245 118 C252 140 245 160 200 162 C155 160 148 140 155 118 Z" fill="url(#beetle-shell)" stroke="#052316"/>
+      <path data-part="前胸背板" d="M154 118 C158 104 242 104 246 118 C253 141 244 161 200 163 C156 161 147 141 154 118 Z" fill="url(#beetle-ext-pronotum)" stroke="#052316" stroke-width="1.6"/>
+      <ellipse cx="185" cy="122" rx="22" ry="9" fill="url(#beetle-ext-sheen)" opacity="0.5"/>
 
       <!-- 鞘翅（前翅，硬化） -->
-      <path data-part="鞘翅（前翅）" d="M158 165 C158 155 242 155 242 165 C258 260 250 400 200 430 C150 400 142 260 158 165 Z" fill="url(#beetle-shell)" stroke="#052316" stroke-width="2"/>
-      <!-- 中縫 + 縱溝 -->
-      <line x1="200" y1="165" x2="200" y2="428" stroke="#04331e" stroke-width="2"/>
-      <path d="M178 175 C172 260 175 360 190 415 M222 175 C228 260 225 360 210 415 M165 185 C162 260 168 340 185 400 M235 185 C238 260 232 340 215 400" stroke="#063d24" stroke-width="1" fill="none" opacity="0.7"/>
-      <!-- 高光 -->
-      <path d="M170 175 C168 240 172 320 185 380" stroke="#7fe0b0" stroke-width="2" fill="none" opacity="0.55"/>
+      <path data-part="鞘翅（前翅）" d="M158 166 C158 156 242 156 242 166 C260 262 250 402 200 432 C150 402 140 262 158 166 Z" fill="url(#beetle-ext-shell)" stroke="#052316" stroke-width="2"/>
+      <!-- 中縫 + 縱溝（凹刻列） -->
+      <line x1="200" y1="166" x2="200" y2="430" stroke="#04331e" stroke-width="2"/>
+      <path d="M178 176 C172 262 175 362 190 417 M222 176 C228 262 225 362 210 417 M165 186 C162 262 168 342 185 402 M235 186 C238 262 232 342 215 402 M156 210 C155 280 162 350 182 400 M244 210 C245 280 238 350 218 400" stroke="#063d24" stroke-width="1" fill="none" opacity="0.6"/>
+      <!-- 刻點列 -->
+      <g fill="#04331e" opacity="0.45">
+        <circle cx="178" cy="210" r="1"/><circle cx="178" cy="240" r="1"/><circle cx="180" cy="270" r="1"/><circle cx="182" cy="300" r="1"/>
+        <circle cx="222" cy="210" r="1"/><circle cx="222" cy="240" r="1"/><circle cx="220" cy="270" r="1"/><circle cx="218" cy="300" r="1"/>
+      </g>
+      <!-- 金屬高光 -->
+      <path d="M172 180 C168 240 172 320 184 382" stroke="#aaf5cc" stroke-width="2.4" fill="none" opacity="0.6"/>
+      <ellipse cx="176" cy="200" rx="10" ry="26" fill="url(#beetle-ext-sheen)" opacity="0.5"/>
 
       <!-- 六足（外骨骼分節） -->
       <g data-part="足（六足）" stroke="#08301c" stroke-width="4" fill="none" stroke-linecap="round">
-        <path d="M158 175 C120 175 100 195 82 210"/>
-        <path d="M155 250 C112 250 90 275 70 292"/>
-        <path d="M160 330 C120 340 96 372 78 392"/>
-        <path d="M242 175 C280 175 300 195 318 210"/>
-        <path d="M245 250 C288 250 310 275 330 292"/>
-        <path d="M240 330 C280 340 304 372 322 392"/>
+        <path d="M158 176 C120 174 100 194 82 208"/>
+        <path d="M155 250 C112 250 90 274 70 291"/>
+        <path d="M162 330 C122 340 98 372 80 392"/>
+        <path d="M242 176 C280 174 300 194 318 208"/>
+        <path d="M245 250 C288 250 310 274 330 291"/>
+        <path d="M238 330 C278 340 302 372 320 392"/>
+      </g>
+      <!-- 足脛節分節點 -->
+      <g fill="#043320">
+        <circle cx="100" cy="196" r="2.4"/><circle cx="90" cy="274" r="2.4"/><circle cx="98" cy="372" r="2.4"/>
+        <circle cx="300" cy="196" r="2.4"/><circle cx="310" cy="274" r="2.4"/><circle cx="302" cy="372" r="2.4"/>
       </g>
 
       <g class="labels">
@@ -318,53 +376,70 @@ window.ANATOMY.register({
       viewBox: "0 0 460 300",
       svg: `
       <defs>
-        <linearGradient id="bee-thorax" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#8a5a1e"/>
-          <stop offset="100%" stop-color="#4a2f0c"/>
+        <radialGradient id="bee-ext-thorax" cx="42%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#b78740"/>
+          <stop offset="55%" stop-color="#8a5a1e"/>
+          <stop offset="100%" stop-color="#43290a"/>
+        </radialGradient>
+        <linearGradient id="bee-ext-abdomen" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffe081"/>
+          <stop offset="45%" stop-color="#f6c534"/>
+          <stop offset="100%" stop-color="#c98e14"/>
         </linearGradient>
-        <linearGradient id="bee-abdomen" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#f6c534"/>
-          <stop offset="100%" stop-color="#d99a17"/>
+        <linearGradient id="bee-ext-wing" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f4f8fd" stop-opacity="0.92"/>
+          <stop offset="100%" stop-color="#c3d2e4" stop-opacity="0.55"/>
         </linearGradient>
-        <linearGradient id="bee-wing" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#eef4fb" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="#c3d2e4" stop-opacity="0.6"/>
-        </linearGradient>
-        <radialGradient id="bee-eye" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#5a4a34"/>
-          <stop offset="100%" stop-color="#1a120a"/>
+        <radialGradient id="bee-ext-eye" cx="38%" cy="32%" r="75%">
+          <stop offset="0%" stop-color="#6a5638"/>
+          <stop offset="100%" stop-color="#171009"/>
+        </radialGradient>
+        <radialGradient id="bee-ext-head" cx="42%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#5a4020"/>
+          <stop offset="100%" stop-color="#241505"/>
         </radialGradient>
       </defs>
 
       <!-- 翅（兩對，半透明） -->
-      <path data-part="翅（兩對膜質翅）" d="M195 95 C130 40 70 40 60 80 C55 108 110 118 175 108 Z" fill="url(#bee-wing)" stroke="#9fb2c8"/>
-      <path d="M200 100 C150 60 100 62 90 92 C88 112 140 118 185 110 Z" fill="url(#bee-wing)" stroke="#9fb2c8" opacity="0.8"/>
-      <path d="M90 70 L170 100 M80 88 L175 106" stroke="#9fb2c8" stroke-width="0.7" fill="none"/>
+      <path data-part="翅（兩對膜質翅）" d="M198 96 C132 38 66 38 56 80 C50 110 112 122 178 110 C192 107 198 100 198 96 Z" fill="url(#bee-ext-wing)" stroke="#9fb2c8" stroke-width="1.2"/>
+      <path d="M204 102 C152 58 100 60 88 92 C86 114 142 122 188 112 Z" fill="url(#bee-ext-wing)" stroke="#9fb2c8" opacity="0.8"/>
+      <!-- 翅脈網 -->
+      <path d="M88 68 L172 100 M76 86 L178 106 M110 52 L150 108 M140 50 L166 104" stroke="#9fb2c8" stroke-width="0.6" fill="none" opacity="0.85"/>
+      <path d="M120 74 L150 92 M110 90 L140 100" stroke="#9fb2c8" stroke-width="0.5" fill="none" opacity="0.7"/>
 
       <!-- 頭部 -->
-      <circle data-part="頭部" cx="330" cy="140" r="34" fill="url(#bee-thorax)" stroke="#2e1c07"/>
+      <circle data-part="頭部" cx="330" cy="140" r="33" fill="url(#bee-ext-head)" stroke="#2e1c07" stroke-width="1.6"/>
+      <!-- 頭部絨毛 -->
+      <path d="M300 128 l-6 -3 M302 118 l-5 -5 M310 150 l-6 3 M318 160 l-4 5" stroke="#7a5a30" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
       <!-- 複眼 -->
-      <path data-part="複眼" d="M340 118 C360 116 366 138 356 156 C346 168 332 158 332 138 C332 126 335 118 340 118 Z" fill="url(#bee-eye)"/>
-      <path d="M338 124 l14 6 M336 136 l18 6 M338 150 l14 6" stroke="#3a2c18" stroke-width="0.6"/>
-      <!-- 觸角 -->
-      <path data-part="觸角" d="M340 118 C352 96 366 84 382 80 M330 116 C338 92 348 78 360 70" stroke="#2e1c07" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path data-part="複眼" d="M338 118 C360 116 367 138 357 157 C347 169 332 159 332 138 C332 126 333 118 338 118 Z" fill="url(#bee-ext-eye)"/>
+      <path d="M338 124 l16 5 M335 134 l20 6 M336 146 l18 6 M340 156 l12 5" stroke="#3a2c18" stroke-width="0.6" opacity="0.7"/>
+      <!-- 單眼 -->
+      <circle cx="332" cy="114" r="2" fill="#2a1c08"/>
+      <!-- 觸角（膝狀） -->
+      <path data-part="觸角" d="M336 118 C346 100 350 92 366 90 C376 89 382 84 386 78 M328 116 C334 98 336 90 350 84" stroke="#2e1c07" stroke-width="2.4" fill="none" stroke-linecap="round"/>
       <!-- 舐吸式口器 -->
       <path data-part="口器（舐吸式）" d="M332 172 C330 190 336 206 340 218" stroke="#8a5a1e" stroke-width="3" fill="none" stroke-linecap="round"/>
 
       <!-- 胸部 -->
-      <ellipse data-part="胸部" cx="255" cy="140" rx="45" ry="40" fill="url(#bee-thorax)" stroke="#2e1c07"/>
-      <path d="M225 118 C255 110 285 118 285 118" stroke="#3a2409" stroke-width="6" opacity="0.5"/>
+      <ellipse data-part="胸部" cx="255" cy="140" rx="45" ry="40" fill="url(#bee-ext-thorax)" stroke="#2e1c07" stroke-width="1.6"/>
+      <!-- 絨毛質感（放射短線） -->
+      <g stroke="#c79a54" stroke-width="1" opacity="0.5" stroke-linecap="round">
+        <path d="M255 102 v-8 M232 108 l-6 -6 M278 108 l6 -6 M222 130 l-8 -3 M288 130 l8 -3 M232 172 l-6 6 M278 172 l6 6 M255 180 v8"/>
+      </g>
+      <path d="M225 118 C255 110 285 118 285 118" stroke="#3a2409" stroke-width="6" opacity="0.4"/>
 
       <!-- 腹部 三段之一，具黃黑條紋 -->
-      <path data-part="腹部" d="M215 118 C160 108 90 118 90 150 C90 182 160 192 215 178 C245 170 245 126 215 118 Z" fill="url(#bee-abdomen)" stroke="#7a5510"/>
-      <path d="M180 116 C175 145 178 175 180 178 M150 116 C144 145 148 176 152 182 M120 122 C114 147 118 172 122 178" stroke="#2a1c08" stroke-width="7" opacity="0.85" fill="none"/>
+      <path data-part="腹部" d="M215 118 C160 108 88 118 88 150 C88 182 160 192 215 178 C245 170 245 126 215 118 Z" fill="url(#bee-ext-abdomen)" stroke="#7a5510" stroke-width="1.6"/>
+      <path d="M182 115 C176 145 180 175 182 179 M152 114 C145 145 149 177 153 183 M122 120 C114 147 119 173 124 179 M98 132 C92 150 96 166 100 172" stroke="#2a1c08" stroke-width="8" opacity="0.9" fill="none" stroke-linecap="round"/>
 
       <!-- 螫針 -->
-      <path data-part="螫針" d="M90 152 L58 152 L74 146 M58 152 L74 158" stroke="#1a120a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path data-part="螫針" d="M88 152 L56 152 L72 146 M56 152 L72 158" stroke="#1a120a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
 
       <!-- 後足 + 花粉籃 -->
       <path data-part="花粉籃（後足）" d="M235 176 C230 210 220 234 214 254" stroke="#2e1c07" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="212" cy="258" rx="11" ry="15" fill="#f0a91c" stroke="#8a5a1e"/>
+      <ellipse cx="212" cy="258" rx="11" ry="15" fill="#f0a91c" stroke="#8a5a1e" stroke-width="1.4"/>
+      <path d="M208 250 l8 4 M206 258 l12 3 M208 266 l8 3" stroke="#c98812" stroke-width="0.8" opacity="0.7"/>
       <!-- 其他足 -->
       <g stroke="#2e1c07" stroke-width="3.4" fill="none" stroke-linecap="round">
         <path d="M255 178 C252 206 246 226 242 244"/>
@@ -426,50 +501,63 @@ window.ANATOMY.register({
       viewBox: "0 0 460 260",
       svg: `
       <defs>
-        <radialGradient id="ant-head" cx="40%" cy="35%">
-          <stop offset="0%" stop-color="#8a3c1e"/>
-          <stop offset="100%" stop-color="#3a1608"/>
+        <radialGradient id="ant-ext-head" cx="38%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#a8542c"/>
+          <stop offset="55%" stop-color="#7a3418"/>
+          <stop offset="100%" stop-color="#33130a"/>
         </radialGradient>
-        <linearGradient id="ant-thorax" x1="0%" y1="0%" x2="0%" y2="100%">
+        <radialGradient id="ant-ext-thorax" cx="40%" cy="28%" r="85%">
+          <stop offset="0%" stop-color="#9a4826"/>
+          <stop offset="55%" stop-color="#6e2f16"/>
+          <stop offset="100%" stop-color="#33130a"/>
+        </radialGradient>
+        <radialGradient id="ant-ext-gaster" cx="34%" cy="26%" r="85%">
           <stop offset="0%" stop-color="#7a3418"/>
-          <stop offset="100%" stop-color="#3a1608"/>
-        </linearGradient>
-        <radialGradient id="ant-gaster" cx="35%" cy="30%">
-          <stop offset="0%" stop-color="#5a2410"/>
-          <stop offset="100%" stop-color="#1e0c04"/>
+          <stop offset="45%" stop-color="#4a1c0c"/>
+          <stop offset="100%" stop-color="#1a0803"/>
         </radialGradient>
       </defs>
 
       <!-- 頭部 -->
-      <ellipse data-part="頭部" cx="90" cy="130" rx="46" ry="40" fill="url(#ant-head)" stroke="#200a03"/>
+      <ellipse data-part="頭部" cx="90" cy="130" rx="46" ry="40" fill="url(#ant-ext-head)" stroke="#200a03" stroke-width="1.6"/>
+      <ellipse cx="74" cy="112" rx="16" ry="12" fill="#c06a3a" opacity="0.3"/>
       <!-- 複眼 -->
       <circle cx="72" cy="112" r="7" fill="#120802"/>
+      <circle cx="70" cy="110" r="2" fill="#8a5030" opacity="0.6"/>
       <!-- 大顎 -->
-      <path data-part="大顎" d="M56 150 C36 156 26 148 34 138 C40 132 50 140 56 150 Z M60 158 C42 168 30 164 36 152 C42 146 54 150 60 158 Z" fill="url(#ant-head)" stroke="#200a03"/>
-      <!-- 膝狀觸角 -->
-      <path data-part="觸角（膝狀）" d="M78 104 C70 78 88 66 108 62 C126 58 138 48 146 36" stroke="#200a03" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-      <path d="M96 100 C92 78 108 70 126 68 C144 66 158 58 168 48" stroke="#200a03" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.9"/>
+      <path data-part="大顎" d="M56 150 C36 156 26 148 34 138 C40 132 50 140 56 150 Z M60 158 C42 168 30 164 36 152 C42 146 54 150 60 158 Z" fill="url(#ant-ext-head)" stroke="#200a03" stroke-width="1.4"/>
+      <!-- 膝狀觸角（明顯彎折） -->
+      <path data-part="觸角（膝狀）" d="M78 104 C70 84 78 74 96 70 L146 36" stroke="#200a03" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M96 100 C90 82 98 74 114 72 L168 48" stroke="#200a03" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+      <circle cx="146" cy="36" r="3" fill="#200a03"/>
+      <circle cx="168" cy="48" r="3" fill="#200a03" opacity="0.9"/>
 
       <!-- 胸部（併胸腹節） -->
-      <ellipse data-part="胸部" cx="200" cy="132" rx="42" ry="30" fill="url(#ant-thorax)" stroke="#200a03"/>
+      <ellipse data-part="胸部" cx="200" cy="132" rx="42" ry="30" fill="url(#ant-ext-thorax)" stroke="#200a03" stroke-width="1.6"/>
+      <ellipse cx="188" cy="122" rx="18" ry="8" fill="#b0562e" opacity="0.3"/>
 
       <!-- 腰節（腹柄結節） -->
-      <circle data-part="腰節（腹柄）" cx="258" cy="138" r="12" fill="url(#ant-thorax)" stroke="#200a03"/>
-      <circle cx="282" cy="140" r="9" fill="url(#ant-thorax)" stroke="#200a03"/>
+      <circle data-part="腰節（腹柄）" cx="258" cy="138" r="12" fill="url(#ant-ext-thorax)" stroke="#200a03" stroke-width="1.4"/>
+      <circle cx="282" cy="140" r="9" fill="url(#ant-ext-thorax)" stroke="#200a03" stroke-width="1.4"/>
 
       <!-- 腹部（後腹／腹垂節） -->
-      <ellipse data-part="腹部（後腹）" cx="350" cy="140" rx="60" ry="46" fill="url(#ant-gaster)" stroke="#180803"/>
-      <path d="M320 108 C330 140 328 170 320 180 M350 100 C356 140 354 176 348 184" stroke="#120602" stroke-width="1" fill="none" opacity="0.5"/>
-      <ellipse cx="335" cy="122" rx="16" ry="10" fill="#7a3418" opacity="0.35"/>
+      <ellipse data-part="腹部（後腹）" cx="350" cy="140" rx="60" ry="46" fill="url(#ant-ext-gaster)" stroke="#180803" stroke-width="1.6"/>
+      <path d="M318 106 C328 140 326 170 318 182 M348 100 C354 140 352 178 346 186 M378 108 C384 140 382 172 376 180" stroke="#120602" stroke-width="1" fill="none" opacity="0.45"/>
+      <ellipse cx="334" cy="120" rx="18" ry="11" fill="#8a3c1e" opacity="0.4"/>
 
       <!-- 六足 -->
-      <g data-part="足（六足）" stroke="#200a03" stroke-width="3" fill="none" stroke-linecap="round">
-        <path d="M185 158 C170 190 150 210 132 228"/>
-        <path d="M205 160 C202 196 196 218 190 240"/>
-        <path d="M222 158 C238 192 254 212 270 232"/>
-        <path d="M188 110 C168 88 148 76 128 68"/>
-        <path d="M210 108 C210 82 208 66 206 52"/>
-        <path d="M225 112 C244 88 262 74 280 64"/>
+      <g data-part="足（六足）" stroke="#200a03" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M185 158 C176 184 158 200 132 228"/>
+        <path d="M205 160 C204 190 198 214 190 240"/>
+        <path d="M222 158 C232 186 250 208 270 232"/>
+        <path d="M188 110 C176 92 154 80 128 68"/>
+        <path d="M210 108 C210 88 208 68 206 52"/>
+        <path d="M225 112 C238 92 260 78 280 64"/>
+      </g>
+      <!-- 足關節點 -->
+      <g fill="#200a03">
+        <circle cx="158" cy="200" r="2"/><circle cx="198" cy="214" r="2"/><circle cx="250" cy="208" r="2"/>
+        <circle cx="154" cy="80" r="2"/><circle cx="208" cy="68" r="2"/><circle cx="260" cy="78" r="2"/>
       </g>
 
       <g class="labels">
@@ -518,49 +606,59 @@ window.ANATOMY.register({
       viewBox: "0 0 480 300",
       svg: `
       <defs>
-        <radialGradient id="dragonfly-eye" cx="35%" cy="30%">
-          <stop offset="0%" stop-color="#6fe0d0"/>
-          <stop offset="55%" stop-color="#1f9e8c"/>
+        <radialGradient id="dragonfly-ext-eye" cx="34%" cy="28%" r="80%">
+          <stop offset="0%" stop-color="#8ff0e2"/>
+          <stop offset="40%" stop-color="#2fc0aa"/>
+          <stop offset="72%" stop-color="#1f9e8c"/>
           <stop offset="100%" stop-color="#0a4c44"/>
         </radialGradient>
-        <linearGradient id="dragonfly-thorax" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#3f9d5a"/>
-          <stop offset="100%" stop-color="#1c5a30"/>
+        <radialGradient id="dragonfly-ext-thorax" cx="40%" cy="28%" r="85%">
+          <stop offset="0%" stop-color="#5fbd78"/>
+          <stop offset="55%" stop-color="#2f8848"/>
+          <stop offset="100%" stop-color="#164a28"/>
+        </radialGradient>
+        <linearGradient id="dragonfly-ext-abdomen" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#6fb0e0"/>
+          <stop offset="45%" stop-color="#2f6fb0"/>
+          <stop offset="100%" stop-color="#173c68"/>
         </linearGradient>
-        <linearGradient id="dragonfly-abdomen" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#3f8fc9"/>
-          <stop offset="50%" stop-color="#2f6fb0"/>
-          <stop offset="100%" stop-color="#1c4a80"/>
-        </linearGradient>
-        <linearGradient id="dragonfly-wing" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#eef7ff" stop-opacity="0.85"/>
-          <stop offset="100%" stop-color="#c6dcf0" stop-opacity="0.5"/>
+        <linearGradient id="dragonfly-ext-wing" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f4faff" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#cfe4f4" stop-opacity="0.4"/>
         </linearGradient>
       </defs>
 
       <!-- 上方兩翅 -->
-      <path data-part="翅（前翅）" d="M150 118 C210 70 320 62 400 84 C420 90 418 104 396 106 C310 104 210 112 152 128 C142 130 142 122 150 118 Z" fill="url(#dragonfly-wing)" stroke="#9fc0dc"/>
-      <path data-part="翅（後翅）" d="M150 132 C210 150 310 160 396 158 C418 158 420 172 400 178 C320 200 210 192 150 146 C142 142 142 134 150 132 Z" fill="url(#dragonfly-wing)" stroke="#9fc0dc"/>
+      <path data-part="翅（前翅）" d="M150 118 C210 68 322 60 402 82 C422 88 420 104 398 106 C310 104 210 112 152 128 C142 130 142 122 150 118 Z" fill="url(#dragonfly-ext-wing)" stroke="#9fc0dc" stroke-width="1"/>
+      <path data-part="翅（後翅）" d="M150 132 C210 150 312 160 398 158 C420 158 422 174 402 180 C322 202 210 192 150 146 C142 142 142 134 150 132 Z" fill="url(#dragonfly-ext-wing)" stroke="#9fc0dc" stroke-width="1"/>
       <!-- 對側翅（示意，稍淡） -->
-      <path d="M148 116 C90 70 40 66 20 82 C10 90 14 102 34 104 C80 102 120 110 150 124 Z" fill="url(#dragonfly-wing)" stroke="#9fc0dc" opacity="0.6"/>
-      <path d="M148 134 C90 156 44 168 22 172 C10 174 12 186 30 188 C80 190 120 176 150 150 Z" fill="url(#dragonfly-wing)" stroke="#9fc0dc" opacity="0.6"/>
-      <!-- 翅脈 + 翅痣 -->
-      <path d="M170 108 L390 96 M175 128 L390 128 M175 140 L390 158 M200 100 L200 128 M260 96 L260 130 M320 94 L320 130" stroke="#9fc0dc" stroke-width="0.6" fill="none" opacity="0.8"/>
-      <rect x="378" y="88" width="14" height="6" rx="2" fill="#4a6f8c" opacity="0.8"/>
+      <path d="M148 116 C90 70 40 66 20 82 C10 90 14 102 34 104 C80 102 120 110 150 124 Z" fill="url(#dragonfly-ext-wing)" stroke="#9fc0dc" opacity="0.55"/>
+      <path d="M148 134 C90 156 44 168 22 172 C10 174 12 186 30 188 C80 190 120 176 150 150 Z" fill="url(#dragonfly-ext-wing)" stroke="#9fc0dc" opacity="0.55"/>
+      <!-- 翅脈網（縱脈＋橫脈） -->
+      <path d="M168 106 L392 92 M172 118 L394 112 M174 128 L392 132 M174 138 L392 152 M174 148 L390 172" stroke="#9fc0dc" stroke-width="0.5" fill="none" opacity="0.8"/>
+      <path d="M200 98 L200 128 M240 94 L240 130 M280 92 L280 132 M320 90 L320 134 M360 90 L360 152" stroke="#9fc0dc" stroke-width="0.45" fill="none" opacity="0.7"/>
+      <path d="M200 148 L200 178 M250 152 L250 186 M300 156 L300 192 M350 160 L350 194" stroke="#9fc0dc" stroke-width="0.45" fill="none" opacity="0.6"/>
+      <!-- 翅痣（前緣近端深色小塊） -->
+      <rect x="378" y="86" width="16" height="7" rx="2" fill="#3a5f7a" opacity="0.85"/>
+      <rect x="380" y="160" width="16" height="7" rx="2" fill="#3a5f7a" opacity="0.75"/>
 
       <!-- 頭部（幾乎全是複眼） -->
-      <circle data-part="頭部" cx="110" cy="126" r="26" fill="url(#dragonfly-thorax)" stroke="#0e3a1c"/>
-      <path data-part="複眼（大複眼）" d="M96 104 C120 96 138 108 138 128 C138 148 118 156 98 148 C82 140 82 112 96 104 Z" fill="url(#dragonfly-eye)"/>
-      <path d="M100 110 l30 8 M96 122 l38 6 M98 136 l34 8" stroke="#0a4c44" stroke-width="0.5" opacity="0.6"/>
+      <circle data-part="頭部" cx="110" cy="126" r="26" fill="url(#dragonfly-ext-thorax)" stroke="#0e3a1c" stroke-width="1.4"/>
+      <path data-part="複眼（大複眼）" d="M94 102 C122 94 140 106 140 128 C140 150 118 158 96 150 C78 142 78 110 94 102 Z" fill="url(#dragonfly-ext-eye)"/>
+      <path d="M98 108 l34 8 M94 120 l44 6 M96 132 l40 8 M100 144 l32 6" stroke="#0a4c44" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="104" cy="112" r="4" fill="#eafff8" opacity="0.5"/>
       <!-- 短觸角 -->
-      <path data-part="觸角（短剛毛狀）" d="M104 102 C100 90 100 84 98 78 M118 102 C122 90 124 84 128 78" stroke="#0e3a1c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path data-part="觸角（短剛毛狀）" d="M104 100 C100 88 100 82 98 76 M118 100 C122 88 124 82 128 76" stroke="#0e3a1c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
 
       <!-- 胸部 -->
-      <ellipse data-part="胸部" cx="160" cy="132" rx="30" ry="24" fill="url(#dragonfly-thorax)" stroke="#0e3a1c"/>
+      <ellipse data-part="胸部" cx="160" cy="132" rx="30" ry="24" fill="url(#dragonfly-ext-thorax)" stroke="#0e3a1c" stroke-width="1.4"/>
+      <path d="M148 118 C158 128 162 140 160 154" stroke="#164a28" stroke-width="2" fill="none" opacity="0.5"/>
+      <ellipse cx="152" cy="122" rx="12" ry="6" fill="#7fd090" opacity="0.4"/>
 
       <!-- 細長腹部 -->
-      <path data-part="腹部（細長）" d="M186 128 C280 124 380 138 448 150 C464 152 464 162 448 162 C380 158 280 152 186 144 Z" fill="url(#dragonfly-abdomen)" stroke="#153c68"/>
-      <path d="M230 130 v18 M270 130 v20 M310 134 v20 M350 138 v20 M390 142 v18 M425 146 v14" stroke="#123258" stroke-width="1.4" opacity="0.7"/>
+      <path data-part="腹部（細長）" d="M186 128 C280 124 380 138 448 150 C464 152 464 162 448 162 C380 158 280 152 186 144 Z" fill="url(#dragonfly-ext-abdomen)" stroke="#153c68" stroke-width="1.4"/>
+      <path d="M230 130 v18 M270 130 v20 M310 134 v20 M350 138 v20 M390 142 v18 M425 146 v14" stroke="#123258" stroke-width="1.4" opacity="0.65"/>
+      <path d="M200 128 C300 128 400 142 448 152" stroke="#9fd0f0" stroke-width="1" fill="none" opacity="0.4"/>
       <!-- 尾端附肢 -->
       <path d="M456 154 l14 -4 M456 158 l14 4" stroke="#123258" stroke-width="2" stroke-linecap="round"/>
 

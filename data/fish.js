@@ -20,61 +20,94 @@ window.ANATOMY.register({
       viewBox: "0 0 460 300",
       svg: `
 <defs>
-  <linearGradient id="bony-body" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#8fb6d6"/>
-    <stop offset="45%" stop-color="#5f8fb8"/>
-    <stop offset="60%" stop-color="#b9d3e6"/>
-    <stop offset="100%" stop-color="#e7f0f6"/>
+  <linearGradient id="bonyfish-ext-body" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#4f7ba3"/>
+    <stop offset="30%" stop-color="#6d9bc0"/>
+    <stop offset="48%" stop-color="#9cc3de"/>
+    <stop offset="58%" stop-color="#d3e6f1"/>
+    <stop offset="78%" stop-color="#eef5fa"/>
+    <stop offset="100%" stop-color="#fbfdfe"/>
   </linearGradient>
-  <linearGradient id="bony-fin" x1="0" y1="0" x2="0" y2="1">
+  <linearGradient id="bonyfish-ext-back" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a628a"/>
+    <stop offset="100%" stop-color="#3a628a" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="bonyfish-ext-fin" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0%" stop-color="#7fa6c6"/>
-    <stop offset="100%" stop-color="#cfe0ec"/>
+    <stop offset="100%" stop-color="#d6e6f0"/>
   </linearGradient>
-  <radialGradient id="bony-eye" cx="40%" cy="35%" r="70%">
+  <linearGradient id="bonyfish-ext-tail" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c9dded"/>
+    <stop offset="100%" stop-color="#7fa6c6"/>
+  </linearGradient>
+  <radialGradient id="bonyfish-ext-eye" cx="38%" cy="32%" r="72%">
     <stop offset="0%" stop-color="#fff"/>
-    <stop offset="45%" stop-color="#3a3a3a"/>
-    <stop offset="100%" stop-color="#111"/>
+    <stop offset="22%" stop-color="#c9b46a"/>
+    <stop offset="55%" stop-color="#4a3a1e"/>
+    <stop offset="100%" stop-color="#0a0a0a"/>
   </radialGradient>
+  <radialGradient id="bonyfish-ext-sheen" cx="50%" cy="30%" r="70%">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="bonyfish-ext-scales" width="16" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-4)">
+    <path d="M0 6 Q8 -3 16 6 M-8 12 Q0 3 8 12 M8 12 Q16 3 24 12" fill="none" stroke="#5f8fb8" stroke-width="0.6" opacity="0.55"/>
+  </pattern>
 </defs>
 
-<!-- 尾鰭 -->
-<path data-part="尾鰭" d="M60 150 L18 108 Q30 150 18 192 Z" fill="url(#bony-fin)" stroke="#4a6f8f" stroke-width="1.2"/>
-<path d="M32 120 L52 145 M28 150 L54 150 M32 180 L52 155" stroke="#5c86a6" stroke-width="0.8" fill="none"/>
+<!-- 尾鰭（叉形正尾） -->
+<path data-part="尾鰭" d="M64 150 L16 104 Q34 128 30 150 Q34 172 16 196 Z" fill="url(#bonyfish-ext-tail)" stroke="#4a6f8f" stroke-width="1.3"/>
+<path d="M40 118 L58 146 M34 130 L56 148 M34 170 L56 152 M40 182 L58 154" stroke="#5c86a6" stroke-width="0.7" fill="none" opacity="0.7"/>
 
-<!-- 身體 -->
-<path data-part="身體" d="M62 150 Q150 96 300 108 Q380 116 420 150 Q380 184 300 192 Q150 204 62 150 Z" fill="url(#bony-body)" stroke="#3f6785" stroke-width="1.5"/>
+<!-- 身體（流線紡錘形） -->
+<path data-part="身體" d="M64 150 Q140 92 250 100 Q340 108 410 138 Q426 146 432 150 Q426 154 410 162 Q340 192 250 200 Q140 208 64 150 Z" fill="url(#bonyfish-ext-body)" stroke="#3f6785" stroke-width="1.7"/>
+<!-- 背側深色帶（反影） -->
+<path d="M64 150 Q140 92 250 100 Q340 108 410 138 Q360 122 250 120 Q140 122 64 150 Z" fill="url(#bonyfish-ext-back)" opacity="0.55"/>
 
-<!-- 鱗片紋理 -->
-<g stroke="#7ea6c4" stroke-width="0.6" fill="none" opacity="0.8">
-  <path d="M120 132 q10 8 0 16 M150 128 q10 8 0 16 M180 126 q10 8 0 16 M210 126 q10 8 0 16 M240 128 q10 8 0 16 M270 130 q10 8 0 16"/>
-  <path d="M135 150 q10 8 0 16 M165 148 q10 8 0 16 M195 147 q10 8 0 16 M225 147 q10 8 0 16 M255 149 q10 8 0 16"/>
-  <path d="M120 168 q10 8 0 16 M150 170 q10 8 0 16 M180 171 q10 8 0 16 M210 171 q10 8 0 16 M240 170 q10 8 0 16"/>
+<!-- 鱗片質感（pattern 疊層，裁在體內） -->
+<path d="M70 150 Q140 100 250 108 Q338 116 405 142 Q340 184 250 192 Q140 200 70 150 Z" fill="url(#bonyfish-ext-scales)" stroke="none"/>
+<!-- 細弧鱗列強化 -->
+<g stroke="#4d7ba0" stroke-width="0.5" fill="none" opacity="0.45">
+  <path d="M120 128 q9 8 0 15 M150 124 q9 8 0 15 M180 122 q9 8 0 15 M210 122 q9 8 0 15 M240 124 q9 8 0 15 M270 128 q9 8 0 15 M300 132 q9 8 0 15"/>
+  <path d="M135 150 q9 8 0 15 M165 148 q9 8 0 15 M195 147 q9 8 0 15 M225 147 q9 8 0 15 M255 149 q9 8 0 15 M285 151 q9 8 0 15"/>
+  <path d="M120 172 q9 8 0 15 M150 174 q9 8 0 15 M180 175 q9 8 0 15 M210 175 q9 8 0 15 M240 173 q9 8 0 15 M270 171 q9 8 0 15"/>
 </g>
 <rect data-part="鱗片" x="118" y="126" width="6" height="6" fill="none" opacity="0"/>
 
+<!-- 體側反光高光 -->
+<ellipse cx="230" cy="138" rx="120" ry="22" fill="url(#bonyfish-ext-sheen)" opacity="0.5"/>
+
 <!-- 側線 -->
-<path data-part="側線" d="M118 143 Q220 137 380 146" stroke="#2f5573" stroke-width="1.4" fill="none" stroke-dasharray="1 3"/>
+<path data-part="側線" d="M118 142 Q240 134 392 148" stroke="#2f5573" stroke-width="1.5" fill="none" stroke-dasharray="1.5 3.5" opacity="0.85"/>
 
-<!-- 鰓蓋 -->
-<path data-part="鰓蓋" d="M360 118 Q378 150 360 184 Q346 150 360 118 Z" fill="#a9c8de" stroke="#3f6785" stroke-width="1.2"/>
+<!-- 鰓蓋（弧板＋高光緣） -->
+<path data-part="鰓蓋" d="M356 112 Q380 150 356 188 Q338 176 342 150 Q338 124 356 112 Z" fill="#b3ccdf" stroke="#3f6785" stroke-width="1.3"/>
+<path d="M356 118 Q374 150 356 182" fill="none" stroke="#eaf3f9" stroke-width="1" opacity="0.8"/>
 
-<!-- 頭與眼 -->
-<circle data-part="眼" cx="398" cy="140" r="8" fill="url(#bony-eye)" stroke="#2b455b"/>
-<path d="M420 150 Q432 150 438 158 Q426 158 420 154 Z" fill="#cfe0ec" stroke="#3f6785" stroke-width="1"/>
+<!-- 頭部圓潤陰影 -->
+<path d="M392 122 Q432 138 432 150 Q432 162 392 178 Q414 150 392 122 Z" fill="#5f8fb8" opacity="0.25"/>
 
-<!-- 背鰭 -->
-<path data-part="背鰭" d="M170 108 L182 70 L204 74 L222 78 L244 80 L262 92 L262 106 Z" fill="url(#bony-fin)" stroke="#4a6f8f" stroke-width="1.2"/>
-<path d="M182 72 L184 106 M204 76 L206 106 M226 80 L228 106 M248 84 L250 106" stroke="#5c86a6" stroke-width="0.9"/>
+<!-- 頭與眼（立體） -->
+<circle data-part="眼" cx="404" cy="139" r="8.5" fill="url(#bonyfish-ext-eye)" stroke="#2b455b" stroke-width="1"/>
+<circle cx="401" cy="136" r="2.2" fill="#fff" opacity="0.95"/>
+
+<!-- 口 -->
+<path d="M430 150 Q440 150 442 157 Q434 157 430 153 Z" fill="#cfe0ec" stroke="#3f6785" stroke-width="1"/>
+
+<!-- 背鰭（棘＋軟條扇） -->
+<path data-part="背鰭" d="M168 106 Q176 72 186 70 Q200 74 214 76 Q232 78 250 82 Q262 92 262 104 Z" fill="url(#bonyfish-ext-fin)" stroke="#4a6f8f" stroke-width="1.3"/>
+<path d="M184 74 L186 104 M202 76 L204 104 M222 79 L224 104 M242 84 L244 104" stroke="#5c86a6" stroke-width="0.9"/>
 
 <!-- 胸鰭 -->
-<path data-part="胸鰭" d="M328 172 Q316 208 296 214 Q312 190 314 168 Z" fill="url(#bony-fin)" stroke="#4a6f8f" stroke-width="1.2"/>
+<path data-part="胸鰭" d="M330 176 Q318 214 296 220 Q314 194 316 170 Z" fill="url(#bonyfish-ext-fin)" stroke="#4a6f8f" stroke-width="1.3" opacity="0.95"/>
+<path d="M318 178 L302 214 M322 176 L312 216" stroke="#5c86a6" stroke-width="0.8" fill="none" opacity="0.7"/>
 
 <!-- 腹鰭 -->
-<path data-part="腹鰭" d="M280 188 L272 214 L292 210 Z" fill="url(#bony-fin)" stroke="#4a6f8f" stroke-width="1.1"/>
+<path data-part="腹鰭" d="M282 194 L274 222 L296 216 Z" fill="url(#bonyfish-ext-fin)" stroke="#4a6f8f" stroke-width="1.2"/>
 
 <!-- 臀鰭 -->
-<path data-part="臀鰭" d="M188 192 L196 222 L216 216 L224 196 Z" fill="url(#bony-fin)" stroke="#4a6f8f" stroke-width="1.2"/>
-<path d="M198 198 L200 218 M212 198 L214 214" stroke="#5c86a6" stroke-width="0.9"/>
+<path data-part="臀鰭" d="M190 198 Q196 226 216 222 Q224 202 224 198 Z" fill="url(#bonyfish-ext-fin)" stroke="#4a6f8f" stroke-width="1.3"/>
+<path d="M200 202 L202 222 M214 200 L216 218" stroke="#5c86a6" stroke-width="0.9"/>
 
 <g class="labels">
   <line x1="215" y1="72" x2="215" y2="40" stroke="#666" stroke-width="1"/>
@@ -270,59 +303,93 @@ window.ANATOMY.register({
       viewBox: "0 0 480 280",
       svg: `
 <defs>
-  <linearGradient id="shark-body" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#6f7f8c"/>
-    <stop offset="48%" stop-color="#8a9aa6"/>
-    <stop offset="58%" stop-color="#c3cdd4"/>
-    <stop offset="100%" stop-color="#eef2f4"/>
+  <linearGradient id="shark-ext-body" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#586570"/>
+    <stop offset="30%" stop-color="#727f8a"/>
+    <stop offset="50%" stop-color="#97a4ae"/>
+    <stop offset="60%" stop-color="#c3ccd2"/>
+    <stop offset="82%" stop-color="#e4e9ec"/>
+    <stop offset="100%" stop-color="#f4f6f7"/>
   </linearGradient>
-  <linearGradient id="shark-fin" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#5f6f7c"/>
-    <stop offset="100%" stop-color="#9aa9b4"/>
+  <linearGradient id="shark-ext-back" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#454f59"/>
+    <stop offset="100%" stop-color="#454f59" stop-opacity="0"/>
   </linearGradient>
-  <radialGradient id="shark-eye" cx="40%" cy="35%" r="70%">
-    <stop offset="0%" stop-color="#e8e2c8"/>
-    <stop offset="55%" stop-color="#3a3320"/>
-    <stop offset="100%" stop-color="#0d0b06"/>
+  <linearGradient id="shark-ext-fin" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#525d68"/>
+    <stop offset="100%" stop-color="#97a4ae"/>
+  </linearGradient>
+  <radialGradient id="shark-ext-eye" cx="38%" cy="32%" r="72%">
+    <stop offset="0%" stop-color="#f0ead0"/>
+    <stop offset="30%" stop-color="#7a6f48"/>
+    <stop offset="60%" stop-color="#2f2a1a"/>
+    <stop offset="100%" stop-color="#08070a"/>
   </radialGradient>
+  <radialGradient id="shark-ext-sheen" cx="50%" cy="30%" r="70%">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="shark-ext-denticle" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-6)">
+    <path d="M2 8 L5 2 L8 8" fill="none" stroke="#5b6873" stroke-width="0.5" opacity="0.5"/>
+    <path d="M-3 3 L0 -3 L3 3 M7 3 L10 -3 L13 3" fill="none" stroke="#5b6873" stroke-width="0.5" opacity="0.4"/>
+  </pattern>
 </defs>
 
-<!-- 尾鰭（歪型尾，上葉大） -->
-<path data-part="尾鰭" d="M52 140 L14 70 Q30 120 22 150 L44 156 L18 200 Q42 168 52 150 Z" fill="url(#shark-fin)" stroke="#4a5560" stroke-width="1.3"/>
+<!-- 尾鰭（歪型尾，上葉明顯大於下葉） -->
+<path data-part="尾鰭" d="M56 142 Q30 100 12 58 Q26 108 26 148 Q40 154 48 150 Q34 176 20 202 Q46 172 56 152 Z" fill="url(#shark-ext-fin)" stroke="#4a5560" stroke-width="1.4"/>
+<path d="M22 78 L40 140 M18 96 L38 144" stroke="#3f4a54" stroke-width="0.7" fill="none" opacity="0.6"/>
 
-<!-- 身體（紡錘形） -->
-<path data-part="身體" d="M52 145 Q160 92 320 104 Q410 112 452 146 Q420 162 400 160 Q360 176 300 182 Q160 194 52 152 Z" fill="url(#shark-body)" stroke="#54626d" stroke-width="1.5"/>
+<!-- 身體（紡錘流線形） -->
+<path data-part="身體" d="M56 148 Q170 90 320 100 Q400 108 452 142 Q464 148 466 152 Q456 156 452 152 Q400 178 320 184 Q170 196 56 154 Z" fill="url(#shark-ext-body)" stroke="#54626d" stroke-width="1.7"/>
+<!-- 背側深帶（灰背白腹反影） -->
+<path d="M56 148 Q170 90 320 100 Q400 108 452 142 Q380 118 320 116 Q170 118 56 148 Z" fill="url(#shark-ext-back)" opacity="0.6"/>
 
-<!-- 吻部 -->
-<path data-part="吻部" d="M452 146 Q470 148 466 158 Q450 158 440 154 Z" fill="#c3cdd4" stroke="#54626d" stroke-width="1"/>
+<!-- 盾鱗粗糙皮膚質感（裁在體內） -->
+<path d="M64 148 Q170 98 320 108 Q396 116 448 146 Q396 174 320 180 Q170 190 64 150 Z" fill="url(#shark-ext-denticle)" stroke="none"/>
 
-<!-- 眼 -->
-<circle data-part="眼" cx="418" cy="136" r="7" fill="url(#shark-eye)" stroke="#33302a"/>
+<!-- 體側反光高光 -->
+<ellipse cx="250" cy="136" rx="140" ry="18" fill="url(#shark-ext-sheen)" opacity="0.5"/>
 
-<!-- 口（腹位） -->
-<path data-part="口" d="M424 162 Q440 170 452 160" fill="none" stroke="#3a4650" stroke-width="1.6"/>
-<path d="M428 164 l3 5 M436 167 l2 5 M444 166 l3 4" stroke="#fff" stroke-width="1"/>
+<!-- 吻部（尖突鼻端） -->
+<path data-part="吻部" d="M452 146 Q474 148 470 158 Q452 158 442 154 Z" fill="#c3ccd2" stroke="#54626d" stroke-width="1"/>
+
+<!-- 頭部圓潤陰影 -->
+<path d="M410 118 Q456 138 452 152 Q440 172 410 180 Q432 148 410 118 Z" fill="#727f8a" opacity="0.22"/>
+
+<!-- 眼（立體，含瞬膜緣） -->
+<circle data-part="眼" cx="418" cy="134" r="7.5" fill="url(#shark-ext-eye)" stroke="#33302a" stroke-width="1"/>
+<circle cx="415.5" cy="131.5" r="1.8" fill="#fff" opacity="0.9"/>
+
+<!-- 口（腹位，多排牙） -->
+<path data-part="口" d="M424 162 Q440 172 454 160" fill="none" stroke="#3a4650" stroke-width="1.7"/>
+<path d="M428 164 l3 5 M436 168 l2 5 M444 167 l3 4 M450 164 l2 4" stroke="#fff" stroke-width="1"/>
 
 <!-- 鰓裂（五對，無鰓蓋） -->
 <g data-part="鰓裂" stroke="#3a4650" stroke-width="2.4" fill="none" stroke-linecap="round">
-  <path d="M360 120 Q356 146 360 172"/>
-  <path d="M372 120 Q368 146 372 172"/>
-  <path d="M384 121 Q380 146 384 171"/>
-  <path d="M396 122 Q392 146 396 170"/>
-  <path d="M408 124 Q404 146 408 168"/>
+  <path d="M360 120 Q356 148 360 174"/>
+  <path d="M372 120 Q368 148 372 174"/>
+  <path d="M384 121 Q380 148 384 173"/>
+  <path d="M396 122 Q392 148 396 172"/>
+  <path d="M408 124 Q404 148 408 170"/>
+</g>
+<!-- 鰓裂高光細緣 -->
+<g stroke="#cfd6db" stroke-width="0.7" fill="none" opacity="0.6">
+  <path d="M362 124 Q358 148 362 170"/><path d="M374 124 Q370 148 374 170"/>
 </g>
 
-<!-- 第一背鰭（大三角） -->
-<path data-part="背鰭" d="M188 104 L206 40 L252 106 Z" fill="url(#shark-fin)" stroke="#4a5560" stroke-width="1.3"/>
+<!-- 第一背鰭（大三角，微鐮刀後掠） -->
+<path data-part="背鰭" d="M188 106 Q198 46 208 42 Q236 74 252 108 Z" fill="url(#shark-ext-fin)" stroke="#4a5560" stroke-width="1.4"/>
+<path d="M206 50 Q210 82 220 106" stroke="#3f4a54" stroke-width="0.8" fill="none" opacity="0.5"/>
 
-<!-- 第二背鰭 -->
-<path d="M120 116 L128 88 L150 118 Z" fill="url(#shark-fin)" stroke="#4a5560" stroke-width="1.2"/>
+<!-- 第二背鰭（小） -->
+<path d="M118 118 Q126 90 132 88 Q146 104 152 120 Z" fill="url(#shark-ext-fin)" stroke="#4a5560" stroke-width="1.2"/>
 
 <!-- 胸鰭（大而鐮刀狀） -->
-<path data-part="胸鰭" d="M330 168 Q300 226 258 236 Q296 200 306 164 Z" fill="url(#shark-fin)" stroke="#4a5560" stroke-width="1.3"/>
+<path data-part="胸鰭" d="M332 170 Q302 228 258 238 Q298 202 308 166 Z" fill="url(#shark-ext-fin)" stroke="#4a5560" stroke-width="1.4"/>
+<path d="M312 172 Q294 212 268 232" stroke="#3f4a54" stroke-width="0.8" fill="none" opacity="0.5"/>
 
 <!-- 腹鰭 -->
-<path data-part="腹鰭" d="M232 184 L214 224 L246 210 Z" fill="url(#shark-fin)" stroke="#4a5560" stroke-width="1.2"/>
+<path data-part="腹鰭" d="M232 186 Q218 220 214 226 Q238 214 248 210 Z" fill="url(#shark-ext-fin)" stroke="#4a5560" stroke-width="1.2"/>
 
 <g class="labels">
   <line x1="220" y1="48" x2="220" y2="18" stroke="#666" stroke-width="1"/>
