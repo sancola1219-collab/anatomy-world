@@ -29,74 +29,96 @@
         svg: `
         <defs>
           <linearGradient id="human-skin" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#f0c9a8"/>
-            <stop offset="55%" stop-color="#e3b48f"/>
-            <stop offset="100%" stop-color="#c9906b"/>
+            <stop offset="0%" stop-color="#f6d9bb"/>
+            <stop offset="50%" stop-color="#e8bd98"/>
+            <stop offset="100%" stop-color="#cd9269"/>
           </linearGradient>
-          <radialGradient id="human-skin-hi" cx="40%" cy="35%" r="70%">
-            <stop offset="0%" stop-color="#f7dcc0"/>
-            <stop offset="100%" stop-color="#d8a681"/>
+          <radialGradient id="human-skin-hi" cx="42%" cy="32%" r="72%">
+            <stop offset="0%" stop-color="#fbe6cf"/>
+            <stop offset="70%" stop-color="#eec3a1"/>
+            <stop offset="100%" stop-color="#d6a37d"/>
           </radialGradient>
           <linearGradient id="human-hair" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#5b4432"/>
             <stop offset="100%" stop-color="#33241a"/>
           </linearGradient>
         </defs>
-        <!-- 身體輪廓 -->
-        <g stroke="#a9744f" stroke-width="1.4" fill="url(#human-skin)">
-          <!-- 軀幹 -->
-          <path d="M160 175 Q160 150 200 148 Q240 150 240 175 L250 250 Q252 300 240 360 L232 430 Q225 445 210 445 L190 445 Q175 445 168 430 L160 360 Q148 300 150 250 Z"/>
-          <!-- 左臂 -->
-          <path d="M162 190 Q135 205 128 260 L118 340 Q116 360 122 378 L130 400 Q136 404 140 398 L135 360 L146 300 L160 250 Z"/>
-          <!-- 右臂 -->
-          <path d="M238 190 Q265 205 272 260 L282 340 Q284 360 278 378 L270 400 Q264 404 260 398 L265 360 L254 300 L240 250 Z"/>
-          <!-- 左腿 -->
-          <path d="M188 442 L182 520 L176 585 Q175 600 186 600 L198 600 Q200 560 200 505 L200 448 Z"/>
-          <!-- 右腿 -->
-          <path d="M212 442 L218 520 L224 585 Q225 600 214 600 L202 600 Q200 560 200 505 L200 448 Z"/>
-        </g>
-        <!-- 手掌 -->
-        <ellipse data-part="手" cx="133" cy="410" rx="12" ry="18" fill="url(#human-skin-hi)" stroke="#a9744f" stroke-width="1.2"/>
-        <ellipse data-part="手" cx="267" cy="410" rx="12" ry="18" fill="url(#human-skin-hi)" stroke="#a9744f" stroke-width="1.2"/>
-        <!-- 足 -->
-        <path d="M176 598 Q160 600 158 610 Q158 618 176 616 L192 612 L192 600 Z" fill="url(#human-skin-hi)" stroke="#a9744f" stroke-width="1.2"/>
-        <path d="M224 598 Q240 600 242 610 Q242 618 224 616 L208 612 L208 600 Z" fill="url(#human-skin-hi)" stroke="#a9744f" stroke-width="1.2"/>
         <!-- 頸 -->
-        <rect x="188" y="120" width="24" height="34" rx="8" fill="url(#human-skin)" stroke="#a9744f" stroke-width="1.2"/>
-        <!-- 頭部 -->
-        <ellipse data-part="頭部" cx="200" cy="88" rx="42" ry="50" fill="url(#human-skin-hi)" stroke="#a9744f" stroke-width="1.4"/>
+        <path d="M188 116 L188 138 Q200 147 212 138 L212 116 Z" fill="url(#human-skin)" stroke="#ad7d57" stroke-width="1.2"/>
+        <!-- 身體：解剖比例分件（寬肩窄腰），套膚色漸層 -->
+        <g stroke="#ad7d57" stroke-width="1.3" fill="url(#human-skin)" stroke-linejoin="round">
+          <path data-part="軀幹" d="M186 138 C170 142 156 152 150 172 C143 194 149 232 157 262 C162 290 168 306 176 318 L176 346 L224 346 L224 318 C232 306 238 290 243 262 C251 232 257 194 250 172 C244 152 230 142 214 138 C209 150 191 150 186 138 Z"/>
+          <path d="M152 168 C139 179 135 210 139 246 C141 280 145 318 151 346 L163 347 C159 319 157 281 159 250 C161 215 165 187 173 173 Z"/>
+          <path d="M248 168 C261 179 265 210 261 246 C259 280 255 318 249 346 L237 347 C241 319 243 281 241 250 C239 215 235 187 227 173 Z"/>
+          <path d="M176 346 C169 350 167 384 171 430 C173 470 175 512 181 556 L197 556 C198 512 198 470 198 430 L198 346 Z"/>
+          <path d="M224 346 C231 350 233 384 229 430 C227 470 225 512 219 556 L203 556 C202 512 202 470 202 430 L202 346 Z"/>
+        </g>
+        <!-- 手（併指含拇指） -->
+        <path data-part="手" d="M151 346 C141 349 134 360 136 375 C138 388 148 392 156 387 C162 383 162 364 158 350 Z" fill="url(#human-skin-hi)" stroke="#ad7d57" stroke-width="1.1"/>
+        <path data-part="手" d="M249 346 C259 349 266 360 264 375 C262 388 252 392 244 387 C238 383 238 364 242 350 Z" fill="url(#human-skin-hi)" stroke="#ad7d57" stroke-width="1.1"/>
+        <!-- 足 -->
+        <path data-part="足" d="M181 556 C174 557 168 578 171 588 C173 596 188 595 197 590 L198 570 L196 556 Z" fill="url(#human-skin-hi)" stroke="#ad7d57" stroke-width="1.1"/>
+        <path data-part="足" d="M219 556 C226 557 232 578 229 588 C227 596 212 595 203 590 L202 570 L204 556 Z" fill="url(#human-skin-hi)" stroke="#ad7d57" stroke-width="1.1"/>
+        <!-- 頭 -->
+        <path data-part="頭部" d="M164 76 C164 44 178 34 200 34 C222 34 236 44 236 76 C236 97 229 109 219 117 C213 127 207 133 200 133 C193 133 187 127 181 117 C171 109 164 97 164 76 Z" fill="url(#human-skin-hi)" stroke="#ad7d57" stroke-width="1.3"/>
         <!-- 頭髮 -->
-        <path d="M160 78 Q158 40 200 38 Q242 40 240 78 Q236 58 200 55 Q164 58 160 78 Z" fill="url(#human-hair)"/>
+        <path d="M160 80 C156 40 180 28 200 28 C220 28 244 40 240 80 C234 60 226 52 217 50 C221 60 219 70 214 75 C209 57 200 53 200 53 C200 53 191 57 186 75 C181 70 179 60 183 50 C174 52 166 60 160 80 Z" fill="url(#human-hair)"/>
+        <!-- 肌肉明暗（半透明疊層，做立體感） -->
+        <g fill="#8a5636" opacity="0.15" stroke="none">
+          <path d="M158 188 C172 206 190 208 198 196 C186 196 172 192 164 186 Z"/>
+          <path d="M242 188 C228 206 210 208 202 196 C214 196 228 192 236 186 Z"/>
+          <path d="M176 322 C186 330 214 330 224 322 C214 340 186 340 176 322 Z"/>
+          <ellipse cx="171" cy="430" rx="7" ry="16"/>
+          <ellipse cx="229" cy="430" rx="7" ry="16"/>
+        </g>
+        <g fill="#fff1e0" opacity="0.3" stroke="none">
+          <path d="M197 176 L203 176 L202 300 L198 300 Z"/>
+          <ellipse cx="183" cy="250" rx="8" ry="32"/>
+          <ellipse cx="217" cy="250" rx="8" ry="32"/>
+          <ellipse cx="186" cy="470" rx="6" ry="40"/>
+          <ellipse cx="214" cy="470" rx="6" ry="40"/>
+        </g>
+        <!-- 鎖骨、胸腹肌線 -->
+        <g fill="none" stroke="#8a5636" stroke-width="1.4" opacity="0.3" stroke-linecap="round">
+          <path d="M166 166 Q184 160 199 165"/>
+          <path d="M234 166 Q216 160 201 165"/>
+          <path d="M200 250 L200 312"/>
+          <path d="M182 268 Q200 274 218 268"/>
+          <path d="M182 292 Q200 298 218 292"/>
+        </g>
         <!-- 五官 -->
-        <ellipse data-part="眼" cx="184" cy="84" rx="7" ry="4.5" fill="#fff" stroke="#8a6a52" stroke-width="0.8"/>
-        <circle cx="184" cy="84" r="2.6" fill="#4a3524"/>
-        <ellipse data-part="眼" cx="216" cy="84" rx="7" ry="4.5" fill="#fff" stroke="#8a6a52" stroke-width="0.8"/>
-        <circle cx="216" cy="84" r="2.6" fill="#4a3524"/>
-        <path d="M198 92 Q200 104 202 92" fill="none" stroke="#b07a58" stroke-width="1.4"/>
-        <path data-part="口" d="M188 112 Q200 120 212 112" fill="none" stroke="#a85a54" stroke-width="2.2"/>
-        <path data-part="耳" d="M158 88 Q150 84 152 96 Q154 106 162 102" fill="url(#human-skin)" stroke="#a9744f" stroke-width="1"/>
-        <path data-part="耳" d="M242 88 Q250 84 248 96 Q246 106 238 102" fill="url(#human-skin)" stroke="#a9744f" stroke-width="1"/>
+        <path d="M176 79 Q184 75 192 79" fill="none" stroke="#7a5238" stroke-width="1.4"/>
+        <path d="M208 79 Q216 75 224 79" fill="none" stroke="#7a5238" stroke-width="1.4"/>
+        <path data-part="眼" d="M177 85 Q184 80 191 85 Q184 90 177 85 Z" fill="#fff" stroke="#8a6a52" stroke-width="0.8"/>
+        <circle cx="184" cy="85" r="3" fill="#5b4632"/><circle cx="184" cy="85" r="1.3" fill="#180f08"/>
+        <path data-part="眼" d="M209 85 Q216 80 223 85 Q216 90 209 85 Z" fill="#fff" stroke="#8a6a52" stroke-width="0.8"/>
+        <circle cx="216" cy="85" r="3" fill="#5b4632"/><circle cx="216" cy="85" r="1.3" fill="#180f08"/>
+        <path d="M200 90 L196 104 Q200 108 204 104" fill="none" stroke="#b07a58" stroke-width="1.3"/>
+        <path data-part="口" d="M188 114 Q200 121 212 114" fill="none" stroke="#a85a54" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M190 117 Q200 121 210 117" fill="none" stroke="#c98f7f" stroke-width="1.6" stroke-linecap="round"/>
+        <path data-part="耳" d="M164 88 Q155 86 157 99 Q159 110 168 105" fill="url(#human-skin)" stroke="#ad7d57" stroke-width="1"/>
+        <path data-part="耳" d="M236 88 Q245 86 243 99 Q241 110 232 105" fill="url(#human-skin)" stroke="#ad7d57" stroke-width="1"/>
         <g class="labels" font-size="13" fill="var(--ink)">
-          <line x1="242" y1="80" x2="330" y2="70" stroke="#555" stroke-width="1"/>
-          <text x="334" y="74">頭部</text>
-          <line x1="223" y1="84" x2="330" y2="110" stroke="#555" stroke-width="1"/>
-          <text x="334" y="114">眼</text>
-          <line x1="248" y1="94" x2="330" y2="146" stroke="#555" stroke-width="1"/>
-          <text x="334" y="150">耳</text>
-          <line x1="212" y1="116" x2="330" y2="184" stroke="#555" stroke-width="1"/>
-          <text x="334" y="188">口</text>
-          <line x1="200" y1="140" x2="80" y2="150" stroke="#555" stroke-width="1"/>
-          <text x="20" y="154">頸</text>
-          <line x1="245" y1="300" x2="330" y2="290" stroke="#555" stroke-width="1"/>
-          <text x="334" y="294">軀幹</text>
-          <line x1="267" y1="410" x2="330" y2="420" stroke="#555" stroke-width="1"/>
-          <text x="334" y="424">手</text>
-          <line x1="133" y1="410" x2="70" y2="430" stroke="#555" stroke-width="1"/>
-          <text x="18" y="434">手</text>
-          <line x1="200" y1="500" x2="80" y2="520" stroke="#555" stroke-width="1"/>
-          <text x="30" y="524">下肢</text>
-          <line x1="224" y1="610" x2="330" y2="600" stroke="#555" stroke-width="1"/>
-          <text x="334" y="604">足</text>
+          <line x1="234" y1="66" x2="330" y2="56" stroke="#555" stroke-width="1"/>
+          <text x="334" y="60">頭部</text>
+          <line x1="224" y1="85" x2="330" y2="104" stroke="#555" stroke-width="1"/>
+          <text x="334" y="108">眼</text>
+          <line x1="243" y1="98" x2="330" y2="150" stroke="#555" stroke-width="1"/>
+          <text x="334" y="154">耳</text>
+          <line x1="213" y1="115" x2="330" y2="196" stroke="#555" stroke-width="1"/>
+          <text x="334" y="200">口</text>
+          <line x1="188" y1="128" x2="74" y2="150" stroke="#555" stroke-width="1"/>
+          <text x="24" y="154">頸</text>
+          <line x1="245" y1="230" x2="330" y2="250" stroke="#555" stroke-width="1"/>
+          <text x="334" y="254">軀幹</text>
+          <line x1="255" y1="372" x2="330" y2="392" stroke="#555" stroke-width="1"/>
+          <text x="334" y="396">手</text>
+          <line x1="145" y1="372" x2="70" y2="392" stroke="#555" stroke-width="1"/>
+          <text x="22" y="396">手</text>
+          <line x1="226" y1="430" x2="330" y2="470" stroke="#555" stroke-width="1"/>
+          <text x="334" y="474">下肢</text>
+          <line x1="205" y1="586" x2="330" y2="592" stroke="#555" stroke-width="1"/>
+          <text x="334" y="596">足</text>
         </g>`,
         parts: [
           { name: "頭部", desc: "容納大腦與主要感覺器官。" },
