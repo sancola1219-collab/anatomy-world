@@ -531,65 +531,88 @@
         viewBox: "0 0 460 280",
         svg: `
 <defs>
-  <linearGradient id="croc-body" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#6b7a4a"/>
-    <stop offset="55%" stop-color="#4a5730"/>
-    <stop offset="100%" stop-color="#2f3a1e"/>
+  <linearGradient id="croc-back" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6a7a4a"/><stop offset="48%" stop-color="#454f2c"/><stop offset="100%" stop-color="#283017"/>
   </linearGradient>
-  <linearGradient id="croc-tail" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#3a462a"/><stop offset="100%" stop-color="#5c6a3c"/>
+  <linearGradient id="croc-belly" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9aa06f"/><stop offset="100%" stop-color="#727850"/>
   </linearGradient>
+  <radialGradient id="croc-eye" cx="40%" cy="34%" r="72%">
+    <stop offset="0%" stop-color="#ecd063"/><stop offset="58%" stop-color="#bd9a30"/><stop offset="100%" stop-color="#6b5010"/>
+  </radialGradient>
+  <pattern id="croc-scale" width="15" height="11" patternUnits="userSpaceOnUse">
+    <path d="M0 5.5 Q4 0 7.5 0 Q11 0 15 5.5 Q11 11 7.5 11 Q4 11 0 5.5 Z" fill="none" stroke="#232a14" stroke-width="0.6" opacity="0.45"/>
+  </pattern>
 </defs>
 
-<!-- 尾 -->
-<path data-part="尾（側扁有力）" d="M40 150 L120 135 L120 175 Z" fill="url(#croc-tail)" stroke="#2a331a" stroke-width="1.5"/>
-<path d="M55 148 l0 -12 M75 145 l0 -12 M95 142 l0 -12" stroke="#2a331a" stroke-width="2"/>
+<!-- 遠側肢（暗、在身體後方） -->
+<path d="M258 178 Q266 204 256 226 L250 238" fill="none" stroke="#2b3318" stroke-width="9" stroke-linecap="round"/>
+<path d="M148 180 Q138 208 126 228 L120 240" fill="none" stroke="#2b3318" stroke-width="9" stroke-linecap="round"/>
 
-<!-- 軀幹 -->
-<path data-part="軀幹" d="M110 140 Q220 118 320 138 Q330 160 320 178 Q220 196 110 176 Z"
-      fill="url(#croc-body)" stroke="#2a331a" stroke-width="1.5"/>
+<!-- 身體＋尾 主輪廓 -->
+<path data-part="軀幹" d="M300 128 Q210 112 150 120 Q95 128 24 162 Q95 150 150 168 Q210 186 300 176 Q322 172 330 152 Q322 132 300 128 Z" fill="url(#croc-back)" stroke="#212812" stroke-width="1.6" stroke-linejoin="round"/>
+<!-- 腹部淺色帶 -->
+<path d="M150 168 Q210 186 300 176 Q300 183 280 187 Q210 197 150 179 Q120 173 150 168 Z" fill="url(#croc-belly)" opacity="0.92"/>
+<!-- 鱗片質感 -->
+<path d="M300 128 Q210 112 150 120 Q95 128 24 162 Q95 150 150 168 Q210 186 300 176 Q322 172 330 152 Q322 132 300 128 Z" fill="url(#croc-scale)"/>
+<!-- 腹部橫鱗板 -->
+<g stroke="#5a6238" stroke-width="0.8" opacity="0.55" fill="none">
+  <path d="M172 178 l0 8 M198 183 l0 8 M224 185 l0 8 M250 184 l0 7 M276 181 l0 7"/>
+</g>
 
-<!-- 背部骨板紋理 -->
-<g data-part="鱗甲（骨板）" fill="none" stroke="#2a331a" stroke-width="1" opacity="0.7">
-  <path d="M150 130 l0 -8 M180 126 l0 -8 M210 124 l0 -8 M240 124 l0 -8 M270 126 l0 -8 M300 130 l0 -8"/>
-  <path d="M150 135 q14 0 28 0 M200 133 q14 0 28 0 M255 135 q14 0 28 0"/>
+<!-- 背部與尾部雙列骨板脊（鋸齒 osteoderm） -->
+<g data-part="鱗甲（骨板）" fill="url(#croc-back)" stroke="#212812" stroke-width="1" stroke-linejoin="round">
+  <path d="M293 130 l-8 -13 l-8 13 Z"/><path d="M258 134 l-8 -13 l-8 13 Z"/>
+  <path d="M218 139 l-8 -13 l-8 13 Z"/><path d="M178 144 l-8 -12 l-8 12 Z"/>
+  <path d="M138 149 l-7 -11 l-7 11 Z"/><path d="M103 153 l-7 -10 l-7 10 Z"/>
+  <path d="M68 158 l-6 -9 l-6 9 Z"/><path d="M43 161 l-6 -8 l-6 8 Z"/>
 </g>
 
 <!-- 頭（長吻） -->
-<path data-part="頭部（長吻）" d="M320 148 L420 152 Q432 160 420 168 L320 170 Q312 160 320 148 Z"
-      fill="url(#croc-body)" stroke="#2a331a" stroke-width="1.5"/>
-<!-- 眼位於頭頂 -->
-<ellipse data-part="眼（位於頭頂）" cx="330" cy="146" rx="7" ry="5" fill="#c9a83a" stroke="#2a331a"/>
-<circle cx="330" cy="146" r="2.5" fill="#20160a"/>
-<!-- 鼻孔 -->
-<circle data-part="鼻孔（吻端）" cx="416" cy="156" r="3" fill="#20160a"/>
-<!-- 露出的牙 -->
-<path data-part="牙齒" d="M340 170 l3 8 M360 172 l3 8 M380 172 l3 8 M400 170 l3 7"
-      fill="none" stroke="#f2ead0" stroke-width="2.5" stroke-linecap="round"/>
+<path data-part="頭部（長吻）" d="M300 138 L430 150 Q446 154 446 160 Q446 167 430 169 L300 172 Q291 155 300 138 Z" fill="url(#croc-back)" stroke="#212812" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M300 138 L430 150 Q446 154 446 160 Q446 167 430 169 L300 172 Q291 155 300 138 Z" fill="url(#croc-scale)"/>
+<!-- 嘴縫 -->
+<path d="M311 160 L444 160" stroke="#161c0c" stroke-width="1.4"/>
+<!-- 牙齒（上下交錯） -->
+<g data-part="牙齒" fill="#f4ecd4" stroke="#cabf98" stroke-width="0.4">
+  <path d="M324 160 l-2.6 6.5 l-2.6 -6.5 Z"/><path d="M356 160 l-2.6 7 l-2.6 -7 Z"/>
+  <path d="M388 160 l-2.6 6.5 l-2.6 -6.5 Z"/><path d="M418 160 l-2.4 6 l-2.4 -6 Z"/>
+  <path d="M340 160 l2.6 -6.5 l2.6 6.5 Z"/><path d="M372 160 l2.6 -7 l2.6 7 Z"/>
+  <path d="M404 160 l2.4 -6 l2.4 6 Z"/><path d="M432 160 l2.2 -5 l2.2 5 Z"/>
+</g>
+<!-- 眼（頭頂隆起）＋垂直裂瞳 -->
+<ellipse cx="312" cy="139" rx="12" ry="9" fill="url(#croc-back)" stroke="#212812" stroke-width="1.2"/>
+<ellipse data-part="眼（位於頭頂）" cx="314" cy="136" rx="7" ry="5.4" fill="url(#croc-eye)" stroke="#161c0c" stroke-width="0.9"/>
+<line x1="314" y1="131" x2="314" y2="141" stroke="#150f06" stroke-width="1.8"/>
+<!-- 鼻孔（吻端隆起） -->
+<ellipse cx="436" cy="152" rx="6.5" ry="4.2" fill="url(#croc-back)" stroke="#212812" stroke-width="1"/>
+<ellipse data-part="鼻孔（吻端）" cx="436" cy="152" rx="2.4" ry="2" fill="#140d05"/>
 
-<!-- 四肢 -->
-<path data-part="前肢" d="M300 190 l6 34 l-8 6 l16 0" fill="none" stroke="#3a462a" stroke-width="7" stroke-linecap="round"/>
-<path data-part="後肢" d="M150 188 l-8 38 l-10 6 l18 0" fill="none" stroke="#3a462a" stroke-width="8" stroke-linecap="round"/>
+<!-- 近側肢（亮、前方，帶爪） -->
+<path data-part="前肢" d="M272 176 Q279 203 269 224 L263 236" fill="none" stroke="#43502c" stroke-width="10" stroke-linecap="round"/>
+<path d="M263 236 l-9 7 M266 238 l-1 9 M270 236 l7 7" fill="none" stroke="#2b3318" stroke-width="3" stroke-linecap="round"/>
+<path data-part="後肢" d="M150 178 Q140 206 128 227 L121 240" fill="none" stroke="#43502c" stroke-width="11" stroke-linecap="round"/>
+<path d="M121 240 l-9 7 M124 242 l-1 9 M128 240 l8 7" fill="none" stroke="#2b3318" stroke-width="3" stroke-linecap="round"/>
 
 <g class="labels">
-  <line x1="330" y1="146" x2="360" y2="90" stroke="#666" stroke-width="1"/>
-  <text x="330" y="86" font-size="13" fill="var(--ink)">眼（位於頭頂）</text>
-  <line x1="416" y1="156" x2="440" y2="120" stroke="#666" stroke-width="1"/>
-  <text x="400" y="116" font-size="13" fill="var(--ink)">鼻孔（吻端）</text>
-  <line x1="380" y1="178" x2="410" y2="220" stroke="#666" stroke-width="1"/>
-  <text x="386" y="234" font-size="13" fill="var(--ink)">牙齒</text>
-  <line x1="380" y1="158" x2="410" y2="150" stroke="#666" stroke-width="1"/>
-  <text x="352" y="150" font-size="12" fill="var(--ink)">頭部（長吻）</text>
-  <line x1="220" y1="125" x2="220" y2="60" stroke="#666" stroke-width="1"/>
-  <text x="178" y="56" font-size="13" fill="var(--ink)">鱗甲（骨板）</text>
-  <line x1="200" y1="150" x2="150" y2="105" stroke="#666" stroke-width="1"/>
-  <text x="120" y="101" font-size="13" fill="var(--ink)">軀幹</text>
-  <line x1="300" y1="220" x2="330" y2="255" stroke="#666" stroke-width="1"/>
-  <text x="334" y="259" font-size="13" fill="var(--ink)">前肢</text>
-  <line x1="142" y1="222" x2="110" y2="258" stroke="#666" stroke-width="1"/>
-  <text x="60" y="262" font-size="13" fill="var(--ink)">後肢</text>
-  <line x1="80" y1="150" x2="40" y2="120" stroke="#666" stroke-width="1"/>
-  <text x="8" y="116" font-size="13" fill="var(--ink)">尾（側扁有力）</text>
+  <line x1="314" y1="132" x2="352" y2="80" stroke="#666" stroke-width="1"/>
+  <text x="332" y="76" font-size="13" fill="var(--ink)">眼（位於頭頂）</text>
+  <line x1="436" y1="150" x2="452" y2="112" stroke="#666" stroke-width="1"/>
+  <text x="412" y="108" font-size="13" fill="var(--ink)">鼻孔（吻端）</text>
+  <line x1="386" y1="167" x2="404" y2="214" stroke="#666" stroke-width="1"/>
+  <text x="382" y="228" font-size="13" fill="var(--ink)">牙齒</text>
+  <line x1="400" y1="150" x2="416" y2="140" stroke="#666" stroke-width="1"/>
+  <text x="360" y="138" font-size="12" fill="var(--ink)">頭部（長吻）</text>
+  <line x1="200" y1="118" x2="200" y2="58" stroke="#666" stroke-width="1"/>
+  <text x="158" y="54" font-size="13" fill="var(--ink)">鱗甲（骨板）</text>
+  <line x1="210" y1="150" x2="160" y2="104" stroke="#666" stroke-width="1"/>
+  <text x="126" y="100" font-size="13" fill="var(--ink)">軀幹</text>
+  <line x1="268" y1="226" x2="300" y2="256" stroke="#666" stroke-width="1"/>
+  <text x="304" y="260" font-size="13" fill="var(--ink)">前肢</text>
+  <line x1="126" y1="228" x2="96" y2="258" stroke="#666" stroke-width="1"/>
+  <text x="48" y="262" font-size="13" fill="var(--ink)">後肢</text>
+  <line x1="60" y1="156" x2="30" y2="122" stroke="#666" stroke-width="1"/>
+  <text x="6" y="118" font-size="13" fill="var(--ink)">尾（側扁有力）</text>
 </g>`,
         parts: [
           { name: "頭部（長吻）", desc: "長而扁的吻部，容納強大顎肌與眾多牙齒" },
