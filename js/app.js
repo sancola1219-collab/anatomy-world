@@ -189,10 +189,10 @@
       // 高亮
       document.querySelectorAll(".species").forEach(e =>
         e.classList.toggle("active", e.dataset.id === id));
-      // 若有真實照片，附加「實景照片」視圖（一次）
+      // 若有真實照片，放在最前面當預設視圖（第一眼看到的是真實照片）
       if (window.PHOTOS && window.PHOTOS[org.id] &&
           !(org.views || []).some(v => v.id === "photo")) {
-        (org.views = org.views || []).push({ id: "photo", name: "📷 實景照片", photo: true });
+        (org.views = org.views || []).unshift({ id: "photo", name: "📷 實景照片", photo: true });
       }
       this.renderViewTabs();
       this.renderView();
