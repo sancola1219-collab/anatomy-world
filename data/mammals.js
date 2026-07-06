@@ -1031,48 +1031,41 @@
             <stop offset="100%" stop-color="#a87b6e"/>
           </radialGradient>
         </defs>
-        <!-- 遠側後腿（背景、飛節後彎） -->
-        <path d="M150 202 C156 224 150 244 140 258 C132 270 130 284 132 296 C133 308 136 316 140 322 L150 322 L150 312 C148 300 148 288 152 278 C158 266 164 250 162 232 C160 218 158 208 158 200 Z" fill="url(#cow-ext-leg)" stroke="#7a7062" stroke-width="1.1" opacity="0.6"/>
-        <path d="M136 320 C133 330 140 334 150 332 L152 322 L140 320 Z" fill="#2f2a24" opacity="0.6"/>
-        <!-- 遠側前腿（背景） -->
-        <path d="M300 206 C302 240 301 280 302 312 L312 314 C314 280 314 240 312 206 Z" fill="url(#cow-ext-leg)" stroke="#7a7062" stroke-width="1.1" opacity="0.6"/>
-        <path d="M300 310 C297 322 305 326 314 324 L314 314 L302 312 Z" fill="#2f2a24" opacity="0.6"/>
+        <!-- 遠側後腿（背景、直立） -->
+        <path d="M158 200 C160 240 159 280 160 314 L172 314 C173 280 172 240 170 200 Z" fill="url(#cow-ext-leg)" stroke="#7a7062" stroke-width="1.1" opacity="0.55"/>
+        <path d="M158 310 C156 322 164 326 172 324 L172 314 L160 312 Z" fill="#2f2a24" opacity="0.55"/>
+        <!-- 遠側前腿（背景、直立） -->
+        <path d="M300 202 C302 240 301 280 302 314 L314 314 C315 280 314 240 312 202 Z" fill="url(#cow-ext-leg)" stroke="#7a7062" stroke-width="1.1" opacity="0.55"/>
+        <path d="M300 310 C298 322 306 326 314 324 L314 314 L302 312 Z" fill="#2f2a24" opacity="0.55"/>
         <!-- 尾（自臀部下垂＋末端叢毛） -->
-        <path data-part="尾" d="M92 140 C74 168 66 210 68 244 C69 260 62 274 56 284 C52 276 52 262 56 246 C50 250 46 244 50 236 C58 210 62 176 78 148 C82 140 88 138 92 140 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.4" stroke-linejoin="round"/>
-        <path d="M50 278 C44 298 50 314 58 310 C60 296 58 286 56 282 C54 278 52 278 50 278 Z" fill="#5a4f42" stroke="#3a3229" stroke-width="1"/>
-        <!-- 軀幹（自然牛體：圓臀、腰凹、肩隆、深胸垂腹） -->
-        <path data-part="軀幹" d="M92 138
-          C118 120 180 116 244 118 C288 120 322 126 342 140
-          C350 150 350 166 346 186 C342 200 330 208 314 210
-          C246 218 150 220 120 212 C104 208 94 200 90 184
-          C84 164 84 150 92 138 Z"
+        <path data-part="尾" d="M100 150 C86 176 82 214 86 246 C88 262 82 276 76 286 C72 278 72 264 76 250 C70 254 66 248 70 240 C76 214 80 182 92 156 C94 150 98 148 100 150 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M70 280 C64 300 70 316 78 312 C80 298 78 288 76 284 C74 280 72 280 70 280 Z" fill="#5a4f42" stroke="#3a3229" stroke-width="1"/>
+        <!-- 軀幹（深長牛體、背線平直、肩臀微隆） -->
+        <path data-part="軀幹" d="M100 144
+          C102 130 126 124 168 123 C233 121 290 123 324 129
+          C342 133 350 147 349 163 C348 181 339 193 320 198
+          C250 207 150 209 122 204 C106 200 97 191 94 177
+          C89 161 91 150 100 144 Z"
           fill="url(#cow-ext-hi)" stroke="#8a7f70" stroke-width="1.7" stroke-linejoin="round"/>
         <!-- 頸與垂皮 -->
-        <path d="M330 140 C348 136 366 138 382 146 L392 168 C378 176 360 178 346 176 C338 168 332 154 330 140 Z" fill="url(#cow-ext-hi)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M346 172 C342 188 348 202 358 198 C356 186 354 178 352 174 C350 172 348 172 346 172 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.2"/>
-        <!-- 腹側陰影與肩胸過渡 -->
-        <path d="M120 200 C210 216 300 210 330 196 C320 208 300 214 240 216 C170 218 128 214 118 210 Z" fill="#9a9082" opacity="0.3"/>
+        <path d="M324 130 C344 130 364 138 380 150 L392 172 C376 178 358 178 344 173 C336 162 328 146 324 130 Z" fill="url(#cow-ext-hi)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M344 170 C340 186 346 200 356 195 C354 183 352 175 350 171 C348 170 346 170 344 170 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.2"/>
+        <!-- 腹側陰影 -->
+        <path d="M120 198 C210 210 300 206 328 194 C318 204 300 210 240 212 C170 214 128 210 118 206 Z" fill="#9a9082" opacity="0.28"/>
         <!-- 背脊高光 -->
-        <path d="M100 132 C180 120 280 122 344 144" fill="none" stroke="#faf6f0" stroke-width="6" opacity="0.4" stroke-linecap="round"/>
+        <path d="M108 132 C185 124 275 126 340 146" fill="none" stroke="#faf6f0" stroke-width="6" opacity="0.38" stroke-linecap="round"/>
         <!-- 乳牛花斑 -->
-        <path d="M126 134 C170 122 200 148 196 172 C186 200 146 194 122 174 C108 158 112 142 126 134 Z" fill="#463d34" opacity="0.6"/>
-        <path d="M250 138 C298 130 320 158 314 184 C300 206 262 198 244 172 C234 156 236 144 250 138 Z" fill="#463d34" opacity="0.6"/>
-        <path d="M96 172 C118 166 132 182 128 196 C116 208 98 202 92 188 C88 180 90 176 96 172 Z" fill="#463d34" opacity="0.5"/>
-        <!-- 近側後腿（前景：飽滿大腿→飛節後彎→蹄） -->
-        <path data-part="後肢" d="M118 196
-          C132 200 146 210 150 226 C152 244 146 260 134 272
-          C126 282 122 294 124 306 C125 314 127 320 130 324
-          L142 324 L142 312 C140 300 141 288 146 278 C154 264 162 246 160 226
-          C158 212 150 202 138 196 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
-        <path data-part="蹄" d="M122 320 C118 332 128 337 142 335 L144 324 L128 322 Z" fill="#3a322c" stroke="#221d18" stroke-width="1.1"/>
-        <path d="M138 226 C140 246 132 262 126 274" fill="none" stroke="#9a9082" stroke-width="0.8" opacity="0.45"/>
-        <!-- 近側前腿（前景：肩→膝→蹄，微彎） -->
-        <path data-part="前肢" d="M318 202
-          C326 206 332 216 332 232 C331 262 328 292 330 314
-          L342 316 C344 292 344 262 344 232 C344 216 340 206 334 202 Z"
-          fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
-        <path data-part="蹄" d="M328 312 C325 324 334 329 346 327 L346 316 L332 314 Z" fill="#3a322c" stroke="#221d18" stroke-width="1.1"/>
-        <path d="M336 234 C335 262 335 288 337 308" fill="none" stroke="#9a9082" stroke-width="0.8" opacity="0.45"/>
+        <path d="M130 136 C172 126 200 150 196 172 C186 198 148 192 126 174 C112 160 116 144 130 136 Z" fill="#463d34" opacity="0.6"/>
+        <path d="M250 140 C296 132 318 158 312 182 C298 202 262 196 244 172 C234 158 236 146 250 140 Z" fill="#463d34" opacity="0.6"/>
+        <path d="M98 174 C120 168 132 182 128 196 C116 206 100 200 94 188 C90 180 92 178 98 174 Z" fill="#463d34" opacity="0.5"/>
+        <!-- 近側後腿（寬臀→直立小腿→蹄） -->
+        <path data-part="後肢" d="M116 192 C132 194 148 202 152 220 C154 238 152 252 150 266 C149 282 148 300 149 316 L165 316 C166 300 165 282 164 266 C163 250 166 234 168 218 C167 204 150 192 138 190 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
+        <path data-part="蹄" d="M148 312 C145 325 156 330 168 328 L168 316 L150 314 Z" fill="#3a322c" stroke="#221d18" stroke-width="1.1"/>
+        <path d="M154 224 C155 250 153 280 152 306" fill="none" stroke="#9a9082" stroke-width="0.8" opacity="0.4"/>
+        <!-- 近側前腿（直立、微膝→蹄） -->
+        <path data-part="前肢" d="M316 200 C324 202 330 210 330 226 C329 252 328 288 329 314 L345 314 C346 288 346 252 346 226 C346 210 342 202 334 200 Z" fill="url(#cow-ext-hide)" stroke="#8a7f70" stroke-width="1.5" stroke-linejoin="round"/>
+        <path data-part="蹄" d="M328 310 C325 324 336 329 348 327 L348 316 L330 314 Z" fill="#3a322c" stroke="#221d18" stroke-width="1.1"/>
+        <path d="M337 226 C336 254 336 288 338 308" fill="none" stroke="#9a9082" stroke-width="0.8" opacity="0.4"/>
         <!-- 頭（自然牛頭：額寬、面漸窄至口鼻） -->
         <path data-part="頭部" d="M382 146
           C392 124 416 118 436 126 C450 132 456 148 452 164
