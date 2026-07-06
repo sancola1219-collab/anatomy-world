@@ -189,6 +189,11 @@
       // 高亮
       document.querySelectorAll(".species").forEach(e =>
         e.classList.toggle("active", e.dataset.id === id));
+      // 若有真實照片，附加「實景照片」視圖（一次）
+      if (window.PHOTOS && window.PHOTOS[org.id] &&
+          !(org.views || []).some(v => v.id === "photo")) {
+        (org.views = org.views || []).push({ id: "photo", name: "📷 實景照片", photo: true });
+      }
       this.renderViewTabs();
       this.renderView();
       this.renderInfo();
@@ -239,6 +244,7 @@
     renderView() {
       const v = (current.views || [])[currentView];
       if (!v) { this.el.svgHost.innerHTML = "<p style='padding:40px;color:#888'>此視圖尚無圖示</p>"; return; }
+      if (v.photo) { this.renderPhoto(); return; }
       const vb = v.viewBox || "0 0 400 400";
       this.el.svgHost.innerHTML =
         `<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" width="${sizeFrom(vb)}">${v.svg}</svg>`;
@@ -258,6 +264,21 @@
       if (window.Anim) {
         window.Anim.apply(svg, (current.views || [])[currentView], this.el.toggleAnim.checked);
       }
+    },
+
+    renderPhoto() {
+      const id = current.id;
+      const meta = (window.PHOTOS && window.PHOTOS[id]) || {};
+      this.el.svgHost.innerHTML =
+        `<div class="photo-view">
+           <img src="assets/photos/${id}.jpg" alt="${current.name}"
+                onerror="this.parentNode.innerHTML='&lt;p style=\\'padding:40px;color:#888\\'&gt;此物種尚無實景照片&lt;/p&gt;'">
+           <a class="photo-credit" href="${meta.page || '#'}" target="_blank" rel="noopener">
+             📷 真實照片 · 來源：Wikimedia Commons（點擊看授權與作者）
+           </a>
+         </div>`;
+      this.resetView();
+      this.el.svgHost.classList.remove("hide-labels");
     },
 
     renderInfo() {

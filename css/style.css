@@ -175,6 +175,18 @@ body{
 .guide-foot{margin-top:18px;font-size:12.5px;color:var(--ink-soft)}
 .guide-foot code{background:var(--panel-2);padding:2px 6px;border-radius:5px}
 
+/* ===== 實景照片 ===== */
+.photo-view{display:flex;flex-direction:column;align-items:center;gap:12px;padding:8px}
+.photo-view img{
+  max-width:min(78vw,720px);max-height:74vh;width:auto;height:auto;border-radius:14px;
+  box-shadow:0 10px 34px rgba(20,40,60,.28);border:3px solid #fff;object-fit:contain;background:#fff;
+}
+.photo-credit{
+  font-size:12px;color:var(--ink-soft);text-decoration:none;padding:5px 14px;border-radius:999px;
+  background:var(--panel-2);border:1px solid var(--line);transition:.15s;
+}
+.photo-credit:hover{color:var(--accent);border-color:var(--accent)}
+
 /* ===== 3D 立體檢視 ===== */
 #three-host{position:absolute;inset:0;z-index:2}
 #three-host[hidden]{display:none}
