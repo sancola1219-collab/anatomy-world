@@ -96,6 +96,16 @@
       this.bindChrome();
       // 預設載入第一個物種
       if (registry.length) this.load(registry[0].id);
+      // 深連結：?sp=<物種id>&view=<視圖id> 開啟指定物種與視圖
+      const sp = /[?&]sp=([^&]+)/.exec(location.search);
+      if (sp && byId[decodeURIComponent(sp[1])]) {
+        this.load(decodeURIComponent(sp[1]));
+        const vm = /[?&]view=([^&]+)/.exec(location.search);
+        if (vm) {
+          const vi = (current.views || []).findIndex(v => v.id === decodeURIComponent(vm[1]));
+          if (vi >= 0) { currentView = vi; this.renderView(); this.renderViewTabs(); }
+        }
+      }
       // 深連結：?3d 或 ?3d=<物種id> 直接開啟 3D 立體檢視
       const m3d = /[?&]3d(?:=([^&]+))?/.exec(location.search);
       if (m3d) {

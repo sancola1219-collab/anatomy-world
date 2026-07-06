@@ -346,6 +346,132 @@
           { name: "腎臟", desc: "過濾血液、生成尿液。" },
           { name: "小腸", desc: "吸收養分的主要場所。" }
         ]
+      },
+      {
+        id: "circulatory",
+        name: "循環系統（血管）",
+        viewBox: "0 0 440 780",
+        svg: `
+        <defs>
+          <linearGradient id="human-artery" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e0453f"/><stop offset="100%" stop-color="#a11c1c"/>
+          </linearGradient>
+          <linearGradient id="human-vein" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3f7fd0"/><stop offset="100%" stop-color="#24488f"/>
+          </linearGradient>
+          <radialGradient id="human-heart2" cx="42%" cy="35%" r="72%">
+            <stop offset="0%" stop-color="#c33b32"/><stop offset="100%" stop-color="#7d1a17"/>
+          </radialGradient>
+          <linearGradient id="human-bodyfill" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f3ddc7"/><stop offset="100%" stop-color="#e2bd9c"/>
+          </linearGradient>
+        </defs>
+        <!-- 半透明人體輪廓 -->
+        <g fill="url(#human-bodyfill)" opacity="0.42" stroke="#c99a72" stroke-width="1.2" stroke-linejoin="round">
+          <ellipse cx="220" cy="70" rx="45" ry="52"/>
+          <path d="M196 120 C180 124 150 132 140 168 C132 190 130 226 134 268 C136 310 140 360 144 408 L160 410
+                   C156 360 154 310 154 270 C156 232 158 206 166 190 C170 226 172 286 168 348
+                   C166 388 172 420 182 440 C168 452 160 534 164 596 C166 652 170 704 176 736 L200 736
+                   C201 672 201 596 201 512 C201 470 200 452 200 430 L220 428 L240 430 C240 452 239 470 239 512
+                   C239 596 239 672 240 736 L264 736 C270 704 274 652 276 596 C280 534 272 452 258 440
+                   C268 420 274 388 272 348 C268 286 270 226 274 190 C282 206 284 232 286 270
+                   C286 310 284 360 280 410 L296 408 C300 360 304 310 306 268 C310 226 308 190 300 168
+                   C290 132 260 124 244 120 C236 130 204 130 196 120 Z"/>
+        </g>
+
+        <!-- 靜脈（藍，畫在動脈之後） -->
+        <g fill="none" stroke="url(#human-vein)" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 上下腔靜脈主幹 -->
+          <path data-part="上腔靜脈" d="M212 230 C212 210 210 190 208 172" stroke-width="7"/>
+          <path data-part="下腔靜脈" d="M214 250 C216 300 216 360 214 400" stroke-width="7"/>
+          <!-- 頸靜脈 -->
+          <path data-part="頸靜脈" d="M208 172 C206 152 205 138 206 120 C206 104 210 92 214 80" stroke-width="4"/>
+          <path d="M206 120 C202 108 198 98 196 88" stroke-width="2.4"/>
+          <!-- 鎖骨下→上肢（頭靜脈/貴要靜脈） -->
+          <path d="M208 176 C190 178 168 184 150 196 C136 240 134 300 140 356 C144 386 150 400 156 410" stroke-width="4"/>
+          <path d="M156 410 C160 416 168 418 176 414" stroke-width="2.6"/>
+          <path d="M212 232 C232 232 258 240 278 258 C292 300 294 356 288 400 C284 420 280 430 274 438" stroke-width="4"/>
+          <path d="M274 438 C270 444 262 446 254 442" stroke-width="2.6"/>
+          <!-- 手部靜脈網 -->
+          <path d="M176 414 L172 430 M176 414 L178 432 M156 410 L150 426 M254 442 L250 458 M254 442 L258 460 M274 438 L270 452" stroke-width="1.4"/>
+          <!-- 下肢：股靜脈/大隱靜脈 -->
+          <path data-part="大隱靜脈" d="M208 402 C200 440 194 520 192 596 C191 648 194 700 198 732" stroke-width="4.5"/>
+          <path d="M192 596 C186 604 182 616 182 630 M194 520 C188 528 186 540 187 552" stroke-width="2.2"/>
+          <path d="M232 404 C240 440 246 520 248 596 C249 648 246 700 242 732" stroke-width="4.5"/>
+          <path d="M248 596 C254 604 258 616 258 630 M246 520 C252 528 254 540 253 552" stroke-width="2.2"/>
+          <!-- 足部靜脈網 -->
+          <path d="M198 732 L192 744 M198 732 L202 746 M242 732 L238 746 M242 732 L248 744" stroke-width="1.4"/>
+        </g>
+
+        <!-- 動脈（紅） -->
+        <g fill="none" stroke="url(#human-artery)" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 主動脈弓 + 升主動脈 -->
+          <path data-part="主動脈弓" d="M222 236 C221 214 216 198 210 190 C206 182 210 172 220 170 C232 168 240 176 240 188" stroke-width="7"/>
+          <!-- 頸動脈（上行至頭） -->
+          <path data-part="頸動脈" d="M226 176 C228 156 229 140 228 122 C228 106 224 94 220 82" stroke-width="4.2"/>
+          <path d="M228 122 C232 110 236 100 238 90 M220 82 C218 72 214 64 210 58 M220 82 C224 74 230 68 236 64" stroke-width="2.2"/>
+          <path d="M238 90 C242 82 246 78 250 74 M210 58 C206 52 202 50 198 48" stroke-width="1.4"/>
+          <!-- 鎖骨下→肱→橈尺動脈（右臂：畫面左） -->
+          <path data-part="肱動脈" d="M222 190 C204 190 180 196 162 208 C150 250 148 306 154 360 C158 388 162 400 168 412" stroke-width="4.2"/>
+          <path d="M168 412 C164 418 158 420 152 416 M168 412 C172 418 174 424 172 432" stroke-width="2.4"/>
+          <path d="M152 416 L146 430 M172 432 L168 448 M172 432 L176 448 M168 412 L164 428" stroke-width="1.3"/>
+          <!-- 左臂（畫面右） -->
+          <path d="M240 192 C258 194 280 202 296 216 C306 256 306 306 300 358 C296 386 292 398 286 410" stroke-width="4.2"/>
+          <path d="M286 410 C290 416 296 418 302 414 M286 410 C282 416 280 422 282 430" stroke-width="2.4"/>
+          <path d="M302 414 L308 428 M282 430 L286 446 M282 430 L278 446" stroke-width="1.3"/>
+          <!-- 胸/腹主動脈（下行） -->
+          <path data-part="腹主動脈" d="M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402" stroke-width="6"/>
+          <!-- 腎動脈 -->
+          <path d="M226 300 C210 302 196 306 186 314 M226 306 C244 308 258 312 268 320" stroke-width="2.6"/>
+          <!-- 髂→股→膝→脛動脈（雙腿） -->
+          <path data-part="股動脈" d="M221 404 C212 414 204 430 200 452 C194 520 192 600 194 660 C195 696 198 720 202 736" stroke-width="5"/>
+          <path d="M194 660 C190 676 188 700 190 720 M196 560 C192 572 190 588 191 602 M200 460 C196 470 194 482 195 494" stroke-width="2.2"/>
+          <path d="M202 736 L198 750 M202 736 L206 750 M190 720 L186 732" stroke-width="1.3"/>
+          <path data-part="股動脈" d="M221 404 C230 414 238 430 242 452 C248 520 250 600 248 660 C247 696 244 720 240 736" stroke-width="5"/>
+          <path d="M248 660 C252 676 254 700 252 720 M246 560 C250 572 252 588 251 602 M242 460 C246 470 248 482 247 494" stroke-width="2.2"/>
+          <path d="M240 736 L236 750 M240 736 L244 750 M252 720 L256 732" stroke-width="1.3"/>
+        </g>
+
+        <!-- 心臟（解剖形狀：底寬、心尖朝左下） -->
+        <g>
+          <!-- 大血管殘端 -->
+          <path d="M206 214 C204 200 204 190 206 182 M216 214 C220 202 226 196 232 192 M196 216 C192 206 190 198 190 190" fill="none" stroke="#9a2b26" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+          <path d="M214 214 C214 202 212 194 210 188" fill="none" stroke="#3f7fd0" stroke-width="4.5" stroke-linecap="round" opacity="0.8"/>
+          <!-- 心肌本體 -->
+          <path data-part="心臟" d="M190 214 C177 209 165 217 165 232 C165 250 177 268 195 281 C207 290 217 294 226 289 C234 284 240 272 244 258 C249 242 249 225 241 216 C233 208 221 209 214 217 C206 210 197 210 190 214 Z" fill="url(#human-heart2)" stroke="#5c1512" stroke-width="1.6"/>
+          <!-- 冠狀動脈（前降支＋分支） -->
+          <path d="M212 218 C209 238 204 258 197 276" fill="none" stroke="#d13a33" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M210 236 C219 240 226 246 231 254 M205 256 C198 260 192 266 189 272 M208 226 C200 230 194 238 192 248" fill="none" stroke="#d13a33" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 表面光澤 -->
+          <ellipse cx="188" cy="230" rx="9" ry="7" fill="#e86a5f" opacity="0.4"/>
+          <path d="M172 228 C176 244 186 258 198 268" fill="none" stroke="#e86a5f" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+        </g>
+
+        <!-- 標註 -->
+        <g class="labels" font-size="13" fill="var(--ink)">
+          <line x1="238" y1="90" x2="360" y2="76" stroke="#555" stroke-width="1"/><text x="364" y="80">頸動脈</text>
+          <line x1="206" y1="100" x2="70" y2="86" stroke="#555" stroke-width="1"/><text x="18" y="90">頸靜脈</text>
+          <line x1="240" y1="186" x2="360" y2="170" stroke="#555" stroke-width="1"/><text x="364" y="174">主動脈弓</text>
+          <line x1="208" y1="180" x2="70" y2="160" stroke="#555" stroke-width="1"/><text x="14" y="164">上腔靜脈</text>
+          <line x1="238" y1="250" x2="360" y2="250" stroke="#555" stroke-width="1"/><text x="364" y="254">心臟</text>
+          <line x1="160" y1="300" x2="70" y2="300" stroke="#555" stroke-width="1"/><text x="18" y="304">肱動脈</text>
+          <line x1="226" y1="330" x2="360" y2="340" stroke="#555" stroke-width="1"/><text x="364" y="344">腹主動脈</text>
+          <line x1="214" y1="380" x2="70" y2="380" stroke="#555" stroke-width="1"/><text x="14" y="384">下腔靜脈</text>
+          <line x1="243" y1="520" x2="360" y2="520" stroke="#555" stroke-width="1"/><text x="364" y="524">股動脈</text>
+          <line x1="192" y1="560" x2="70" y2="560" stroke="#555" stroke-width="1"/><text x="10" y="564">大隱靜脈</text>
+        </g>`,
+        parts: [
+          { name: "心臟", desc: "四腔幫浦：右心房/室送血入肺，左心房/室送含氧血至全身。" },
+          { name: "主動脈弓", desc: "心臟輸出的最大動脈，向上分出頭頸與上肢動脈、向下成降主動脈。" },
+          { name: "頸動脈", desc: "沿頸部上行，供應腦部與頭部含氧血。" },
+          { name: "頸靜脈", desc: "收集頭頸部缺氧血回流心臟。" },
+          { name: "上腔靜脈", desc: "匯集上半身靜脈血回到右心房。" },
+          { name: "下腔靜脈", desc: "匯集下半身靜脈血回到右心房。" },
+          { name: "肱動脈", desc: "上臂主要動脈，於肘部分為橈動脈與尺動脈。" },
+          { name: "腹主動脈", desc: "降主動脈在腹部的延續，分支供應內臟與下肢。" },
+          { name: "股動脈", desc: "大腿主要動脈，向下延續為膕動脈與脛動脈供應下肢。" },
+          { name: "大隱靜脈", desc: "人體最長的淺層靜脈，沿下肢內側上行回流。" }
+        ]
       }
     ]
   });
