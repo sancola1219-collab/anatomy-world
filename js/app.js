@@ -53,6 +53,14 @@
       byId[org.id] = org;
       registry.push(org);
     },
+    // 為既有物種附加一個視圖（供各自獨立檔案擴充，如循環系統）
+    addView(id, view) {
+      const o = byId[id];
+      if (!o || !view) return;
+      o.views = o.views || [];
+      if (o.views.some(v => v.id === view.id)) return;
+      o.views.push(view);
+    },
     boot() { App.init(); },
     _registry: registry,
     _tax: TAXONOMY
@@ -242,6 +250,7 @@
       });
       this.applyLabelToggle();
       this.applyAnim();
+      if (window.BloodFlow) window.BloodFlow.apply(this.el.svgHost);
     },
 
     applyAnim() {

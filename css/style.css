@@ -231,8 +231,9 @@ body{
 
 /* ===== 循環系統：血流與血球動畫 ===== */
 /* 預設隱藏，動態開啟才顯示流動效果 */
-.flow-artery,.flow-vein,.bloodcells{opacity:0;transition:opacity .3s}
-#svgHost.anim-on .flow-artery,#svgHost.anim-on .flow-vein,#svgHost.anim-on .bloodcells{opacity:1}
+/* .flow-artery/.flow-vein 群組即血管本體（永遠可見）；血球層動態才顯示 */
+.bf-cells{opacity:0;transition:opacity .3s}
+#svgHost.anim-on .bf-cells{opacity:1}
 /* 血流：脈動虛線，動脈向外、靜脈回心 */
 #svgHost.anim-on .flow-artery path{stroke-dasharray:6 16;animation:flowOut 1s linear infinite}
 #svgHost.anim-on .flow-vein path{stroke-dasharray:6 16;animation:flowIn 1.3s linear infinite}

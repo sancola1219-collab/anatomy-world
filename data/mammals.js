@@ -465,21 +465,25 @@
           <path d="M232 404 C240 440 246 520 248 596 C249 648 246 700 242 732"/>
         </g>
 
-        <!-- 紅血球與血小板：沿血管流動 -->
-        <g class="bloodcells">
-          <g class="cell rbc" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:0s"><circle r="4.4" fill="#cc2f28"/><circle r="1.7" fill="#ef8577"/></g>
-          <g class="cell rbc" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:-1s"><circle r="4.4" fill="#cc2f28"/><circle r="1.7" fill="#ef8577"/></g>
-          <g class="cell rbc" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:-2s"><circle r="4.4" fill="#cc2f28"/><circle r="1.7" fill="#ef8577"/></g>
-          <g class="cell platelet" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:-1.6s"><ellipse rx="2.4" ry="1.6" fill="#e7c85a"/></g>
-          <g class="cell rbc" style="offset-path:path('M226 176 C228 156 229 140 228 122 C228 106 224 94 220 82');animation-duration:2.4s;animation-delay:0s"><circle r="4" fill="#cc2f28"/><circle r="1.5" fill="#ef8577"/></g>
-          <g class="cell rbc" style="offset-path:path('M226 176 C228 156 229 140 228 122 C228 106 224 94 220 82');animation-duration:2.4s;animation-delay:-1.2s"><circle r="4" fill="#cc2f28"/><circle r="1.5" fill="#ef8577"/></g>
-          <g class="cell rbc" style="offset-path:path('M221 404 C212 414 204 430 200 452 C194 520 192 600 194 660 C195 696 198 720 202 736');animation-duration:4.5s;animation-delay:0s"><circle r="4.2" fill="#cc2f28"/><circle r="1.6" fill="#ef8577"/></g>
-          <g class="cell rbc" style="offset-path:path('M221 404 C212 414 204 430 200 452 C194 520 192 600 194 660 C195 696 198 720 202 736');animation-duration:4.5s;animation-delay:-2.2s"><circle r="4.2" fill="#cc2f28"/><circle r="1.6" fill="#ef8577"/></g>
-          <g class="cell rbc" style="offset-path:path('M221 404 C230 414 238 430 242 452 C248 520 250 600 248 660 C247 696 244 720 240 736');animation-duration:4.5s;animation-delay:-1.1s"><circle r="4.2" fill="#cc2f28"/><circle r="1.6" fill="#ef8577"/></g>
-          <g class="cell platelet" style="offset-path:path('M221 404 C230 414 238 430 242 452 C248 520 250 600 248 660 C247 696 244 720 240 736');animation-duration:4.5s;animation-delay:-3.3s"><ellipse rx="2.4" ry="1.6" fill="#e7c85a"/></g>
-          <g class="cell rbc vein" style="offset-path:path('M198 732 C194 700 191 648 192 596 C194 520 200 440 208 402');animation-duration:4.5s;animation-delay:-0.6s"><circle r="4" fill="#7a95c8"/><circle r="1.5" fill="#a9c0e6"/></g>
-          <g class="cell rbc vein" style="offset-path:path('M214 400 C216 360 216 300 214 250');animation-duration:2.6s;animation-delay:-0.8s"><circle r="4" fill="#7a95c8"/><circle r="1.5" fill="#a9c0e6"/></g>
+        <!-- 末梢微血管網（靜態，增加細節密度） -->
+        <g fill="none" stroke-linecap="round" opacity="0.85">
+          <g stroke="#c33" stroke-width="0.8">
+            <path d="M238 90 L244 82 M238 90 L246 92 M238 90 L242 98 M250 74 L256 68 M250 74 L258 76"/>
+            <path d="M198 48 L194 42 M198 48 L190 46 M210 58 L206 50"/>
+            <path d="M146 430 L142 440 M146 430 L138 436 M152 416 L148 428 M176 448 L174 458 M168 448 L164 458"/>
+            <path d="M308 428 L312 438 M308 428 L316 434 M286 446 L288 456 M278 446 L276 456"/>
+            <path d="M198 750 L194 760 M198 750 L202 762 M206 750 L210 760 M186 732 L182 742"/>
+            <path d="M240 750 L236 760 M240 750 L244 762 M256 732 L260 742"/>
+          </g>
+          <g stroke="#4a7fc0" stroke-width="0.8">
+            <path d="M196 88 L192 80 M196 88 L200 78 M206 120 L200 112"/>
+            <path d="M150 426 L146 436 M150 426 L154 436 M182 630 L178 640 M182 630 L186 640"/>
+            <path d="M258 630 L254 640 M258 630 L262 640 M192 744 L188 754 M202 746 L206 756"/>
+            <path d="M238 746 L234 756 M248 744 L252 754"/>
+          </g>
         </g>
+
+        <!-- 血球由 js/bloodflow.js 依 flow 路徑自動生成（擬真雙凹紅血球＋白血球＋血小板） -->
 
         <!-- 標註 -->
         <g class="labels" font-size="13" fill="var(--ink)">
