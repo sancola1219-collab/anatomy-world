@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物構造教學室 · 動物與植物寫實解剖</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <!-- 頂欄 -->
+  <header id="topbar">
+    <div class="brand">
+      <span class="brand-mark">🔬</span>
+      <div class="brand-text">
+        <h1>生物構造教學室</h1>
+        <p>動物・植物・真菌　寫實解剖互動教材</p>
+      </div>
+    </div>
+    <div class="top-search">
+      <input id="searchBox" type="search" placeholder="搜尋物種或器官…（例如：心臟、蝴蝶、葉子）" autocomplete="off">
+      <span class="search-count" id="searchCount"></span>
+    </div>
+    <div class="top-actions">
+      <button class="pill" id="btnGuide" title="使用說明">？ 說明</button>
+      <button class="pill" id="btnTheme" title="切換深淺色">🌓 主題</button>
+    </div>
+  </header>
+
+  <div id="body">
+    <!-- 側邊分類樹 -->
+    <nav id="sidebar" aria-label="分類導覽">
+      <div class="sidebar-head">
+        <span>生物分類</span>
+        <span class="count-badge" id="totalCount">0</span>
+      </div>
+      <div id="taxTree"></div>
+    </nav>
+
+    <!-- 主舞台 -->
+    <main id="stage">
+      <div id="viewerWrap">
+        <!-- 檢視器工具列 -->
+        <div id="viewerToolbar">
+          <div class="vt-left">
+            <button class="vt-btn" data-act="zoomout" title="縮小（近看→遠看）">➖</button>
+            <span id="zoomLevel">100%</span>
+            <button class="vt-btn" data-act="zoomin" title="放大（遠看→近看）">➕</button>
+            <button class="vt-btn" data-act="reset" title="重設視角">⟲</button>
+          </div>
+          <div class="vt-mid" id="viewTabs"></div>
+          <div class="vt-right">
+            <label class="toggle">
+              <input type="checkbox" id="toggleLabels" checked>
+              <span>標註</span>
+            </label>
+            <button class="vt-btn" data-act="full" title="全螢幕">⛶</button>
+          </div>
+        </div>
+
+        <!-- SVG 畫布 -->
+        <div id="canvas">
+          <div id="pan">
+            <div id="svgHost"></div>
+          </div>
+          <div id="hint">滾輪縮放 · 拖曳平移 · 點器官看細節</div>
+        </div>
+      </div>
+
+      <!-- 右側資訊面板 -->
+      <aside id="infoPanel">
+        <div id="infoEmpty" class="info-empty">
+          <div class="ie-icon">🧬</div>
+          <p>從左側分類選一個物種開始</p>
+          <p class="ie-sub">支援遠看整體、近看器官、逐系統拆解</p>
+        </div>
+        <div id="infoContent" hidden>
+          <div class="info-title">
+            <span class="info-emoji" id="infoEmoji"></span>
+            <div>
+              <h2 id="infoName"></h2>
+              <p class="latin" id="infoLatin"></p>
+            </div>
+          </div>
+          <div class="info-tax" id="infoTax"></div>
+          <p class="info-summary" id="infoSummary"></p>
+          <div class="info-sec">
+            <h3>構造部位</h3>
+            <ul id="partList" class="part-list"></ul>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+</div>
+
+<!-- 說明視窗 -->
+<div id="guideModal" class="modal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" data-close>✕</button>
+    <h2>🔬 使用說明</h2>
+    <ul class="guide-list">
+      <li><b>選物種</b>：左側分類樹，展開「界 → 類群 → 物種」。</li>
+      <li><b>遠看／近看</b>：滑鼠滾輪縮放，或用工具列 ➕➖；拖曳可平移。</li>
+      <li><b>逐系統拆解</b>：上方分頁切換不同視圖（外觀、骨骼、內臟…）。</li>
+      <li><b>看標註</b>：勾選「標註」顯示部位名稱與引線；點右側部位清單會高亮。</li>
+      <li><b>搜尋</b>：頂欄搜尋物種或器官名稱。</li>
+    </ul>
+    <p class="guide-foot">教材可離線使用，直接用瀏覽器開 <code>index.html</code>。</p>
+  </div>
+</div>
+
+<!-- 資料檔（各分類內容） -->
+<script src="js/app.js"></script>
+<script src="data/mammals.js"></script>
+<script src="data/birds.js"></script>
+<script src="data/reptiles-amphibians.js"></script>
+<script src="data/fish.js"></script>
+<script src="data/insects.js"></script>
+<script src="data/other-invertebrates.js"></script>
+<script src="data/flowering-plants.js"></script>
+<script src="data/other-plants.js"></script>
+<script src="data/fungi.js"></script>
+<script>window.ANATOMY.boot();</script>
+</body>
+</html>
