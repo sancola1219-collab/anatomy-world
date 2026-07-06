@@ -18,8 +18,10 @@
     if (/肺|鰓/.test(name)) return "anim-breathe";
     // 血液／血管：脈動流動感
     if (/血|動脈|靜脈/.test(name)) return "anim-blood";
+    // 眼睛：眨動（讓外觀視圖一眼看出「活著」）
+    if (/眼/.test(name)) return "anim-blink";
     // 運動附肢：擺動
-    if (/翅|翼|鰭|尾|觸手|觸角|腕|鞭毛|纖毛|步足|游泳足|口腕/.test(name)) return "anim-sway";
+    if (/翅|翼|鰭|尾|觸手|觸角|腕|鞭毛|纖毛|步足|游泳足|口腕|鰭肢/.test(name)) return "anim-sway";
     return null;
   }
 
@@ -52,14 +54,20 @@
 
       // 標記器官動畫類別（過程視圖不套器官律動，改用階段走播）
       const parts = Array.from(svg.querySelectorAll("[data-part]"));
+      svg.classList.remove("anim-idle");
       if (!isProcess) {
+        let tagged = 0;
         parts.forEach(el => {
           const cls = classify(el.dataset.part);
-          if (cls) el.classList.add(cls);
+          if (cls) { el.classList.add(cls); tagged++; }
         });
+        // 後備：沒有可動器官的視圖，整體輕微「呼吸」，讓每個畫面都看得出在動
+        if (tagged === 0) svg.classList.add("anim-idle");
       }
 
-      svg.classList.toggle("anim-on", !!on);
+      // 播放開關 class 掛在 #svgHost 容器上（CSS 選擇器 #svgHost.anim-on ...）
+      const host = svg.parentElement || document.getElementById("svgHost");
+      host.classList.toggle("anim-on", !!on);
       if (!on) return;
 
       if (isProcess) this.playStages(svg, parts);

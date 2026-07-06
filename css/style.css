@@ -181,6 +181,10 @@ body{
 #svgHost.anim-on .anim-breathe{animation:anBreathe 3.2s ease-in-out infinite}
 #svgHost.anim-on .anim-sway{animation:anSway 2.4s ease-in-out infinite}
 #svgHost.anim-on .anim-blood{animation:anBlood 1.9s ease-in-out infinite}
+.anim-blink{transform-box:fill-box;transform-origin:center center}
+#svgHost.anim-on .anim-blink{animation:anBlink2 4s ease-in-out infinite}
+/* 後備：整隻生物輕微呼吸起伏（外觀/植物等無可動器官的視圖） */
+#svgHost.anim-on svg.anim-idle{animation:anIdle 3.8s ease-in-out infinite;transform-origin:50% 92%}
 #svgHost.anim-on .stage-lit{filter:drop-shadow(0 0 11px var(--accent-2)) brightness(1.18)}
 /* 心跳：快速雙拍 */
 @keyframes anBeat{
@@ -190,6 +194,10 @@ body{
 @keyframes anBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @keyframes anSway{0%,100%{transform:rotate(-3.2deg)}50%{transform:rotate(3.2deg)}}
 @keyframes anBlood{0%,100%{opacity:1}50%{opacity:.6}}
+/* 眨眼：多數時間睜開，短暫瞬間閉合 */
+@keyframes anBlink2{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.12)}97%{transform:scaleY(1)}}
+/* 整體呼吸 idle */
+@keyframes anIdle{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
 /* 動態進行中的小標記 */
 #animBadge{
   position:absolute;left:14px;top:12px;font-size:11.5px;color:#fff;background:var(--accent-2);
