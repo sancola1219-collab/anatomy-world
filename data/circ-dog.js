@@ -1,0 +1,165 @@
+/* ===== 狗・循環系統（血管）詳圖 =====
+ * 附加視圖：以 window.ANATOMY.addView 掛到既有 "dog" 物種。
+ * 側面視角（四足、水平身體）。
+ * 主要動脈放 class="flow-artery"、主要靜脈放 class="flow-vein"；
+ * 血球由 js/bloodflow.js 依這兩個群組的 <path> 自動生成流動。
+ * 心臟以 data-part="心臟" 自動跳動。
+ * 漸層 id 皆以 dog-circ- 前綴（避開既有 dog 視圖的 dog-heart 等 id）。
+ * SVG 只寫內層標記，引擎自動包外層 <svg>。
+ */
+(function () {
+  "use strict";
+  if (!window.ANATOMY || !window.ANATOMY.addView) return;
+
+  window.ANATOMY.addView("dog", {
+    id: "circulatory",
+    name: "循環系統（血管）",
+    viewBox: "0 0 540 360",
+    svg: `
+      <defs>
+        <!-- 動脈：鮮紅漸層 -->
+        <linearGradient id="dog-circ-artery" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ff6b5b"/>
+          <stop offset="55%" stop-color="#e23b30"/>
+          <stop offset="100%" stop-color="#b3221b"/>
+        </linearGradient>
+        <!-- 靜脈：藍漸層 -->
+        <linearGradient id="dog-circ-vein" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#6fb0ff"/>
+          <stop offset="55%" stop-color="#3f7fe0"/>
+          <stop offset="100%" stop-color="#274f9c"/>
+        </linearGradient>
+        <!-- 心臟：紅色徑向漸層 -->
+        <radialGradient id="dog-circ-heart" cx="40%" cy="34%" r="72%">
+          <stop offset="0%" stop-color="#e8564a"/>
+          <stop offset="60%" stop-color="#c22e26"/>
+          <stop offset="100%" stop-color="#8a1a15"/>
+        </radialGradient>
+        <!-- 身體：膚/毛色漸層 -->
+        <linearGradient id="dog-circ-body" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f0d3ae"/>
+          <stop offset="60%" stop-color="#dcb488"/>
+          <stop offset="100%" stop-color="#c69a68"/>
+        </linearGradient>
+      </defs>
+
+      <!-- 半透明身體輪廓（側面：頭、耳、頸、軀幹、四肢、尾） -->
+      <g fill="url(#dog-circ-body)" opacity="0.4" stroke="#b98d5f" stroke-width="1.2" stroke-linejoin="round">
+        <!-- 軀幹＋頭頸連續剪影 -->
+        <path d="M96 168
+                 C86 150 82 132 88 120 C93 110 104 106 116 108
+                 C120 96 132 90 146 92 C150 82 162 80 172 86
+                 C182 80 196 84 200 96 C210 98 216 108 214 120
+                 C212 132 202 138 192 138 C190 146 182 150 174 149
+                 C176 158 176 168 172 176
+                 C210 168 268 164 330 168 C378 171 420 178 452 190
+                 C470 197 480 208 480 222 C480 240 470 254 452 260
+                 C438 264 420 267 400 268
+                 C404 280 408 296 406 312 L392 312
+                 C390 296 386 282 380 272 C372 270 362 269 352 269
+                 C356 282 358 298 356 314 L342 314
+                 C340 298 336 284 330 274
+                 C288 276 236 276 190 270
+                 C186 282 184 298 182 314 L168 314
+                 C168 298 170 284 174 272
+                 C160 268 144 262 130 252
+                 C132 264 132 280 128 296 L114 296
+                 C114 280 116 266 120 254
+                 C108 244 98 230 94 214 C88 200 88 182 96 168 Z"/>
+        <!-- 尾 -->
+        <path d="M478 224 C494 220 508 214 516 204 C520 199 518 192 512 192 C504 192 494 200 484 212 C480 216 478 220 478 224 Z"/>
+      </g>
+
+      <!-- 靜脈（藍）：頭頸與四肢回流、前後腔靜脈匯回右心房 -->
+      <g class="flow-vein" fill="none" stroke="url(#dog-circ-vein)" stroke-width="4" stroke-linecap="round">
+        <!-- 頸靜脈：頭部下緣沿頸腹側回心 -->
+        <path data-part="頸靜脈" d="M150 128 C166 132 182 138 196 148 C210 158 218 172 218 188"/>
+        <!-- 前腔靜脈：前胸匯集頭頸與前肢缺氧血入右心房 -->
+        <path data-part="前腔靜脈" d="M218 188 C210 196 204 204 202 214"/>
+        <!-- 後腔靜脈：沿腹腔背側自後方回心（與腹主動脈並行、位其背側） -->
+        <path data-part="後腔靜脈" d="M420 232 C384 236 320 236 264 232 C240 230 220 224 206 216"/>
+        <!-- 前肢靜脈：前腳回流 -->
+        <path data-part="前肢靜脈" d="M120 292 C124 274 132 250 152 226 C168 208 186 198 200 200"/>
+        <!-- 後肢靜脈：後腳回流 -->
+        <path data-part="後肢靜脈" d="M398 310 C392 288 384 262 372 246 C398 244 416 240 424 234"/>
+      </g>
+
+      <!-- 動脈（紅）：主動脈弓→腹主動脈沿脊椎至尾、頸動脈向頭、四肢動脈 -->
+      <g class="flow-artery" fill="none" stroke="url(#dog-circ-artery)" stroke-width="4" stroke-linecap="round">
+        <!-- 主動脈：自左心室升起、主動脈弓後轉 -->
+        <path data-part="主動脈" d="M210 222 C214 208 216 196 224 190 C234 184 246 188 250 200"/>
+        <!-- 腹主動脈：沿脊椎腹側向後直達骨盆（比後腔靜脈略腹側） -->
+        <path data-part="腹主動脈" d="M250 200 C300 196 360 196 416 202 C430 204 442 210 448 220"/>
+        <!-- 頸動脈：向前上供應頭頸 -->
+        <path data-part="頸動脈" d="M224 190 C210 180 194 168 178 156 C166 148 156 140 150 130"/>
+        <!-- 前肢動脈：分支下行至前腳 -->
+        <path data-part="前肢動脈" d="M230 200 C214 208 200 222 190 240 C180 258 174 278 172 296"/>
+        <!-- 後肢動脈：骨盆分支下行至後腳 -->
+        <path data-part="後肢動脈" d="M448 224 C440 242 430 260 420 276 C410 292 402 302 396 310"/>
+        <!-- 尾動脈：延腹主動脈末端入尾 -->
+        <path data-part="尾動脈" d="M448 220 C464 216 482 210 496 202"/>
+      </g>
+
+      <!-- 細微血管（靜態細節：紅+藍分支到腳掌、頭、尾） -->
+      <g fill="none" stroke-width="0.8" stroke-linecap="round" opacity="0.85">
+        <g stroke="#c8322a">
+          <path d="M150 130 L144 122 M150 130 L156 120 M158 116 L154 108 M162 112 L168 106"/>
+          <path d="M172 296 L168 306 M172 296 L176 306 M170 300 L164 308"/>
+          <path d="M396 310 L392 320 M396 310 L400 320 M394 314 L388 320"/>
+          <path d="M496 202 L504 198 M496 202 L502 208 M490 204 L494 210"/>
+        </g>
+        <g stroke="#3f6fc0">
+          <path d="M150 128 L143 120 M150 128 L157 118 M156 124 L160 116"/>
+          <path d="M120 292 L114 302 M120 292 L124 302 M118 296 L112 302"/>
+          <path d="M398 310 L402 320 M398 310 L394 320 M400 306 L406 314"/>
+        </g>
+      </g>
+
+      <!-- 心臟（解剖形狀，位於胸腔前下方）＋冠狀動脈 -->
+      <g>
+        <path data-part="心臟" d="M206 200
+             C196 195 186 202 186 215
+             C186 232 198 250 214 261
+             C224 268 232 271 240 266
+             C247 261 251 250 253 238
+             C255 224 253 210 246 203
+             C239 197 228 199 222 206
+             C216 200 212 199 206 200 Z"
+             fill="url(#dog-circ-heart)" stroke="#5c1512" stroke-width="1.5"/>
+        <!-- 冠狀動脈（前降支＋分支，細紅線） -->
+        <path d="M232 206 C229 224 224 242 216 256" fill="none" stroke="#d13a33" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M228 224 C236 228 242 234 246 242 M222 244 C214 248 208 252 205 258" fill="none" stroke="#d13a33" stroke-width="1.1" stroke-linecap="round"/>
+        <!-- 表面光澤 -->
+        <ellipse cx="204" cy="216" rx="7" ry="5" fill="#ef7267" opacity="0.4"/>
+      </g>
+
+      <!-- 標註 -->
+      <g class="labels" font-size="13" fill="var(--ink)">
+        <line x1="248" y1="198" x2="300" y2="150" stroke="#555" stroke-width="1"/><text x="304" y="150">主動脈</text>
+        <line x1="360" y1="197" x2="360" y2="140" stroke="#555" stroke-width="1"/><text x="330" y="134">腹主動脈</text>
+        <line x1="178" y1="150" x2="150" y2="96" stroke="#555" stroke-width="1"/><text x="120" y="92">頸動脈</text>
+        <line x1="150" y1="129" x2="96" y2="108" stroke="#555" stroke-width="1"/><text x="40" y="104">頸靜脈</text>
+        <line x1="212" y1="188" x2="180" y2="330" stroke="#555" stroke-width="1"/><text x="150" y="342">前腔靜脈</text>
+        <line x1="340" y1="234" x2="360" y2="330" stroke="#555" stroke-width="1"/><text x="336" y="342">後腔靜脈</text>
+        <line x1="240" y1="235" x2="270" y2="290" stroke="#555" stroke-width="1"/><text x="248" y="304">心臟</text>
+        <line x1="190" y1="250" x2="120" y2="330" stroke="#555" stroke-width="1"/><text x="70" y="342">前肢動脈</text>
+        <line x1="420" y1="278" x2="452" y2="326" stroke="#555" stroke-width="1"/><text x="430" y="338">後肢動脈</text>
+        <line x1="490" y1="204" x2="510" y2="176" stroke="#555" stroke-width="1"/><text x="500" y="170">尾動脈</text>
+      </g>
+    `,
+    parts: [
+      { name: "心臟", desc: "四腔幫浦（左右心房、左右心室），狗的心率約每分鐘 70–120 下。右側收集缺氧血送肺，左側把充氧血打向全身。" },
+      { name: "主動脈", desc: "全身最大的動脈，自左心室升起、經主動脈弓後轉向後，把充氧的血送往身體各處。" },
+      { name: "腹主動脈", desc: "主動脈進入腹腔後的延伸，沿脊椎腹側向後走，沿途分支供應內臟、後肢與尾部。" },
+      { name: "頸動脈", desc: "由主動脈弓向前上分出，供應頭部與頸部（含腦部）的充氧血。" },
+      { name: "尾動脈", desc: "腹主動脈末端延伸入尾，供應尾部肌肉與皮膚。" },
+      { name: "前肢動脈", desc: "分支下行至前腳，供應前肢肌肉與腳掌的充氧血。" },
+      { name: "後肢動脈", desc: "自骨盆區分出下行至後腳，供應後肢的充氧血。" },
+      { name: "前腔靜脈", desc: "匯集頭頸與前肢的缺氧血，回流至右心房。" },
+      { name: "後腔靜脈", desc: "匯集軀幹、內臟與後肢的缺氧血，沿腹腔背側回流至右心房。" },
+      { name: "頸靜脈", desc: "沿頸部腹側走行，收集頭頸部的缺氧血匯入前腔靜脈。" },
+      { name: "前肢靜脈", desc: "收集前腳與前肢的缺氧血，回流匯入前腔靜脈。" },
+      { name: "後肢靜脈", desc: "收集後腳與後肢的缺氧血，回流匯入後腔靜脈。" }
+    ]
+  });
+})();

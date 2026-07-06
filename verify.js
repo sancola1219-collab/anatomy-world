@@ -27,7 +27,8 @@ function run(file){
 // 載入引擎與資料（順序同 index.html）
 run("js/app.js");
 const dataFiles = ["mammals","birds","reptiles-amphibians","fish","insects",
-  "other-invertebrates","flowering-plants","other-plants","fungi"];
+  "other-invertebrates","flowering-plants","other-plants","fungi",
+  "circ-dog","circ-cat","circ-cow","circ-whale","circ-bat"];
 dataFiles.forEach(f => run("data/"+f+".js"));
 
 const A = sandbox.window.ANATOMY;
