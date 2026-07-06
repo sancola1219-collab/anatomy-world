@@ -15,8 +15,9 @@
 ```
 動物、植物構造/
 ├─ index.html                 ← 進入點；載入 css/js/所有 data 檔；最後呼叫 ANATOMY.boot()
-├─ css/style.css              ← 全部樣式與深淺色主題（CSS 變數）
-├─ js/app.js                  ← 核心引擎（唯一的邏輯檔）
+├─ css/style.css              ← 全部樣式、深淺色主題、動畫關鍵影格
+├─ js/app.js                  ← 核心引擎（分類樹/檢視器/搜尋）
+├─ js/anim.js                 ← 動態引擎（依 data-part 名稱自動套生理動畫）
 ├─ data/
 │  ├─ SCHEMA.md               ← 物種資料規格（新增內容前先讀）
 │  ├─ mammals.js              ← 哺乳類
@@ -62,6 +63,7 @@
 3. **可點器官**加 `data-part="部位名"`，且名稱**必須等於**同視圖 `parts[].name` → 才能點擊/清單高亮。
 4. **漸層等 id 全檔唯一**，加物種前綴（如 `human-muscle`）→ 避免多物種同頁衝突。
 5. `group` 必須是 `app.js` `TAXONOMY` 裡存在的 key；否則該物種不會出現在樹上。
+6. **動畫是自動的**（`js/anim.js`）：`data-part` 只要用慣用器官名就自動有生理動畫 — 心臟(心)→跳動、肺/鰓→呼吸、血/動脈/靜脈→脈動、翅/翼/鰭/尾/觸手/觸角/腕/鞭毛/纖毛→擺動。**過程視圖**（`view.name/id` 含 生命週期/變態/世代交替/授粉/受精/萌發/出芽）會改成逐階段循環播放。不必在 data 檔寫任何動畫。要改對應規則就編 `js/anim.js` 的 `classify()` 與 `PROCESS` regex。
 
 ---
 

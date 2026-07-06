@@ -75,6 +75,7 @@
         zoomLevel: document.getElementById("zoomLevel"),
         viewTabs: document.getElementById("viewTabs"),
         toggleLabels: document.getElementById("toggleLabels"),
+        toggleAnim: document.getElementById("toggleAnim"),
         infoEmpty: document.getElementById("infoEmpty"),
         infoContent: document.getElementById("infoContent"),
         infoEmoji: document.getElementById("infoEmoji"),
@@ -182,6 +183,14 @@
         node.addEventListener("click", () => this.flashPart(node.dataset.part));
       });
       this.applyLabelToggle();
+      this.applyAnim();
+    },
+
+    applyAnim() {
+      const svg = this.el.svgHost.querySelector("svg");
+      if (window.Anim) {
+        window.Anim.apply(svg, (current.views || [])[currentView], this.el.toggleAnim.checked);
+      }
     },
 
     renderInfo() {
@@ -272,6 +281,7 @@
         else if (a === "full") this.toggleFull();
       });
       this.el.toggleLabels.addEventListener("change", () => this.applyLabelToggle());
+      this.el.toggleAnim.addEventListener("change", () => this.applyAnim());
     },
 
     zoomAt(mx, my, factor) {
