@@ -447,6 +447,40 @@
           <path d="M172 228 C176 244 186 258 198 268" fill="none" stroke="#e86a5f" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
         </g>
 
+        <!-- 血流脈動（沿血管移動的虛線；動態開啟才顯示） -->
+        <g class="flow-artery" fill="none" stroke="#ff5b4d" stroke-width="3" stroke-linecap="round" opacity="0.9">
+          <path d="M222 236 C221 214 216 198 210 190 C206 182 210 172 220 170 C232 168 240 176 240 188"/>
+          <path d="M226 176 C228 156 229 140 228 122 C228 106 224 94 220 82"/>
+          <path d="M222 190 C204 190 180 196 162 208 C150 250 148 306 154 360 C158 388 162 400 168 412"/>
+          <path d="M240 192 C258 194 280 202 296 216 C306 256 306 306 300 358 C296 386 292 398 286 410"/>
+          <path d="M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402"/>
+          <path d="M221 404 C212 414 204 430 200 452 C194 520 192 600 194 660 C195 696 198 720 202 736"/>
+          <path d="M221 404 C230 414 238 430 242 452 C248 520 250 600 248 660 C247 696 244 720 240 736"/>
+        </g>
+        <g class="flow-vein" fill="none" stroke="#5b9bff" stroke-width="3" stroke-linecap="round" opacity="0.9">
+          <path d="M208 172 C206 152 205 138 206 120 C206 104 210 92 214 80"/>
+          <path d="M214 250 C216 300 216 360 214 400"/>
+          <path d="M208 176 C190 178 168 184 150 196 C136 240 134 300 140 356 C144 386 150 400 156 410"/>
+          <path d="M208 402 C200 440 194 520 192 596 C191 648 194 700 198 732"/>
+          <path d="M232 404 C240 440 246 520 248 596 C249 648 246 700 242 732"/>
+        </g>
+
+        <!-- 紅血球與血小板：沿血管流動 -->
+        <g class="bloodcells">
+          <g class="cell rbc" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:0s"><circle r="4.4" fill="#cc2f28"/><circle r="1.7" fill="#ef8577"/></g>
+          <g class="cell rbc" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:-1s"><circle r="4.4" fill="#cc2f28"/><circle r="1.7" fill="#ef8577"/></g>
+          <g class="cell rbc" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:-2s"><circle r="4.4" fill="#cc2f28"/><circle r="1.7" fill="#ef8577"/></g>
+          <g class="cell platelet" style="offset-path:path('M226 200 C228 240 228 300 226 350 C225 372 223 388 221 402');animation-duration:3s;animation-delay:-1.6s"><ellipse rx="2.4" ry="1.6" fill="#e7c85a"/></g>
+          <g class="cell rbc" style="offset-path:path('M226 176 C228 156 229 140 228 122 C228 106 224 94 220 82');animation-duration:2.4s;animation-delay:0s"><circle r="4" fill="#cc2f28"/><circle r="1.5" fill="#ef8577"/></g>
+          <g class="cell rbc" style="offset-path:path('M226 176 C228 156 229 140 228 122 C228 106 224 94 220 82');animation-duration:2.4s;animation-delay:-1.2s"><circle r="4" fill="#cc2f28"/><circle r="1.5" fill="#ef8577"/></g>
+          <g class="cell rbc" style="offset-path:path('M221 404 C212 414 204 430 200 452 C194 520 192 600 194 660 C195 696 198 720 202 736');animation-duration:4.5s;animation-delay:0s"><circle r="4.2" fill="#cc2f28"/><circle r="1.6" fill="#ef8577"/></g>
+          <g class="cell rbc" style="offset-path:path('M221 404 C212 414 204 430 200 452 C194 520 192 600 194 660 C195 696 198 720 202 736');animation-duration:4.5s;animation-delay:-2.2s"><circle r="4.2" fill="#cc2f28"/><circle r="1.6" fill="#ef8577"/></g>
+          <g class="cell rbc" style="offset-path:path('M221 404 C230 414 238 430 242 452 C248 520 250 600 248 660 C247 696 244 720 240 736');animation-duration:4.5s;animation-delay:-1.1s"><circle r="4.2" fill="#cc2f28"/><circle r="1.6" fill="#ef8577"/></g>
+          <g class="cell platelet" style="offset-path:path('M221 404 C230 414 238 430 242 452 C248 520 250 600 248 660 C247 696 244 720 240 736');animation-duration:4.5s;animation-delay:-3.3s"><ellipse rx="2.4" ry="1.6" fill="#e7c85a"/></g>
+          <g class="cell rbc vein" style="offset-path:path('M198 732 C194 700 191 648 192 596 C194 520 200 440 208 402');animation-duration:4.5s;animation-delay:-0.6s"><circle r="4" fill="#7a95c8"/><circle r="1.5" fill="#a9c0e6"/></g>
+          <g class="cell rbc vein" style="offset-path:path('M214 400 C216 360 216 300 214 250');animation-duration:2.6s;animation-delay:-0.8s"><circle r="4" fill="#7a95c8"/><circle r="1.5" fill="#a9c0e6"/></g>
+        </g>
+
         <!-- 標註 -->
         <g class="labels" font-size="13" fill="var(--ink)">
           <line x1="238" y1="90" x2="360" y2="76" stroke="#555" stroke-width="1"/><text x="364" y="80">頸動脈</text>
