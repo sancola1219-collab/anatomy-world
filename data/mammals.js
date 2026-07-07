@@ -510,6 +510,109 @@
           { name: "股動脈", desc: "大腿主要動脈，向下延續為膕動脈與脛動脈供應下肢。" },
           { name: "大隱靜脈", desc: "人體最長的淺層靜脈，沿下肢內側上行回流。" }
         ]
+      },
+      {
+        id: "microscope",
+        name: "🔬 血液顯微（近看血球流動）",
+        viewBox: "0 0 640 400",
+        svg: `
+        <defs>
+          <linearGradient id="mplasma" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff8e6"/><stop offset="100%" stop-color="#ffeede"/>
+          </linearGradient>
+          <radialGradient id="mrbc" cx="42%" cy="36%" r="62%">
+            <stop offset="0%" stop-color="#f4a293"/><stop offset="45%" stop-color="#d63d30"/>
+            <stop offset="82%" stop-color="#a11910"/><stop offset="100%" stop-color="#c72b20"/>
+          </radialGradient>
+        </defs>
+        <!-- 組織背景 -->
+        <rect x="0" y="0" width="640" height="400" fill="#fbeef0"/>
+        <g fill="#f2d9dd" opacity="0.6">
+          <ellipse cx="90" cy="60" rx="46" ry="34"/><ellipse cx="230" cy="48" rx="42" ry="30"/>
+          <ellipse cx="400" cy="58" rx="48" ry="34"/><ellipse cx="560" cy="52" rx="44" ry="32"/>
+        </g>
+        <!-- 微血管壁（外層）與血漿（內腔） -->
+        <path data-part="微血管壁" d="M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200" stroke="#e0a1ab" stroke-width="170" fill="none" stroke-linecap="round"/>
+        <path data-part="血漿" d="M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200" stroke="url(#mplasma)" stroke-width="150" fill="none" stroke-linecap="round"/>
+        <!-- 內皮細胞核（沿管壁） -->
+        <g fill="#c47d8a" opacity="0.75">
+          <ellipse cx="40" cy="140" rx="7" ry="4"/><ellipse cx="150" cy="120" rx="7" ry="4"/><ellipse cx="270" cy="150" rx="7" ry="4"/>
+          <ellipse cx="390" cy="130" rx="7" ry="4"/><ellipse cx="510" cy="118" rx="7" ry="4"/><ellipse cx="600" cy="150" rx="7" ry="4"/>
+          <ellipse cx="90" cy="272" rx="7" ry="4"/><ellipse cx="210" cy="286" rx="7" ry="4"/><ellipse cx="340" cy="272" rx="7" ry="4"/>
+          <ellipse cx="470" cy="286" rx="7" ry="4"/><ellipse cx="580" cy="270" rx="7" ry="4"/>
+        </g>
+        <!-- 氣體交換示意 -->
+        <g opacity="0.85">
+          <path d="M300 150 L300 116" stroke="#2f7dd1" stroke-width="2" marker-end="url(#)"/>
+          <path d="M300 120 l-4 8 l8 0 z" fill="#2f7dd1"/>
+          <text x="306" y="120" font-size="12" fill="#2f7dd1">O₂ 擴散出</text>
+          <path d="M340 254 L340 288" stroke="#7a7a7a" stroke-width="2"/>
+          <path d="M340 284 l-4 -8 l8 0 z" fill="#7a7a7a"/>
+          <text x="346" y="292" font-size="12" fill="#6a6a6a">CO₂ 擴散入</text>
+        </g>
+
+        <!-- 流動的血球（放大、單列） -->
+        <g class="bf-cells">
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:0s">
+            <ellipse rx="25" ry="23" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1.5"/><ellipse rx="11" ry="10" fill="#8f1409" opacity="0.4"/><ellipse cx="-8" cy="-8" rx="7" ry="4.5" fill="#ff9c8e" opacity="0.55"/>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-1.5s">
+            <path d="M-25 0 C-25 -13 -13 -15 0 -6 C13 -15 25 -13 25 0 C25 13 13 15 0 6 C-13 15 -25 13 -25 0 Z" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1.4"/>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-3s">
+            <ellipse rx="25" ry="23" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1.5"/><ellipse rx="11" ry="10" fill="#8f1409" opacity="0.4"/><ellipse cx="-8" cy="-8" rx="7" ry="4.5" fill="#ff9c8e" opacity="0.55"/>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-4.3s">
+            <circle r="30" fill="#eef4ef" stroke="#c2ccc6" stroke-width="1.6"/>
+            <circle cx="-9" cy="-7" r="11" fill="#8a5aa8" opacity="0.85"/><circle cx="9" cy="-2" r="10" fill="#7a4f98" opacity="0.85"/><circle cx="-2" cy="11" r="9" fill="#8a5aa8" opacity="0.85"/>
+            <g fill="#c4a8d8" opacity="0.6"><circle cx="16" cy="-12" r="2.2"/><circle cx="-16" cy="8" r="2.2"/><circle cx="6" cy="18" r="2.2"/></g>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-5.6s">
+            <ellipse rx="25" ry="23" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1.5"/><ellipse rx="11" ry="10" fill="#8f1409" opacity="0.4"/><ellipse cx="-8" cy="-8" rx="7" ry="4.5" fill="#ff9c8e" opacity="0.55"/>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-6.6s">
+            <path d="M-7 -4 Q0 -8 8 -4 Q11 2 6 6 Q-2 9 -8 4 Z" fill="#e7c85a" stroke="#b8983a" stroke-width="0.8"/>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-7.8s">
+            <path d="M-25 0 C-25 -13 -13 -15 0 -6 C13 -15 25 -13 25 0 C25 13 13 15 0 6 C-13 15 -25 13 -25 0 Z" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1.4"/>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-9.2s">
+            <ellipse rx="25" ry="23" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1.5"/><ellipse rx="11" ry="10" fill="#8f1409" opacity="0.4"/><ellipse cx="-8" cy="-8" rx="7" ry="4.5" fill="#ff9c8e" opacity="0.55"/>
+          </g>
+          <g class="cell" style="offset-path:path('M-60 200 C 130 168 250 236 380 202 C 500 172 570 232 700 200');animation-duration:11s;animation-delay:-10.4s">
+            <path d="M-6 -5 Q2 -7 7 -2 Q9 4 3 6 Q-4 8 -7 2 Z" fill="#e7c85a" stroke="#b8983a" stroke-width="0.8"/>
+          </g>
+        </g>
+
+        <!-- 圖例（靜態、可點高亮） -->
+        <g>
+          <rect x="30" y="330" width="580" height="58" rx="12" fill="#ffffff" opacity="0.72" stroke="#e2c9cf"/>
+          <g transform="translate(70 359)">
+            <ellipse data-part="紅血球" rx="17" ry="15.5" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1.2"/><ellipse rx="7.5" ry="7" fill="#8f1409" opacity="0.4"/>
+            <path d="M28 0 C28 -9 34 -10 44 -4 C34 -10 28 -9 28 0 C28 9 34 10 44 4 C34 10 28 9 28 0 Z" fill="url(#mrbc)" stroke="#7a1109" stroke-width="1"/>
+          </g>
+          <text x="118" y="364" font-size="13" fill="var(--ink)">紅血球（正面／側面）</text>
+          <g transform="translate(330 359)">
+            <circle data-part="白血球" r="17" fill="#eef4ef" stroke="#c2ccc6" stroke-width="1.3"/><circle cx="-5" cy="-4" r="7" fill="#8a5aa8" opacity="0.85"/><circle cx="5" cy="2" r="6" fill="#7a4f98" opacity="0.85"/>
+          </g>
+          <text x="356" y="364" font-size="13" fill="var(--ink)">白血球</text>
+          <g transform="translate(470 359)">
+            <path data-part="血小板" d="M-9 -5 Q1 -9 10 -3 Q13 3 7 8 Q-3 11 -10 4 Z" fill="#e7c85a" stroke="#b8983a" stroke-width="0.9"/>
+          </g>
+          <text x="490" y="364" font-size="13" fill="var(--ink)">血小板</text>
+        </g>
+
+        <g class="labels" font-size="13" fill="var(--ink)">
+          <line x1="470" y1="150" x2="500" y2="96" stroke="#666" stroke-width="1"/><text x="466" y="90">微血管壁</text>
+          <line x1="150" y1="210" x2="120" y2="300" stroke="#666" stroke-width="1"/><text x="60" y="314">血漿（含養分）</text>
+        </g>`,
+        parts: [
+          { name: "紅血球", desc: "雙凹圓盤狀、無細胞核，內含血紅素攜帶氧氣；正面看像甜甜圈，側面看中央凹陷。人體最多的血球。" },
+          { name: "白血球", desc: "體積最大、具細胞核（常分葉），數量少，負責免疫防禦與吞噬病原。" },
+          { name: "血小板", desc: "細胞碎片、無核，體積最小，受傷時聚集凝血止血。" },
+          { name: "血漿", desc: "淡黃色液體，約佔血液一半，運送養分、廢物、荷爾蒙與熱量。" },
+          { name: "微血管壁", desc: "僅一層內皮細胞，極薄，讓氧氣、二氧化碳與養分能與組織進行交換。" }
+        ]
       }
     ]
   });

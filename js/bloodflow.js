@@ -50,13 +50,14 @@ window.BloodFlow = (function () {
   function apply(svgHost) {
     const svg = svgHost && svgHost.querySelector("svg");
     if (!svg) return;
-    const old = svg.querySelector(".bf-cells");
+    // 只清除引擎自己產生的血球層，不動手繪的 .bf-cells（如血液顯微視圖）
+    const old = svg.querySelector(".bf-cells[data-auto]");
     if (old) old.remove();
     const flows = Array.prototype.slice.call(svg.querySelectorAll(".flow-artery path, .flow-vein path"));
     if (!flows.length) return;
     ensureDefs(svg);
 
-    const layer = E("g", { class: "bf-cells" });
+    const layer = E("g", { class: "bf-cells", "data-auto": "1" });
     let seq = 0;
     flows.forEach((p, pi) => {
       const d = p.getAttribute("d");
